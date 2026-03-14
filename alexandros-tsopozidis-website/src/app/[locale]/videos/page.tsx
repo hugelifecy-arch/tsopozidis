@@ -2,17 +2,16 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { Play, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
-import { videos, getYoutubeThumbnail } from '@/lib/data/videos';
+import YouTubeFacade from '@/components/YouTubeFacade';
+import { videos } from '@/lib/data/videos';
 
 export default function VideosPage() {
   const t = useTranslations('videos');
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
-  const [featuredPlaying, setFeaturedPlaying] = useState(false);
   const featured = videos[0];
   const rest = videos.slice(1);
 
@@ -24,32 +23,14 @@ export default function VideosPage() {
       <section className="py-24 px-4 md:px-8">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
-            <div className="relative aspect-video bg-bg-secondary rounded-sm overflow-hidden">
-              {!featuredPlaying ? (
-                <button
-                  onClick={() => setFeaturedPlaying(true)}
-                  className="absolute inset-0 flex items-center justify-center group cursor-pointer"
-                >
-                  <Image
-                    src={getYoutubeThumbnail(featured.youtubeId, 'maxresdefault')}
-                    alt={featured.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 896px"
-                  />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300" />
-                  <div className="relative w-20 h-20 rounded-full border-2 border-gold flex items-center justify-center group-hover:bg-gold/20 transition-all duration-300">
-                    <Play size={32} className="text-gold ml-1" />
-                  </div>
-                </button>
-              ) : (
-                <iframe
-                  src={`https://www.youtube.com/embed/${featured.youtubeId}?autoplay=1`}
-                  className="absolute inset-0 w-full h-full"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                />
-              )}
+            <div className="rounded-sm overflow-hidden">
+              <YouTubeFacade
+                videoId={featured.youtubeId}
+                title={featured.title}
+                views={featured.views}
+                quality="maxresdefault"
+                sizes="(max-width: 768px) 100vw, 896px"
+              />
             </div>
             <div className="mt-4">
               <h2 className="font-display text-xl">{featured.title}</h2>
@@ -69,35 +50,20 @@ export default function VideosPage() {
           {rest.map((video, i) => (
             <ScrollReveal key={video.id} delay={i * 0.05}>
               <div
-                className="group cursor-pointer"
+                className="group cursor-pointer rounded-sm overflow-hidden"
                 onClick={() => setActiveVideo(video.youtubeId)}
               >
-                <div className="aspect-video bg-bg-secondary rounded-sm relative overflow-hidden">
-                  <Image
-                    src={getYoutubeThumbnail(video.youtubeId, 'hqdefault')}
-                    alt={video.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative w-14 h-14 rounded-full border border-gold/40 flex items-center justify-center group-hover:bg-gold/20 group-hover:border-gold transition-all duration-300">
-                      <Play size={20} className="text-gold/60 group-hover:text-gold ml-0.5" />
-                    </div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <p className="font-sans text-sm">{video.title}</p>
-                    <p className="text-xs text-text-secondary mt-1">
-                      {video.year}
-                      {video.views && ` · ${video.views} views`}
-                    </p>
-                  </div>
-                  {video.views && (
-                    <span className="absolute top-3 right-3 text-[10px] bg-black/70 text-gold px-2 py-0.5 rounded font-sans">
-                      {video.views}
-                    </span>
-                  )}
+                <YouTubeFacade
+                  videoId={video.youtubeId}
+                  title={video.title}
+                  views={video.views}
+                />
+                <div className="mt-2 px-1">
+                  <p className="font-sans text-sm">{video.title}</p>
+                  <p className="text-xs text-text-secondary mt-1">
+                    {video.year}
+                    {video.views && ` · ${video.views} views`}
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
@@ -118,6 +84,7 @@ export default function VideosPage() {
             <button
               onClick={() => setActiveVideo(null)}
               className="absolute top-6 right-6 text-gold z-10"
+              aria-label="Close video"
             >
               <X size={28} />
             </button>
@@ -133,6 +100,7 @@ export default function VideosPage() {
                 className="w-full h-full rounded-sm"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
+                title="Video player"
               />
             </motion.div>
           </motion.div>

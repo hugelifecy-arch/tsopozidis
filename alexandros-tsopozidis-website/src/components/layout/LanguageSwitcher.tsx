@@ -4,9 +4,9 @@ import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/routing';
 
 const locales = [
-  { code: 'en' as const, label: 'EN' },
-  { code: 'ru' as const, label: 'RU' },
-  { code: 'el' as const, label: 'EL' },
+  { code: 'en' as const, label: 'EN', name: 'English', flag: '🇬🇧' },
+  { code: 'ru' as const, label: 'RU', name: 'Русский', flag: '🇷🇺' },
+  { code: 'el' as const, label: 'EL', name: 'Ελληνικά', flag: '🇬🇷' },
 ];
 
 export default function LanguageSwitcher() {
@@ -19,19 +19,21 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex items-center gap-1 font-sans text-xs tracking-widest uppercase">
-      {locales.map((l, i) => (
-        <span key={l.code} className="flex items-center">
-          {i > 0 && <span className="text-gold-dark mx-1">/</span>}
-          <button
-            onClick={() => handleSwitch(l.code)}
-            className={`transition-colors duration-300 ${
-              locale === l.code ? 'text-gold' : 'text-text-secondary hover:text-text-primary'
-            }`}
-          >
-            {l.label}
-          </button>
-        </span>
+    <div className="flex items-center gap-1 rounded-full border border-border bg-bg-secondary/50 p-0.5">
+      {locales.map((l) => (
+        <button
+          key={l.code}
+          onClick={() => handleSwitch(l.code)}
+          className={`px-3 py-1.5 rounded-full text-xs font-sans tracking-wider transition-all duration-300 ${
+            locale === l.code
+              ? 'bg-gold/15 text-gold border border-gold/30'
+              : 'text-text-secondary hover:text-text-primary border border-transparent'
+          }`}
+          title={l.name}
+        >
+          <span className="mr-1">{l.flag}</span>
+          {l.label}
+        </button>
       ))}
     </div>
   );

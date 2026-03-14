@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 
-const navItems = ['home', 'about', 'music', 'videos', 'gallery', 'events'] as const;
+const navItems = ['home', 'about', 'music', 'videos', 'gallery', 'events', 'press'] as const;
 const navPaths: Record<string, string> = {
   home: '/',
   about: '/about',
@@ -16,6 +16,7 @@ const navPaths: Record<string, string> = {
   videos: '/videos',
   gallery: '/gallery',
   events: '/events',
+  press: '/press',
 };
 
 export default function Navbar() {

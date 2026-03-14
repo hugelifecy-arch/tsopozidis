@@ -5,7 +5,7 @@ export interface Event {
   venue: string;
   city: string;
   country: string;
-  type: "festival" | "concert" | "private";
+  type: "festival" | "concert" | "award" | "private";
   isFeatured?: boolean;
   isUpcoming?: boolean;
   comingSoon?: boolean;
@@ -35,6 +35,27 @@ export const events: Event[] = [
     isUpcoming: false,
   },
   {
+    id: "greek-youth-2021",
+    title: "Greek Youth Party (Moscow Greek Society)",
+    date: "2021-03-20",
+    venue: "Moscow Greek Society",
+    city: "Moscow",
+    country: "Russia",
+    type: "private",
+    isUpcoming: false,
+  },
+  {
+    id: "stars-east-2018",
+    title: "Stars of the East — Vostok FM",
+    date: "2018-11-10",
+    venue: "Crocus City Hall",
+    city: "Moscow",
+    country: "Russia",
+    type: "concert",
+    isFeatured: true,
+    isUpcoming: false,
+  },
+  {
     id: "zhara-2018",
     title: "Zhara Festival",
     date: "2018-07-28",
@@ -47,7 +68,7 @@ export const events: Event[] = [
   },
   {
     id: "karnaval-2018",
-    title: "Karnaval",
+    title: "Karnaval 2018 (headline with Mitya Fomin)",
     date: "2018-05-20",
     venue: "City Stage",
     city: "Gelendzhik",
@@ -56,14 +77,24 @@ export const events: Event[] = [
     isUpcoming: false,
   },
   {
-    id: "stars-east-2018",
-    title: "Stars of the East — Vostok FM",
-    date: "2018-11-10",
-    venue: "Crocus City Hall",
+    id: "9-volna-2014",
+    title: "9 Volna Award Ceremony",
+    date: "2014-05-15",
+    venue: "Award Ceremony Venue",
     city: "Moscow",
     country: "Russia",
-    type: "concert",
+    type: "award",
     isFeatured: true,
+    isUpcoming: false,
+  },
+  {
+    id: "9-volna-2013",
+    title: "9 Volna Award Ceremony",
+    date: "2013-03-20",
+    venue: "Award Ceremony Venue",
+    city: "Moscow",
+    country: "Russia",
+    type: "award",
     isUpcoming: false,
   },
 ];

@@ -12,7 +12,7 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
-const navItems = ['home', 'about', 'music', 'videos', 'gallery', 'events', 'contact'] as const;
+const navItems = ['home', 'about', 'music', 'videos', 'gallery', 'events', 'press', 'contact'] as const;
 const navPaths: Record<string, string> = {
   home: '/',
   about: '/about',
@@ -20,6 +20,7 @@ const navPaths: Record<string, string> = {
   videos: '/videos',
   gallery: '/gallery',
   events: '/events',
+  press: '/press',
   contact: '/contact',
 };
 
