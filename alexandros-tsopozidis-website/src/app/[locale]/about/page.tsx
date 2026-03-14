@@ -69,7 +69,7 @@ export default function AboutPage() {
           <TimelineItem icon={Globe} title={t('sound_title')}>
             <p>{t('bio_paragraph_5')}</p>
             <div className="flex flex-wrap gap-2 mt-4">
-              {['Russian', 'Greek', 'Pontic Greek', 'Turkish'].map((lang) => (
+              {['Russian', 'Greek', 'Pontic Greek'].map((lang) => (
                 <span key={lang} className="text-xs bg-gold/10 text-gold px-3 py-1 rounded-full font-sans">
                   {lang}
                 </span>

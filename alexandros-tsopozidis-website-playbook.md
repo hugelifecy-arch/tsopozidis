@@ -199,7 +199,7 @@ For the RUSSIAN translations, here's the bio content to translate properly:
 - Career launched by Russian producer Kemran Amirov
 - Debut duet with Eldar Dalgatov "Может ты вернёшься"
 - "Бродяга" with Elbrus Dzhanmirzoev — 22M+ YouTube views
-- Performs in Russian, Greek, Turkish, Pontic Greek
+- Performs in Russian, Greek, Pontic Greek
 - Award winner: 9 Волна award for ethnic music contribution
 - Performed at Zhara Festival Baku, Vostok FM Stars of the East
 - Based in Paphos, Cyprus
@@ -483,7 +483,7 @@ Full biography page with rich storytelling layout:
   - Awards: 9 Волна 2013, Ethnic Music Contribution 2014
 - Section 4 — "The Sound":
   - Description of his musical style: pop meets Caucasian/Eastern influences
-  - Languages: Russian, Greek, Pontic Greek, Turkish
+  - Languages: Russian, Greek, Pontic Greek
   - Key collaborators list with names
 - Section 5 — "Alexandros Today":
   - Based in Paphos, Cyprus
