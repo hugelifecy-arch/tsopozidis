@@ -616,3 +616,7 @@ npm install -D @types/react@latest @types/react-dom@latest eslint-config-next@la
 | Manual tasks pending | 8 | Cannot automate |
 
 **Priority order: Prompt 1.1 (font/CSP fix) → 1.4 (cleanup) → 1.2-1.3 (schemas) → 1.5-1.6 (data/CSP) → Phase 2 features → Phase 3 upgrade**
+
+---
+
+> **Last reviewed:** 2026-03-14 — Push test verified.
