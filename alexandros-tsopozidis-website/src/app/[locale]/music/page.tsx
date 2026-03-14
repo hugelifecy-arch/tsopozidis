@@ -1,13 +1,18 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { generatePageMetadata, getArtistName } from '@/lib/seo';
+import { generatePageMetadata, getArtistName, generateBreadcrumbSchema } from '@/lib/seo';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import SectionHeading from '@/components/common/SectionHeading';
 import JsonLd from '@/components/JsonLd';
 import AlbumCover from '@/components/AlbumCover';
+import YouTubeFacade from '@/components/YouTubeFacade';
+import StreamingEmbed from '@/components/music/StreamingEmbed';
+import SinglesGrid from '@/components/music/SinglesGrid';
+import PlatformLinks from '@/components/music/PlatformLinks';
 import { album, singles } from '@/lib/data/discography';
 import { socialLinks } from '@/lib/data/social-links';
+import { videos } from '@/lib/data/videos';
 
 const musicDescriptions: Record<string, string> = {
   en: 'Listen to Alexandros Tsopozidis — Mia Kardia, Soltera, Kavkaz, Бродяга and more on Spotify, Apple Music, Yandex Music, YouTube and Zvuk.',
@@ -47,7 +52,32 @@ export default function MusicPage() {
   return (
     <>
       <JsonLd data={musicRecordingsSchema} />
+      <JsonLd data={generateBreadcrumbSchema('en', 'Music', 'music')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
+
+      {/* Stats Bar */}
+      <section className="border-b border-border">
+        <div className="max-w-4xl mx-auto py-8 px-4 md:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <p className="font-display text-2xl md:text-3xl text-gold">22M+</p>
+              <p className="text-xs text-text-tertiary font-sans uppercase tracking-wider mt-1">YouTube {t('views_label')}</p>
+            </div>
+            <div>
+              <p className="font-display text-2xl md:text-3xl text-gold">310K</p>
+              <p className="text-xs text-text-tertiary font-sans uppercase tracking-wider mt-1">Instagram</p>
+            </div>
+            <div>
+              <p className="font-display text-2xl md:text-3xl text-gold">10.4K</p>
+              <p className="text-xs text-text-tertiary font-sans uppercase tracking-wider mt-1">Spotify {t('monthly')}</p>
+            </div>
+            <div>
+              <p className="font-display text-2xl md:text-3xl text-gold">{singles.length + 1}</p>
+              <p className="text-xs text-text-tertiary font-sans uppercase tracking-wider mt-1">{t('releases_label')}</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Latest Release */}
       <section className="py-24 px-4 md:px-8">
@@ -60,24 +90,15 @@ export default function MusicPage() {
               <AlbumCover src={singles[0].coverImage} title={singles[0].title} year={singles[0].year} size="lg" className="w-full md:w-[40%]" />
               <div className="w-full md:w-[60%]">
                 <span className="text-xs tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full uppercase font-sans">
-                  2025
+                  {singles[0].year}
                 </span>
-                <h3 className="font-display text-4xl mt-4">Mia Kardia</h3>
+                <h3 className="font-display text-4xl mt-4">{singles[0].title}</h3>
                 <p className="text-text-secondary font-sans font-light mt-4 leading-relaxed">
                   {t('latest_description')}
                 </p>
-                {/* Spotify Player */}
+                {/* Streaming Player */}
                 <div className="mt-6">
-                  <iframe
-                    src="https://open.spotify.com/embed/artist/6PPuuN3cvmbyuvgrGbhXge?utm_source=generator&theme=0"
-                    width="100%"
-                    height="352"
-                    frameBorder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"
-                    className="rounded-lg"
-                    title="Spotify Player — Alexandros Tsopozidis"
-                  />
+                  <StreamingEmbed height={352} />
                 </div>
               </div>
             </div>
@@ -111,15 +132,9 @@ export default function MusicPage() {
                   ))}
                 </div>
                 <div className="mt-6">
-                  <iframe
-                    src="https://open.spotify.com/embed/artist/6PPuuN3cvmbyuvgrGbhXge?utm_source=generator&theme=0"
-                    width="100%"
-                    height="152"
-                    frameBorder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"
-                    className="rounded-lg"
-                    title="Spotify Player — За тобой"
+                  <StreamingEmbed
+                    spotifyUri="track/1F1PGhdEb1MtMLbuGuxCR7"
+                    height={152}
                   />
                 </div>
               </div>
@@ -128,37 +143,43 @@ export default function MusicPage() {
         </div>
       </section>
 
-      {/* Singles Grid */}
+      {/* Featured Music Video */}
       <section className="py-24 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <SectionHeading title={`${t('full_discography')} — ${t('singles')}`} />
+            <SectionHeading title={t('featured_video')} />
           </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {singles.map((single, i) => (
-              <ScrollReveal key={single.id} delay={i * 0.05}>
-                <div className="group bg-bg-secondary rounded-sm border border-border hover:border-gold/30 transition-all duration-300 overflow-hidden">
-                  <div className="relative">
-                    <AlbumCover src={single.coverImage} title={single.title} year={single.year} size="sm" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className="absolute top-3 right-3 text-xs bg-bg-primary/80 text-gold px-2 py-1 rounded font-sans">
-                      {single.year}
-                    </span>
-                  </div>
-                  <div className="p-4">
-                    <p className="font-sans font-medium truncate">{single.title}</p>
-                    {single.featuring && (
-                      <p className="text-xs text-text-secondary font-sans mt-1">
-                        {t('featuring')} {single.featuring}
-                      </p>
-                    )}
-                  </div>
+          <ScrollReveal delay={0.2}>
+            <div className="max-w-3xl mx-auto">
+              <div className="rounded-sm overflow-hidden">
+                <YouTubeFacade
+                  videoId={videos[0].youtubeId}
+                  title={videos[0].title}
+                  views={videos[0].views}
+                  quality="maxresdefault"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <div>
+                  <p className="font-display text-lg">{videos[0].title}</p>
+                  <p className="text-text-secondary text-sm font-sans">
+                    {videos[0].year}
+                    {videos[0].featuring && ` · feat. ${videos[0].featuring}`}
+                    {videos[0].views && ` · ${videos[0].views} ${t('views_label')}`}
+                  </p>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+                <a href="/videos" className="text-gold text-sm font-sans hover:text-gold-light transition-colors">
+                  {t('all_videos')} →
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
+
+      {/* Singles Grid (client component with year filter) */}
+      <SinglesGrid />
 
       {/* Listen On */}
       <section className="py-24 px-4 md:px-8 bg-bg-secondary">
@@ -167,19 +188,7 @@ export default function MusicPage() {
             <SectionHeading title={t('listen_on')} />
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <div className="flex flex-wrap justify-center gap-4">
-              {streamingPlatforms.map((p) => (
-                <a
-                  key={p.platform}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-gold/30 text-gold px-8 py-4 text-sm font-display uppercase tracking-wider hover:bg-gold hover:text-bg-primary transition-all duration-300"
-                >
-                  {p.label}
-                </a>
-              ))}
-            </div>
+            <PlatformLinks />
           </ScrollReveal>
         </div>
       </section>

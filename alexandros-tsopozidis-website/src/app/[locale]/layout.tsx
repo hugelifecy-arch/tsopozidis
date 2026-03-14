@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { Cinzel, Cormorant_Garamond, Inter } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { generatePageMetadata, getArtistName } from '@/lib/seo';
 import Navbar from '@/components/layout/Navbar';
@@ -9,6 +10,28 @@ import Analytics from '@/components/Analytics';
 import TelegramBanner from '@/components/TelegramBanner';
 import CookieConsent from '@/components/CookieConsent';
 import '../globals.css';
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  weight: ['400', '700', '900'],
+  variable: '--font-cinzel',
+  display: 'swap',
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['300', '400', '500', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin', 'cyrillic', 'greek'],
+  weight: ['300', '400', '500'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 const homeDescriptions: Record<string, string> = {
   en: 'Alexandros Tsopozidis — official website. Greek soul, Eastern sound. Listen to Бродяга, Mia Kardia, Kavkaz and more. Book for events worldwide.',
@@ -44,7 +67,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className="min-h-screen bg-bg-primary text-text-primary font-sans antialiased">
+      <body className={`${cinzel.variable} ${cormorant.variable} ${inter.variable} min-h-screen bg-bg-primary text-text-primary font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <a
             href="#main-content"

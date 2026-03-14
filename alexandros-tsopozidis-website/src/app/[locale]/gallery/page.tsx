@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
+import JsonLd from '@/components/JsonLd';
 import { photos, INSTAGRAM_URL, INSTAGRAM_HANDLE, getPhotoAlt } from '@/lib/data/gallery';
 
 const categories = ['all', 'live', 'portrait', 'backstage', 'video-shoot'] as const;
@@ -63,6 +64,7 @@ export default function GalleryPage() {
 
   return (
     <>
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tsopozidis-alexandros.com' }, { '@type': 'ListItem', position: 2, name: 'Gallery', item: 'https://tsopozidis-alexandros.com/en/gallery' }] }} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       <section className="py-24 px-4 md:px-8">

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { generatePageMetadata, getArtistName } from '@/lib/seo';
+import { generatePageMetadata, getArtistName, generateBreadcrumbSchema } from '@/lib/seo';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import GoldButton from '@/components/common/GoldButton';
@@ -77,6 +77,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={musicArtistSchema} />
+      <JsonLd data={generateBreadcrumbSchema('en', 'About', 'about')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       <section className="py-24 px-4 md:px-8">

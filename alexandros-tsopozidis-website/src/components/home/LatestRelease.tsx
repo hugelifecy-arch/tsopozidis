@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import SectionHeading from '@/components/common/SectionHeading';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import AlbumCover from '@/components/AlbumCover';
+import StreamingEmbed from '@/components/music/StreamingEmbed';
 import { singles } from '@/lib/data/discography';
 import { socialLinks } from '@/lib/data/social-links';
 
@@ -12,8 +14,9 @@ const streamingPlatforms = ['spotify', 'apple-music', 'youtube', 'yandex-music',
 export default function LatestRelease() {
   const t = useTranslations('music');
   const tCommon = useTranslations('common');
-  const latest = singles[0]; // Mia Kardia
-  const recentSingles = singles.slice(1, 5);
+  const [selectedIdx, setSelectedIdx] = useState(0);
+  const topReleases = singles.slice(0, 4);
+  const selected = topReleases[selectedIdx];
 
   const platforms = socialLinks.filter((l) => streamingPlatforms.includes(l.platform));
 
@@ -28,15 +31,37 @@ export default function LatestRelease() {
         <ScrollReveal delay={0.2}>
           <div className="flex flex-col md:flex-row gap-12 items-center">
             {/* Artwork */}
-            <AlbumCover src={latest.coverImage} title={latest.title} year={latest.year} size="lg" className="w-full md:w-[40%] shadow-[0_0_60px_rgba(200,169,110,0.05)]" />
+            <div className="w-full md:w-[40%]">
+              <AlbumCover src={selected.coverImage} title={selected.title} year={selected.year} size="lg" className="w-full shadow-[0_0_60px_rgba(200,169,110,0.05)]" />
+
+              {/* Release Selector */}
+              <div className="flex gap-2 mt-4 justify-center md:justify-start flex-wrap">
+                {topReleases.map((s, idx) => (
+                  <button
+                    key={s.id}
+                    onClick={() => setSelectedIdx(idx)}
+                    className={`px-3 py-1.5 text-[10px] font-sans uppercase tracking-wider rounded-full transition-all duration-300 ${
+                      idx === selectedIdx
+                        ? 'bg-gold/15 text-gold border border-gold/30'
+                        : 'text-text-tertiary hover:text-text-secondary border border-transparent'
+                    }`}
+                  >
+                    {s.title.length > 12 ? s.title.substring(0, 12) + '…' : s.title}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             {/* Info */}
             <div className="w-full md:w-[60%]">
               <span className="text-xs tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full uppercase font-sans">
-                {tCommon('new_single')}
+                {selectedIdx === 0 ? tCommon('new_single') : t('single')}
               </span>
-              <h3 className="font-display text-4xl mt-4">{latest.title}</h3>
-              <p className="font-serif text-text-secondary text-lg mt-1">{latest.year}</p>
+              <h3 className="font-display text-4xl mt-4">{selected.title}</h3>
+              <p className="font-serif text-text-secondary text-lg mt-1">
+                {selected.year}
+                {selected.featuring && ` · ${t('featuring')} ${selected.featuring}`}
+              </p>
               <p className="text-text-secondary font-sans font-light mt-4 leading-relaxed">
                 {t('latest_description')}
               </p>
@@ -56,39 +81,11 @@ export default function LatestRelease() {
                 ))}
               </div>
 
-              {/* Spotify Player */}
+              {/* Streaming Player */}
               <div className="mt-6">
-                <iframe
-                  src="https://open.spotify.com/embed/artist/6PPuuN3cvmbyuvgrGbhXge?utm_source=generator&theme=0"
-                  width="100%"
-                  height="152"
-                  frameBorder="0"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  className="rounded-lg"
-                  title="Spotify Player"
-                />
+                <StreamingEmbed height={152} />
               </div>
             </div>
-          </div>
-        </ScrollReveal>
-
-        {/* Recent Singles Row */}
-        <ScrollReveal delay={0.4}>
-          <div className="mt-16 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide">
-            {recentSingles.map((single) => (
-              <div
-                key={single.id}
-                className="snap-start flex-shrink-0 w-48 group"
-              >
-                <AlbumCover src={single.coverImage} title={single.title} year={single.year} size="sm" />
-                <p className="mt-2 text-sm font-sans truncate">{single.title}</p>
-                <p className="text-xs text-text-secondary font-sans">
-                  {single.year}
-                  {single.featuring && ` · ${t('featuring')} ${single.featuring}`}
-                </p>
-              </div>
-            ))}
           </div>
         </ScrollReveal>
       </div>
