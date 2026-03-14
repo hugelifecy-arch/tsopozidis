@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-const BASE_URL = 'https://tsopozidis-alexandros.com';
+const BASE_URL = 'https://www.tsopozidis-alexandros.com';
 
 const localeMap: Record<string, string> = {
   en: 'en_US',

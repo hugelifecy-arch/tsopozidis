@@ -80,7 +80,7 @@ export async function POST(request: Request) {
           <tr><td style="padding: 8px; font-weight: bold;">Location:</td><td style="padding: 8px;">${data.location || 'Not specified'}</td></tr>
           <tr><td style="padding: 8px; font-weight: bold;">Message:</td><td style="padding: 8px;">${data.message || 'No message'}</td></tr>
         </table>
-        <p style="color: #666; margin-top: 20px;">Sent from tsopozidis-alexandros.com booking form</p>
+        <p style="color: #666; margin-top: 20px;">Sent from www.tsopozidis-alexandros.com booking form</p>
       `,
     });
 
