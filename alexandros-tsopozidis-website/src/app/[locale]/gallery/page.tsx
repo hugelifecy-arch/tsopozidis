@@ -2,11 +2,11 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
-import { photos } from '@/lib/data/gallery';
+import { photos, INSTAGRAM_URL, INSTAGRAM_HANDLE } from '@/lib/data/gallery';
 
 const categories = ['all', 'live', 'portrait', 'backstage', 'video-shoot'] as const;
 
@@ -14,6 +14,7 @@ export default function GalleryPage() {
   const t = useTranslations('gallery');
   const [filter, setFilter] = useState<string>('all');
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
 
   const filtered = filter === 'all' ? photos : photos.filter((p) => p.category === filter);
 
@@ -28,6 +29,10 @@ export default function GalleryPage() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
+
+  const handleImageError = (photoId: string) => {
+    setImageErrors((prev) => new Set(prev).add(photoId));
+  };
 
   const categoryLabels: Record<string, string> = {
     all: t('all'),
@@ -71,17 +76,52 @@ export default function GalleryPage() {
                   onClick={() => setLightbox(i)}
                 >
                   <div
-                    className="bg-bg-secondary hover:border-gold/30 border border-transparent transition-all duration-300"
+                    className="bg-bg-secondary hover:border-gold/30 border border-transparent transition-all duration-300 overflow-hidden"
                     style={{ aspectRatio: `${photo.width}/${photo.height}` }}
                   >
-                    <div className="w-full h-full flex items-center justify-center text-text-tertiary text-xs font-sans group-hover:scale-105 transition-transform duration-500">
-                      {photo.alt}
-                    </div>
+                    {imageErrors.has(photo.id) ? (
+                      <div className="w-full h-full flex items-center justify-center text-text-tertiary text-xs font-sans">
+                        {photo.alt}
+                      </div>
+                    ) : (
+                      <img
+                        src={photo.src}
+                        alt={photo.alt}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={() => handleImageError(photo.id)}
+                      />
+                    )}
                   </div>
                 </div>
               </ScrollReveal>
             ))}
           </div>
+
+          {/* Instagram CTA Section */}
+          <ScrollReveal>
+            <div className="mt-20 text-center">
+              <div className="gold-line-subtle mx-auto mb-8 w-16" />
+              <h3 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+                {t('instagram_title')}
+              </h3>
+              <p className="text-text-secondary font-serif italic mb-8 max-w-lg mx-auto">
+                {t('instagram_subtitle')}
+              </p>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-3 border border-gold/40 text-gold hover:bg-gold/10 transition-all duration-300 rounded-sm font-sans uppercase tracking-wider text-sm"
+              >
+                <Instagram size={20} />
+                {t('instagram_follow')} {INSTAGRAM_HANDLE}
+              </a>
+              <p className="text-text-tertiary text-xs mt-4 font-sans">
+                310K+ {t('instagram_followers')}
+              </p>
+            </div>
+          </ScrollReveal>
 
           <p className="text-center text-text-secondary font-serif italic mt-16 text-sm">
             {t('press_note')}
@@ -126,15 +166,24 @@ export default function GalleryPage() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="max-w-4xl max-h-[80vh] p-8"
+              className="max-w-4xl max-h-[80vh] p-4 md:p-8"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="bg-bg-secondary rounded-sm p-8 text-center">
-                <p className="text-text-secondary font-sans">{filtered[lightbox].alt}</p>
-                <p className="text-text-tertiary text-xs mt-2 font-sans">
-                  {lightbox + 1} / {filtered.length}
-                </p>
-              </div>
+              {imageErrors.has(filtered[lightbox].id) ? (
+                <div className="bg-bg-secondary rounded-sm p-8 text-center">
+                  <p className="text-text-secondary font-sans">{filtered[lightbox].alt}</p>
+                </div>
+              ) : (
+                <img
+                  src={filtered[lightbox].src}
+                  alt={filtered[lightbox].alt}
+                  className="max-w-full max-h-[70vh] object-contain rounded-sm"
+                  onError={() => handleImageError(filtered[lightbox].id)}
+                />
+              )}
+              <p className="text-text-tertiary text-xs mt-3 text-center font-sans">
+                {filtered[lightbox].alt} — {lightbox + 1} / {filtered.length}
+              </p>
             </motion.div>
           </motion.div>
         )}

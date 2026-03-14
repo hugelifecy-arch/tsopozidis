@@ -3,22 +3,138 @@ export interface Photo {
   src: string;
   alt: string;
   altRu?: string;
+  altEl?: string;
   category: "live" | "portrait" | "backstage" | "video-shoot";
   width: number;
   height: number;
+  instagramUrl?: string;
 }
 
 export const photos: Photo[] = [
-  { id: "photo-01", src: "/images/gallery/photo-01.jpg", alt: "Alexandros performing live on stage", altRu: "Александрос на сцене", category: "live", width: 1200, height: 800 },
-  { id: "photo-02", src: "/images/gallery/photo-02.jpg", alt: "Portrait of Alexandros", altRu: "Портрет Александроса", category: "portrait", width: 800, height: 1200 },
-  { id: "photo-03", src: "/images/gallery/photo-03.jpg", alt: "Backstage moment", altRu: "За кулисами", category: "backstage", width: 1200, height: 800 },
-  { id: "photo-04", src: "/images/gallery/photo-04.jpg", alt: "Music video shooting", altRu: "Съёмки клипа", category: "video-shoot", width: 1200, height: 900 },
-  { id: "photo-05", src: "/images/gallery/photo-05.jpg", alt: "Live concert performance", altRu: "Концертное выступление", category: "live", width: 1200, height: 800 },
-  { id: "photo-06", src: "/images/gallery/photo-06.jpg", alt: "Alexandros portrait", altRu: "Александрос портрет", category: "portrait", width: 800, height: 1200 },
-  { id: "photo-07", src: "/images/gallery/photo-07.jpg", alt: "Behind the scenes", altRu: "Закулисье", category: "backstage", width: 1200, height: 800 },
-  { id: "photo-08", src: "/images/gallery/photo-08.jpg", alt: "Video production", altRu: "Видеопроизводство", category: "video-shoot", width: 1200, height: 900 },
-  { id: "photo-09", src: "/images/gallery/photo-09.jpg", alt: "Festival stage", altRu: "Фестивальная сцена", category: "live", width: 1600, height: 900 },
-  { id: "photo-10", src: "/images/gallery/photo-10.jpg", alt: "Artistic portrait", altRu: "Художественный портрет", category: "portrait", width: 800, height: 1000 },
-  { id: "photo-11", src: "/images/gallery/photo-11.jpg", alt: "Sound check", altRu: "Саундчек", category: "backstage", width: 1200, height: 800 },
-  { id: "photo-12", src: "/images/gallery/photo-12.jpg", alt: "Music video scene", altRu: "Сцена из клипа", category: "video-shoot", width: 1200, height: 900 },
+  // Live performance photos from Revolution Nachtpalast concert (Dec 28, 2024)
+  {
+    id: "live-01",
+    src: "https://revolution-nachtpalast.disco2app.com/media/galleries/9/photos/711.jpg?timestamp=1736207454",
+    alt: "Alexandros Tsopozidis performing live at Revolution Nachtpalast",
+    altRu: "Александрос Цопозидис выступает в Revolution Nachtpalast",
+    altEl: "Ο Αλέξανδρος Τσοποζίδης σε ζωντανή εμφάνιση στο Revolution Nachtpalast",
+    category: "live",
+    width: 1200,
+    height: 800,
+  },
+  {
+    id: "live-02",
+    src: "https://revolution-nachtpalast.disco2app.com/media/galleries/9/photos/695.jpg?timestamp=1736207454",
+    alt: "Alexandros on stage — live concert energy",
+    altRu: "Александрос на сцене — энергия живого концерта",
+    altEl: "Ο Αλέξανδρος στη σκηνή — ζωντανή ενέργεια συναυλίας",
+    category: "live",
+    width: 1200,
+    height: 800,
+  },
+  {
+    id: "live-03",
+    src: "https://revolution-nachtpalast.disco2app.com/media/galleries/9/photos/694.jpg?timestamp=1736207454",
+    alt: "Live performance moment — connecting with the audience",
+    altRu: "Момент живого выступления — связь с аудиторией",
+    altEl: "Στιγμή ζωντανής εμφάνισης — σύνδεση με το κοινό",
+    category: "live",
+    width: 1200,
+    height: 800,
+  },
+  {
+    id: "live-04",
+    src: "https://revolution-nachtpalast.disco2app.com/media/galleries/9/photos/693.jpg?timestamp=1736207454",
+    alt: "Alexandros Tsopozidis — stage presence and passion",
+    altRu: "Александрос Цопозидис — сценическое присутствие и страсть",
+    altEl: "Ο Αλέξανδρος Τσοποζίδης — σκηνική παρουσία και πάθος",
+    category: "live",
+    width: 1200,
+    height: 800,
+  },
+  {
+    id: "live-05",
+    src: "https://revolution-nachtpalast.disco2app.com/media/galleries/9/photos/692.jpg?timestamp=1736207454",
+    alt: "Concert finale — Alexandros Tsopozidis live in Germany",
+    altRu: "Финал концерта — Александрос Цопозидис в Германии",
+    altEl: "Φινάλε συναυλίας — Ο Αλέξανδρος Τσοποζίδης ζωντανά στη Γερμανία",
+    category: "live",
+    width: 1200,
+    height: 800,
+  },
+
+  // YouTube video thumbnails — music video shoots
+  {
+    id: "video-01",
+    src: "https://i.ytimg.com/vi/ImJG4MWh3pA/maxresdefault.jpg",
+    alt: "Dumanli — official music video with Agafangel Tsopozidis",
+    altRu: "Думанлы — официальный клип с Агафангелом Цопозидисом",
+    altEl: "Dumanli — επίσημο μουσικό βίντεο με τον Αγαφάγγελο Τσοποζίδη",
+    category: "video-shoot",
+    width: 1280,
+    height: 720,
+  },
+  {
+    id: "video-02",
+    src: "https://i.ytimg.com/vi/VocDPZ7nDo8/maxresdefault.jpg",
+    alt: "Alexandros Tsopozidis — music video production",
+    altRu: "Александрос Цопозидис — съёмки музыкального клипа",
+    altEl: "Αλέξανδρος Τσοποζίδης — παραγωγή μουσικού βίντεο",
+    category: "video-shoot",
+    width: 1280,
+    height: 720,
+  },
+  {
+    id: "video-03",
+    src: "https://i.ytimg.com/vi/E_1O7hDGghk/maxresdefault.jpg",
+    alt: "Alexandros Tsopozidis — official video scene",
+    altRu: "Александрос Цопозидис — сцена из официального клипа",
+    altEl: "Αλέξανδρος Τσοποζίδης — σκηνή από επίσημο βίντεο",
+    category: "video-shoot",
+    width: 1280,
+    height: 720,
+  },
+  {
+    id: "video-04",
+    src: "https://i.ytimg.com/vi/Rxp_-wMKU5k/maxresdefault.jpg",
+    alt: "Music video behind the scenes — Alexandros Tsopozidis",
+    altRu: "За кулисами музыкального клипа — Александрос Цопозидис",
+    altEl: "Πίσω από τις κάμερες μουσικού βίντεο — Αλέξανδρος Τσοποζίδης",
+    category: "backstage",
+    width: 1280,
+    height: 720,
+  },
+  {
+    id: "video-05",
+    src: "https://i.ytimg.com/vi/4VCZyzOPzDY/maxresdefault.jpg",
+    alt: "Alexandros Tsopozidis — cinematic music video moment",
+    altRu: "Александрос Цопозидис — кинематографический момент клипа",
+    altEl: "Αλέξανδρος Τσοποζίδης — κινηματογραφική στιγμή μουσικού βίντεο",
+    category: "video-shoot",
+    width: 1280,
+    height: 720,
+  },
+  {
+    id: "video-06",
+    src: "https://i.ytimg.com/vi/o20LEgccjxY/maxresdefault.jpg",
+    alt: "Alexandros Tsopozidis — portrait from video shoot",
+    altRu: "Александрос Цопозидис — портрет со съёмок клипа",
+    altEl: "Αλέξανδρος Τσοποζίδης — πορτρέτο από γυρίσματα βίντεο",
+    category: "portrait",
+    width: 1280,
+    height: 720,
+  },
+  {
+    id: "video-07",
+    src: "https://i.ytimg.com/vi/F9rQSin9PIY/maxresdefault.jpg",
+    alt: "Alexandros Tsopozidis — artistic portrait",
+    altRu: "Александрос Цопозидис — художественный портрет",
+    altEl: "Αλέξανδρος Τσοποζίδης — καλλιτεχνικό πορτρέτο",
+    category: "portrait",
+    width: 1280,
+    height: 720,
+  },
 ];
+
+export const INSTAGRAM_URL = "https://www.instagram.com/alexandros_official";
+export const INSTAGRAM_HANDLE = "@alexandros_official";
