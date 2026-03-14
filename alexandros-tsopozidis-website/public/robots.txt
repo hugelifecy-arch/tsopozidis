@@ -1,5 +1,5 @@
 # Alexandros Tsopozidis — Official Website
-# https://tsopozidis-alexandros.com
+# https://www.tsopozidis-alexandros.com
 
 User-agent: *
 Allow: /
@@ -7,4 +7,4 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
-Sitemap: https://tsopozidis-alexandros.com/sitemap.xml
+Sitemap: https://www.tsopozidis-alexandros.com/sitemap.xml
