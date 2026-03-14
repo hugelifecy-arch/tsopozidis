@@ -179,7 +179,7 @@ export const singles: Release[] = [
       el: "«Είμαι Έλληνας» — μια υπερήφανη δήλωση ποντιακής ελληνικής ταυτότητας. Οι στίχοι γιορτάζουν την ελληνική κληρονομιά μέσα από εικόνες μπουζουκιού, θάλασσας και αρχαίων παραδόσεων.",
     },
     credits: "Written by: Fedos, Vladimir Turshiev",
-    spotifyAlbumId: "0pJSthEBQBMDLc7rqPO3M",
+    spotifyAlbumId: "0pJSthEBQBMBDLc7rqPO3M",
     spotifyCoverUrl: "https://i.scdn.co/image/ab67616d00001e0240462d430d81b1881a48ce28",
     coverImage: "/images/albums/ya-grek.jpg",
   },
