@@ -67,6 +67,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <meta name="yandex-verification" content="998677740d9e0f8b" />
+      </head>
       <body className={`${cinzel.variable} ${cormorant.variable} ${inter.variable} min-h-screen bg-bg-primary text-text-primary font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <a
