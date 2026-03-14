@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 const streamingPlatforms = socialLinks.filter((l) =>
-  ['spotify', 'apple-music', 'youtube', 'yandex-music', 'deezer', 'amazon-music'].includes(l.platform)
+  ['spotify', 'apple-music', 'youtube', 'yandex-music', 'zvuk', 'deezer', 'amazon-music'].includes(l.platform)
 );
 
 export default function MusicPage() {

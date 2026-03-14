@@ -7,7 +7,7 @@ import ScrollReveal from '@/components/common/ScrollReveal';
 import { singles } from '@/lib/data/discography';
 import { socialLinks } from '@/lib/data/social-links';
 
-const streamingPlatforms = ['spotify', 'apple-music', 'youtube', 'yandex-music'];
+const streamingPlatforms = ['spotify', 'apple-music', 'youtube', 'yandex-music', 'zvuk'];
 
 export default function LatestRelease() {
   const t = useTranslations('music');

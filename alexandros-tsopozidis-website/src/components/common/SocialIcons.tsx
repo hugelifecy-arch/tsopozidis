@@ -18,7 +18,7 @@ const iconMap: Record<string, LucideIcon> = {
 export default function SocialIcons({ size = 'md', platforms }: SocialIconsProps) {
   const filtered = platforms
     ? socialLinks.filter((l) => platforms.includes(l.platform))
-    : socialLinks.filter((l) => ['instagram', 'facebook', 'youtube', 'spotify', 'tiktok', 'vk'].includes(l.platform));
+    : socialLinks.filter((l) => ['tiktok', 'youtube', 'instagram', 'facebook', 'vk', 'ok', 'telegram'].includes(l.platform));
 
   return (
     <div className="flex items-center gap-4">
@@ -37,7 +37,7 @@ export default function SocialIcons({ size = 'md', platforms }: SocialIconsProps
               <Icon size={sizeMap[size]} />
             ) : (
               <span className="text-xs uppercase tracking-wider font-sans" style={{ fontSize: sizeMap[size] * 0.6 }}>
-                {link.platform === 'tiktok' ? 'TT' : link.platform === 'vk' ? 'VK' : link.label.substring(0, 2).toUpperCase()}
+                {link.platform === 'tiktok' ? 'TT' : link.platform === 'vk' ? 'VK' : link.platform === 'ok' ? 'OK' : link.platform === 'telegram' ? 'TG' : link.platform === 'zvuk' ? 'ZV' : link.label.substring(0, 2).toUpperCase()}
               </span>
             )}
           </a>
