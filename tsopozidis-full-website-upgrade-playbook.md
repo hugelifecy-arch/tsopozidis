@@ -2,35 +2,43 @@
 
 ## Claude Code Implementation Guide (Music Page + Homepage)
 
+> **Last reviewed:** 2026-03-14
+> **Codebase location:** `/home/user/tsopozidis/alexandros-tsopozidis-website/`
+
 ---
 
 ## Site Overview
 
 - **URL:** `https://tsopozidis-alexandros.com`
-- **Languages:** EN (`/en/...`) and RU (`/ru/...`)
-- **Stack:** Likely Next.js (bilingual routing, Vercel-style patterns)
+- **Languages:** EN (`/en/...`), RU (`/ru/...`), and EL (`/el/...` — Greek/Ελληνικά)
+- **Stack:** Next.js 14 (App Router), TypeScript, Tailwind CSS 3.4.1, Framer Motion, next-intl 4.8.3, Lucide React icons
 - **Theme:** Dark (near-black background, gold/tan accent color `~#C9A96E`)
 - **Booking:** WhatsApp `+79383163034` (contact: Liana)
+- **i18n:** Fully implemented — 3 languages with 90+ translation keys in `messages/{en,ru,el}.json`
+- **Pages built:** Home, About, Music, Videos, Gallery, Events, Contact (all routing + error/loading/404 pages)
 
 ---
 
-## PART A: MUSIC PAGE (`/en/music` & `/ru/music`)
+## PART A: MUSIC PAGE (`/en/music`, `/ru/music` & `/el/music`)
 
-### Current State — What's Broken
+### Current State — What Exists & What's Broken
 
-From visual inspection (screenshot) and HTML audit:
+**File:** `src/app/[locale]/music/page.tsx`
+**Data:** `src/lib/data/discography.ts` (12 singles + 1 album defined)
 
-1. **ALL cover artwork is missing** — Every single and the album shows a generic music note placeholder icon (gold `♫` on dark grey square). There are NO actual album/single cover images anywhere on the page. This is the #1 visual problem — the page looks like a template that was never finished.
+The page structure is built with four sections (Latest Release, Album, Singles Grid, Listen On), but has critical gaps:
 
-2. **No embedded music players** — The "Latest Release" hero for "Mia Kardia" has platform link buttons (YouTube, Spotify, Apple Music, Yandex Music, Zvuk) but NO actual playable embed. Visitors cannot listen to anything without leaving the site.
+1. **ALL cover artwork is missing** — Every single and the album shows a Lucide `<Music>` icon placeholder (gold on dark grey square). All 13 cover image files (`/images/albums/*.jpg`) referenced in `discography.ts` do NOT exist in `/public/`. This is the #1 visual problem — the page looks like a template that was never finished.
 
-3. **Singles grid is non-interactive** — The cards (Soltera, Par shirkhani, Kavkaz, Я грек, etc.) are just placeholder squares + title text. No streaming links per track, no play functionality, no hover states that do anything useful.
+2. **Spotify embed is a placeholder** — The "Latest Release" hero for "Mia Kardia" shows a grey box with text "Spotify Player — embed will load here" (line 51 of music/page.tsx). No actual iframe. Visitors cannot listen to anything without leaving the site.
 
-4. **No YouTube video embeds** — The artist has music videos with significant views (Kavkaz has ~383K YouTube views) but NONE are embedded.
+3. **Singles grid is non-interactive** — Cards show Lucide `Music` icon + title + year + featuring info. Hover state exists (border highlight + gradient overlay) but no streaming links per track, no play functionality.
 
-5. **No social proof** — The artist has 310K Instagram followers and 10.4K Spotify monthly listeners. None of this is visible.
+4. **No YouTube video embeds on Music page** — The Videos page (`/videos`) HAS working YouTube embeds with 5 videos (Бродяга 22M+, Male Male 11M+, etc.), but the Music page itself has no video section. YouTube IDs in `discography.ts` are all `TODO_*` placeholders.
 
-6. **Missing social links** — Footer shows only TT/VK/OK/TG. Missing: Instagram (310K!), Facebook (10.5K likes), YouTube, SoundCloud.
+5. **No social proof** — The artist has 310K Instagram followers and 10.4K Spotify monthly listeners. None of this is visible on the Music page (About page does show stats).
+
+6. ~~**Missing social links**~~ — **RESOLVED.** Footer now has 14 social/streaming platforms via `src/lib/data/social-links.ts` and `src/components/common/SocialIcons.tsx`. Instagram, Facebook, YouTube, SoundCloud, etc. are all present.
 
 7. **Upcoming release not teased** — Facebook shows a "Вечная любовь" (Eternal Love) premiere coming soon. Not mentioned on site.
 
@@ -71,6 +79,24 @@ Kaciyorum/Fevgo (with Faxo):  0mVa0ZUSX9sunN4X6YQbMD
 Kavkaz album:                 5LkRMJW59dmjgLfIzdUCnh
 ```
 
+#### Known YouTube Video IDs (from `src/lib/data/videos.ts`)
+```
+Бродяга (2017, feat. Elbrus):       z9ASjQE9Q2Y   (22M+ views)
+Male Male (2016):                    o20LEgccjxY   (11M+ views)
+Kaciyorum (2019, feat. Faxo):       F9rQSin9PIY
+Дай мне номер телефона (2018):      Rxp_-wMKU5k
+Расскажи (2020):                    Ne_uRfKUUlk
+```
+NOTE: The 12 singles in `discography.ts` have `youtubeId` fields all set to `TODO_*` placeholders.
+These should be cross-referenced with `videos.ts` where possible (e.g., Расскажи already has an ID).
+
+#### SoundCloud URL discrepancy
+```
+Playbook reference:  https://soundcloud.com/alexandrostsopozidis
+Actual in codebase:  https://soundcloud.com/alexandros-tsopozidis-853060317
+→ Use the codebase version (it's the actual working URL).
+```
+
 #### Full Discography
 ```
 ALBUM:
@@ -105,11 +131,19 @@ KEY COLLABORATIONS:
 
 ### PROMPT 1 — Fix Missing Cover Artwork (CRITICAL)
 
-This is the single most impactful fix. Every release shows a placeholder music note icon.
+> **STATUS:** NOT STARTED — 13 image files need to be created/sourced
+
+This is the single most impactful fix. Every release shows a Lucide `<Music>` icon placeholder.
+
+**Files to modify:**
+- `src/app/[locale]/music/page.tsx` (lines 39, 68, 103 — Music icon placeholders)
+- `src/components/home/LatestRelease.tsx` (lines 33, 75 — Music icon placeholders)
+- `src/lib/data/discography.ts` (coverImage fields already defined, images just missing)
+- Create `/public/images/albums/` directory with 13 cover images
 
 ```
 PRIORITY: CRITICAL
-PAGES: /en/music, /ru/music
+PAGES: /en/music, /ru/music, /el/music, homepage (LatestRelease component)
 
 Every single and the album on the Music page displays a generic music note placeholder 
 icon instead of actual cover artwork. This makes the page look unfinished.
@@ -174,9 +208,15 @@ WHICHEVER OPTION YOU CHOOSE:
 
 ### PROMPT 2 — Add Spotify Embed Player to Hero Section
 
+> **STATUS:** NOT STARTED — Currently shows grey placeholder box with text "Spotify Player — embed will load here"
+
+**Files to modify:**
+- `src/app/[locale]/music/page.tsx` (lines 49-52 — replace placeholder div)
+- `src/components/home/LatestRelease.tsx` (no embed exists — add one)
+
 ```
 PRIORITY: HIGH
-PAGES: /en/music, /ru/music
+PAGES: /en/music, /ru/music, /el/music
 
 The "Latest Release" hero section for "Mia Kardia" has streaming platform link buttons 
 but NO actual embedded player. Add a Spotify embed so visitors can listen immediately.
@@ -220,9 +260,21 @@ Make the embed responsive: 100% width with max-width constraint on the container
 
 ### PROMPT 3 — Embed YouTube Music Videos Section
 
+> **STATUS:** PARTIALLY ADDRESSED — A full Videos page exists at `/videos` with working
+> YouTube embeds (thumbnail → click-to-play iframe). However, the Music page itself has
+> NO video section. Consider adding a condensed version or cross-link.
+>
+> **Already available in codebase:**
+> - `src/lib/data/videos.ts` — 5 videos with real YouTube IDs
+> - `src/components/home/VideoHighlight.tsx` — Working YouTube embed component on homepage
+> - YouTube thumbnail helper: `getYoutubeThumbnail()` in `videos.ts`
+
+**Files to modify:**
+- `src/app/[locale]/music/page.tsx` — Add a "Music Videos" section
+
 ```
-PRIORITY: HIGH
-PAGES: /en/music, /ru/music
+PRIORITY: HIGH (reduced — Videos page already covers most of this)
+PAGES: /en/music, /ru/music, /el/music
 
 Add a "Music Videos" section between the hero and the discography grid.
 The artist has videos with hundreds of thousands of views but NONE are on the site.
@@ -277,9 +329,19 @@ Layout:
 
 ### PROMPT 4 — Make Singles Grid Interactive
 
+> **STATUS:** PARTIALLY BUILT — Grid exists with 12 singles, has hover border/gradient effect,
+> year badge, and featuring info. Missing: cover art (see P1), streaming links per card, play button.
+>
+> **Current grid:** 1col mobile / 2col sm / 3col lg (lines 98-120 of music/page.tsx)
+> Playbook suggests 4col desktop / 3col tablet / 2col mobile — adjust as desired.
+
+**Files to modify:**
+- `src/app/[locale]/music/page.tsx` (lines 98-120 — singles grid section)
+- `src/lib/data/discography.ts` (add per-track streaming URLs if available)
+
 ```
 PRIORITY: HIGH
-PAGES: /en/music, /ru/music
+PAGES: /en/music, /ru/music, /el/music
 
 The singles grid cards (Soltera, Par shirkhani, Kavkaz, Я грек, etc.) are currently 
 just a placeholder image + title. They need to be interactive.
@@ -329,9 +391,17 @@ On /en/music pages, show Spotify icon FIRST.
 
 ### PROMPT 5 — Social Proof Stats Banner
 
+> **STATUS:** NOT STARTED on Music page.
+> Note: The About page (`/about`) already shows stats (22M+ views, 310K followers, 15+ years).
+> This prompt adds a similar banner to the Music page. Consider reusing the About page's approach.
+
+**Files to modify:**
+- `src/app/[locale]/music/page.tsx` — Add stats section
+- `messages/{en,ru,el}.json` — Add translation keys for stat labels
+
 ```
 PRIORITY: MEDIUM
-PAGES: /en/music (and /ru/music with Russian labels)
+PAGES: /en/music, /ru/music, /el/music (with localized labels)
 
 Add a horizontal stats strip section. Position it between the hero and the 
 discography, or between the videos section and discography.
@@ -365,39 +435,52 @@ Design:
 
 ### PROMPT 6 — Fix Missing Social Links (Site-Wide)
 
+> **STATUS: ✅ COMPLETED**
+>
+> The footer now includes 14 platforms via `src/lib/data/social-links.ts`:
+> TikTok, YouTube, Instagram (310K), Facebook (10.5K), VK, OK, Telegram,
+> Spotify (10.4K monthly), Apple Music, Yandex Music, Zvuk, Deezer, SoundCloud, Amazon Music.
+>
+> Icons rendered by `src/components/common/SocialIcons.tsx` using Lucide React icons
+> with text fallbacks for platforms without Lucide support (TT, VK, OK, TG).
+>
+> **Remaining minor items:**
+> - SoundCloud URL uses `alexandros-tsopozidis-853060317` (verified working)
+> - Discogs link NOT included in social-links.ts — add if desired
+> - Shazam link NOT included — add if desired
+> - Consider replacing text fallback icons (TT, VK, OK, TG) with proper SVGs
+
 ```
-PRIORITY: HIGH (quick win)
-PAGES: ALL pages (footer), Music page, Contact page
+PRIORITY: ✅ DONE (minor polish remaining)
+PAGES: ALL pages (footer)
 
-The footer currently shows only: TT (TikTok), VK, OK, TG (Telegram)
-This is missing the artist's BIGGEST platforms.
+No major work needed. Optional enhancements:
 
-UPDATE the footer social links to include (in this order):
-1. Instagram: https://www.instagram.com/alexandros_official/  (310K — this is THE main platform!)
-2. Facebook: https://www.facebook.com/alexandros.tsopozidis/
-3. YouTube: https://www.youtube.com/channel/UC_25lDUqfZLnjvWxzPHGNmg
-4. TikTok: https://www.tiktok.com/@tsopozidis
-5. VK: https://vk.com/alexandros_tsopozidis
-6. OK: https://ok.ru/alexandros.tsopozidis
-7. Telegram: https://t.me/tsopozidis
+1. Add Discogs to social-links.ts:
+   { platform: "discogs", url: "https://www.discogs.com/artist/5270354-Alexandros-Tsopozidis", label: "Discogs" }
 
-Use proper SVG icons for each platform. Check what icon library the project uses 
-(react-icons, lucide, custom SVGs) and use the same for consistency.
+2. Add Shazam:
+   { platform: "shazam", url: "https://www.shazam.com/artist/alexandros-tsopozidis/839072119", label: "Shazam" }
 
-Also update the "Listen On" section on the Music page to include SoundCloud:
-SoundCloud: https://soundcloud.com/alexandrostsopozidis
-
-And add Discogs link for credibility:
-Discogs: https://www.discogs.com/artist/5270354-Alexandros-Tsopozidis
+3. Replace text-based icon fallbacks with proper SVGs for TikTok, VK, OK, Telegram
+   in SocialIcons.tsx (currently uses <span> with text like "TT", "VK", etc.)
 ```
 
 ---
 
 ### PROMPT 7 — "Listen On" Section Visual Redesign
 
+> **STATUS:** PARTIALLY BUILT — Section exists (lines 124-146 of music/page.tsx) with
+> gold-bordered text buttons for 7 streaming platforms. Functional but plain — no logos,
+> no brand colors, no hover glow. Uses `streamingPlatforms` filtered from `socialLinks`.
+
+**Files to modify:**
+- `src/app/[locale]/music/page.tsx` (lines 124-146 — Listen On section)
+- Optionally add platform SVG logos to `/public/images/platforms/`
+
 ```
 PRIORITY: MEDIUM
-PAGES: /en/music, /ru/music
+PAGES: /en/music, /ru/music, /el/music
 
 The current "Listen On" section at the bottom of the Music page is just a row of 
 plain text links. Redesign it with visual branded buttons.
@@ -427,20 +510,40 @@ Layout:
 
 ---
 
-## PART B: HOMEPAGE (`/en` & `/ru`)
+## PART B: HOMEPAGE (`/en`, `/ru` & `/el`)
 
-### Current Issues (from user report: "some links are plain, no images or linking")
+### Current State
 
-The homepage likely mirrors the same pattern as the music page — sections that reference 
-music, videos, or events with placeholder content instead of real media.
+**File:** `src/app/[locale]/page.tsx`
+**Components:** `src/components/home/` — 5 components (HeroSection, LatestRelease, AboutPreview, VideoHighlight, UpcomingShows)
+
+The homepage is fully built with all 5 sections. However, the LatestRelease component
+mirrors the Music page's cover art problem (Lucide `Music` icon placeholders).
+The VideoHighlight component IS working — it shows YouTube thumbnails and click-to-play embeds.
+Hero section has an actual background image (`/public/images/hero/hero-main.jpg`).
+AboutPreview has a portrait image (`/public/images/artist/portrait-balcony.jpg`).
 
 ---
 
 ### PROMPT 8 — Homepage Music Section Fix
 
+> **STATUS:** PARTIALLY DONE
+> - LatestRelease component exists and is functional but shows Music icon placeholders (same as Music page P1)
+> - VideoHighlight component is WORKING — YouTube thumbnails + click-to-play iframe for Бродяга (22M+)
+> - Hero section is WORKING — has actual background image with parallax effect
+> - AboutPreview is WORKING — has portrait image
+> - UpcomingShows is WORKING — shows event cards
+> - All CTA buttons and nav links appear functional
+>
+> **Main issue:** Cover artwork in LatestRelease (same fix as P1)
+
+**Files to modify:**
+- `src/components/home/LatestRelease.tsx` (lines 33, 75 — Music icon placeholders)
+- Homepage will auto-fix when P1 cover images are added
+
 ```
-PRIORITY: HIGH
-PAGES: /en, /ru (homepage)
+PRIORITY: HIGH (mostly resolved — depends on P1)
+PAGES: /en, /ru, /el (homepage)
 
 The homepage likely has a section that previews music/latest release content.
 Based on the Music page pattern, it probably shows:
@@ -482,9 +585,20 @@ AUDIT the homepage and fix:
 
 ### PROMPT 9 — Homepage Hero Image & Social Integration
 
+> **STATUS:** PARTIALLY DONE
+> - Hero section EXISTS with actual background image (`/public/images/hero/hero-main.jpg`)
+>   with parallax effect, animated name, CTA buttons — this is WORKING
+> - Instagram feed preview — NOT implemented
+> - "Coming Soon" teaser for Вечная любовь — NOT implemented
+> - OG image (`/images/og-image.jpg`) referenced in metadata but file DOES NOT EXIST
+
+**Files to modify:**
+- `src/app/[locale]/page.tsx` — Add Instagram preview or Coming Soon teaser section
+- `src/app/[locale]/layout.tsx` — Fix OG image reference or create the file
+
 ```
-PRIORITY: MEDIUM
-PAGES: /en, /ru
+PRIORITY: MEDIUM (hero is done; remaining items are enhancements)
+PAGES: /en, /ru, /el
 
 If the homepage hero section lacks a compelling background image:
 
@@ -522,9 +636,18 @@ If the homepage hero section lacks a compelling background image:
 
 ### PROMPT 10 — Schema.org Structured Data (SEO)
 
+> **STATUS:** NOT STARTED — No JSON-LD or Schema.org markup exists anywhere in the codebase.
+> Open Graph metadata is minimal and references a missing OG image file.
+
+**Files to modify:**
+- `src/app/[locale]/layout.tsx` — Add MusicGroup JSON-LD to root layout
+- `src/app/[locale]/music/page.tsx` — Add MusicAlbum/MusicRecording JSON-LD
+- `src/app/[locale]/videos/page.tsx` — Add VideoObject JSON-LD
+- Create `/public/images/og-image.jpg` (currently referenced but missing)
+
 ```
 PRIORITY: MEDIUM (SEO impact)
-PAGES: /en/music, /ru/music, homepage
+PAGES: /en/music, /ru/music, /el/music, homepage
 
 Add JSON-LD structured data in the <head> of relevant pages:
 
@@ -567,9 +690,18 @@ Add JSON-LD structured data in the <head> of relevant pages:
 
 ### PROMPT 11 — Collaborations Section
 
+> **STATUS:** NOT STARTED — No collaborations section exists.
+> The collaborators are mentioned in `discography.ts` via `featuring` fields but
+> there's no dedicated section highlighting them.
+
+**Files to modify:**
+- `src/app/[locale]/music/page.tsx` — Add Collaborations section after Singles Grid
+- `src/lib/data/discography.ts` — Collaboration data already partially exists (featuring field)
+- `messages/{en,ru,el}.json` — Add translation keys
+
 ```
 PRIORITY: LOW-MEDIUM
-PAGES: /en/music, /ru/music
+PAGES: /en/music, /ru/music, /el/music
 
 Add a "Collaborations" / "Коллаборации" section after the singles discography.
 This highlights cross-audience tracks and builds credibility.
@@ -595,9 +727,19 @@ and the collab drives significant discovery traffic.
 
 ### PROMPT 12 — Content Security Policy for Embeds
 
+> **STATUS:** NOT CONFIGURED
+> `next.config.mjs` only has `images.remotePatterns` for instagram, YouTube thumbnails,
+> and Spotify CDN. No CSP headers defined. No middleware security headers.
+> This means embeds should work by default (no restrictive CSP blocking them),
+> but adding proper CSP is a security best practice.
+
+**Files to modify:**
+- `src/middleware.ts` — Currently only handles i18n routing; add security headers
+- OR `next.config.mjs` — Add headers() config
+
 ```
-PRIORITY: CRITICAL (if embeds don't load)
-PAGES: Site config / next.config.js / middleware
+PRIORITY: MEDIUM (embeds will work without CSP since none is set; add for security)
+PAGES: Site config — next.config.mjs or middleware.ts
 
 If you add Spotify, YouTube, and Yandex Music iframes and they don't render,
 check the Content Security Policy (CSP) headers.
@@ -623,24 +765,30 @@ If CSP is an issue, update the config BEFORE deploying the embed changes.
 
 ---
 
-## IMPLEMENTATION ORDER
+## IMPLEMENTATION ORDER (Revised)
 
-| # | Prompt | Est. Time | Impact | Notes |
-|---|--------|-----------|--------|-------|
-| 1 | P1 — Fix cover artwork | 30-60 min | CRITICAL | Transforms the page visually |
-| 2 | P2 — Spotify/Yandex embed hero | 15 min | HIGH | Visitors can finally listen |
-| 3 | P12 — CSP whitelist | 10 min | CRITICAL | Do BEFORE testing embeds |
-| 4 | P6 — Fix social links | 15 min | HIGH | Quick win, site-wide |
-| 5 | P3 — YouTube video embeds | 30 min | HIGH | Visual impact + engagement |
-| 6 | P4 — Interactive singles grid | 45-60 min | HIGH | Full interactivity |
-| 7 | P8 — Homepage music section fix | 30 min | HIGH | Fixes homepage UX |
-| 8 | P5 — Stats banner | 20 min | MEDIUM | Social proof |
-| 9 | P7 — Listen On redesign | 20 min | MEDIUM | Polish |
-| 10 | P9 — Homepage hero + Instagram | 30 min | MEDIUM | Visual richness |
-| 11 | P10 — Schema.org SEO | 15 min | MEDIUM | SEO boost |
-| 12 | P11 — Collaborations section | 20 min | LOW-MEDIUM | Discovery |
+| # | Prompt | Status | Impact | Notes |
+|---|--------|--------|--------|-------|
+| 1 | P1 — Fix cover artwork | **NOT STARTED** | CRITICAL | 13 images needed; also fixes P8 homepage |
+| 2 | P2 — Spotify/Yandex embed hero | **NOT STARTED** | HIGH | Replace placeholder div on music page |
+| 3 | P4 — Interactive singles grid | **NOT STARTED** | HIGH | Add streaming links + play to cards |
+| 4 | P3 — YouTube video section (music page) | **NOT STARTED** | MEDIUM | Videos page already covers this; add cross-link or mini section |
+| 5 | P7 — Listen On redesign | **NOT STARTED** | MEDIUM | Add platform logos + brand colors |
+| 6 | P5 — Stats banner | **NOT STARTED** | MEDIUM | Social proof on music page |
+| 7 | P10 — Schema.org SEO | **NOT STARTED** | MEDIUM | JSON-LD + fix missing OG image |
+| 8 | P9 — Homepage Instagram + teaser | **PARTIAL** | MEDIUM | Hero done; add IG preview + new release teaser |
+| 9 | P12 — CSP headers | **NOT STARTED** | MEDIUM | Security best practice (embeds work without it) |
+| 10 | P11 — Collaborations section | **NOT STARTED** | LOW-MEDIUM | Discovery |
+| 11 | P6 — Social links polish | **✅ DONE** | — | Optionally add Discogs/Shazam, replace text icons with SVGs |
+| 12 | P8 — Homepage music fix | **✅ MOSTLY DONE** | — | Depends on P1 cover images |
 
-**Total estimated time: 4-6 hours**
+**Key dependency:** P1 (cover artwork) unblocks both the Music page AND homepage LatestRelease component.
+
+**Data cleanup needed:** Fix `TODO_*` YouTube IDs in `discography.ts` — cross-reference with `videos.ts`.
+
+**Missing assets checklist:**
+- [ ] `/public/images/albums/` — 13 cover images (mia-kardia, soltera, par-shirkhani, kavkaz, ya-grek, kortsopon, monahos, kapkan, rasskazhi, panagia, dumanli, tanets-greka, za-toboi)
+- [ ] `/public/images/og-image.jpg` — Open Graph share image
 
 ---
 
@@ -659,4 +807,21 @@ FACEBOOK PAGE:        alexandros.tsopozidis
 TIKTOK:               @tsopozidis
 BOOKING WHATSAPP:     +79383163034
 SITE ACCENT COLOR:    ~#C9A96E (gold/tan)
+```
+
+## QUICK REFERENCE — Key Codebase Paths
+
+```
+PROJECT ROOT:           alexandros-tsopozidis-website/
+PAGES:                  src/app/[locale]/{page}/page.tsx
+HOME COMPONENTS:        src/components/home/
+LAYOUT COMPONENTS:      src/components/layout/
+COMMON COMPONENTS:      src/components/common/
+DATA FILES:             src/lib/data/ (discography, videos, events, gallery, social-links)
+TRANSLATIONS:           messages/{en,ru,el}.json
+CONFIG:                 next.config.mjs, tailwind.config.ts
+IMAGES:                 public/images/ (hero/, artist/, gallery/ exist; albums/ MISSING)
+i18n:                   src/i18n/ (routing.ts, request.ts) + src/middleware.ts
+ICON LIBRARY:           Lucide React (lucide-react@0.577.0)
+ANIMATION:              Framer Motion (framer-motion@12.36.0)
 ```
