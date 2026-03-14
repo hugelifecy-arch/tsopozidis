@@ -50,7 +50,7 @@ export default function BookingForm() {
           className={inputClasses}
           placeholder={t('name')}
         />
-        {errors.name && <p className="text-accent-red text-xs mt-1">Required</p>}
+        {errors.name && <p className="text-accent-red text-xs mt-1">{t('form_required')}</p>}
       </div>
 
       <div>
@@ -61,7 +61,7 @@ export default function BookingForm() {
           className={inputClasses}
           placeholder={t('email')}
         />
-        {errors.email && <p className="text-accent-red text-xs mt-1">Valid email required</p>}
+        {errors.email && <p className="text-accent-red text-xs mt-1">{t('form_valid_email')}</p>}
       </div>
 
       <div>
@@ -88,7 +88,7 @@ export default function BookingForm() {
           <option value="wedding">{t('event_types.wedding')}</option>
           <option value="other">{t('event_types.other')}</option>
         </select>
-        {errors.eventType && <p className="text-accent-red text-xs mt-1">Required</p>}
+        {errors.eventType && <p className="text-accent-red text-xs mt-1">{t('form_required')}</p>}
       </div>
 
       <div>
@@ -108,7 +108,7 @@ export default function BookingForm() {
           className={inputClasses}
           placeholder={t('message')}
         />
-        {errors.message && <p className="text-accent-red text-xs mt-1">Required</p>}
+        {errors.message && <p className="text-accent-red text-xs mt-1">{t('form_required')}</p>}
       </div>
 
       <button

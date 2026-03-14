@@ -30,7 +30,7 @@ export default function AboutPreview() {
         <ScrollReveal direction="right" delay={0.2} className="w-full md:w-[55%]">
           <span className="text-gold text-xs uppercase tracking-widest font-sans">{t('title')}</span>
           <h2 className="font-display text-3xl md:text-4xl uppercase tracking-wider mt-2">
-            The Story
+            {t('the_story')}
           </h2>
           <p className="mt-6 text-text-secondary font-sans font-light leading-relaxed">
             {t('bio_paragraph_1')}

@@ -65,7 +65,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 1.2, ease }}
           className="font-serif italic text-base text-text-secondary tracking-[0.3em] lowercase mt-4"
         >
-          greek soul · eastern sound
+          {t('tagline')}
         </motion.p>
 
         {/* Bottom decorative line */}

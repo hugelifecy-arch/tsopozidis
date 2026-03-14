@@ -12,11 +12,13 @@
   "hero": {
     "subtitle": "Greek-Russian Pop Artist",
     "cta_listen": "Listen Now",
-    "cta_booking": "Book Artist"
+    "cta_booking": "Book Artist",
+    "tagline": "greek soul · eastern sound"
   },
   "about": {
     "title": "About",
     "subtitle": "The Story Behind the Music",
+    "the_story": "The Story",
     "bio_paragraph_1": "Alexandros Tsopozidis was born on January 1, 1986, in the village of Sameba (Guniakala), Georgia. Of Pontic Greek heritage, he grew up surrounded by the rich musical traditions of the Caucasus region, where Eastern melodies intertwined with Greek folk rhythms.",
     "bio_paragraph_2": "In 1998, at the age of 12, Alexandros moved with his family to Paphos, Cyprus, where he began a new chapter of his life. Initially drawn to athletics, he trained at a Cyprus football academy with dreams of a professional sports career.",
     "bio_paragraph_3": "At his parents' request, Alexandros left football behind and discovered his true calling — music. In 2011, he began his musical journey in earnest, and his talent quickly caught the attention of Russian producer Kemran Amirov, who helped launch his career.",
@@ -26,7 +28,15 @@
     "football_title": "From Football to Music",
     "career_title": "Career",
     "sound_title": "The Sound",
-    "today_title": "Alexandros Today"
+    "today_title": "Alexandros Today",
+    "today_text": "Based in Paphos, Cyprus. Latest release: \"Mia Kardia\" (2025). \"Вечная любовь\" coming soon.",
+    "book_artist": "Book Alexandros",
+    "youtube_views": "YouTube Views",
+    "followers": "Followers",
+    "years": "Years",
+    "lang_russian": "Russian",
+    "lang_greek": "Greek",
+    "lang_pontic": "Pontic Greek"
   },
   "music": {
     "title": "Music",
@@ -36,7 +46,12 @@
     "listen_on": "Listen On",
     "album": "Album",
     "single": "Single",
-    "featuring": "feat."
+    "featuring": "feat.",
+    "latest_description": "The latest single from Alexandros Tsopozidis, blending Greek and Eastern musical traditions.",
+    "spotify_placeholder": "Spotify Player — embed will load here",
+    "tracks": "tracks",
+    "singles": "Singles",
+    "meta_description": "Listen to Alexandros Tsopozidis on Spotify, Apple Music, YouTube, and more."
   },
   "videos": {
     "title": "Videos",
@@ -69,7 +84,26 @@
     "title": "Contact",
     "subtitle": "Reservations & Inquiries",
     "booking_title": "Reservations",
-    "booking_text": "For booking inquiries, please contact us directly by phone, WhatsApp, or Telegram."
+    "booking_text": "For booking inquiries, please contact us directly by phone, WhatsApp, or Telegram.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "event_type": "Event Type",
+    "event_date": "Event Date",
+    "message": "Message",
+    "send": "Send Inquiry",
+    "success_message": "Thank you! We'll get back to you within 48 hours.",
+    "form_required": "Required",
+    "form_valid_email": "Valid email required",
+    "meta_description": "Book Alexandros Tsopozidis for concerts, festivals, and private events.",
+    "event_types": {
+      "concert": "Concert",
+      "festival": "Festival",
+      "private": "Private Event",
+      "corporate": "Corporate Event",
+      "wedding": "Wedding",
+      "other": "Other"
+    }
   },
   "footer": {
     "copyright": "© 2026 Alexandros Tsopozidis. All Rights Reserved.",
@@ -86,5 +120,14 @@
     "view_all_events": "View All Events",
     "new_single": "New Single",
     "scroll": "scroll"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "message": "An error occurred",
+    "try_again": "Try Again"
+  },
+  "not_found": {
+    "title": "Page not found",
+    "back_home": "Back to Home"
   }
 }

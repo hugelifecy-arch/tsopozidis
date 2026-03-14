@@ -53,15 +53,15 @@ export default function AboutPage() {
             <div className="grid grid-cols-3 gap-4 mt-6">
               <div className="text-center py-4 bg-bg-secondary rounded-sm">
                 <p className="font-display text-2xl text-gold">22M+</p>
-                <p className="text-xs text-text-tertiary mt-1">YouTube Views</p>
+                <p className="text-xs text-text-tertiary mt-1">{t('youtube_views')}</p>
               </div>
               <div className="text-center py-4 bg-bg-secondary rounded-sm">
                 <p className="font-display text-2xl text-gold">310K</p>
-                <p className="text-xs text-text-tertiary mt-1">Followers</p>
+                <p className="text-xs text-text-tertiary mt-1">{t('followers')}</p>
               </div>
               <div className="text-center py-4 bg-bg-secondary rounded-sm">
                 <p className="font-display text-2xl text-gold">15+</p>
-                <p className="text-xs text-text-tertiary mt-1">Years</p>
+                <p className="text-xs text-text-tertiary mt-1">{t('years')}</p>
               </div>
             </div>
           </TimelineItem>
@@ -69,19 +69,19 @@ export default function AboutPage() {
           <TimelineItem icon={Globe} title={t('sound_title')}>
             <p>{t('bio_paragraph_5')}</p>
             <div className="flex flex-wrap gap-2 mt-4">
-              {['Russian', 'Greek', 'Pontic Greek'].map((lang) => (
-                <span key={lang} className="text-xs bg-gold/10 text-gold px-3 py-1 rounded-full font-sans">
-                  {lang}
+              {(['lang_russian', 'lang_greek', 'lang_pontic'] as const).map((langKey) => (
+                <span key={langKey} className="text-xs bg-gold/10 text-gold px-3 py-1 rounded-full font-sans">
+                  {t(langKey)}
                 </span>
               ))}
             </div>
           </TimelineItem>
 
           <TimelineItem icon={User} title={t('today_title')}>
-            <p>Based in Paphos, Cyprus. Latest release: &quot;Mia Kardia&quot; (2025). &quot;Вечная любовь&quot; coming soon.</p>
+            <p>{t('today_text')}</p>
             <div className="mt-6">
               <GoldButton href="/contact" variant="outline">
-                Book Alexandros
+                {t('book_artist')}
               </GoldButton>
             </div>
           </TimelineItem>
