@@ -24,13 +24,13 @@
     "bio_paragraph_2": "In 1998, at the age of 12, Alexandros moved with his family to Paphos, Cyprus, where he began a new chapter of his life. Initially drawn to athletics, he trained at a Cyprus football academy with dreams of a professional sports career.",
     "bio_paragraph_3": "At his parents' request, Alexandros left football behind and discovered his true calling — music. In 2011, he began his musical journey in earnest, and his talent quickly caught the attention of Russian producer Kemran Amirov, who helped launch his career.",
     "bio_paragraph_4": "His debut duet with Eldar Dalgatov, 'Может ты вернёшься,' introduced him to Russian-speaking audiences. But it was his collaboration with Elbrus Dzhanmirzoev on 'Бродяга' that catapulted him to fame, amassing over 22 million views on YouTube.",
-    "bio_paragraph_5": "Today, Alexandros performs in Russian, Greek, and Pontic Greek, blending pop with Caucasian and Eastern influences into a unique sound. Based in Paphos, Cyprus, he continues to release new music, with his latest single 'Mia Kardia' (2025) and 'Вечная любовь' coming soon. He is the recipient of the 9 Волна award for his contribution to ethnic music.",
+    "bio_paragraph_5": "Today, Alexandros performs in Russian, Greek, and Pontic Greek, blending pop with Caucasian and Eastern influences into a unique sound. Based in Paphos, Cyprus, he continues to release new music, with his latest single 'Канитель' (2026) and 'Вечная любовь' coming soon. He is the recipient of the 9 Волна award for his contribution to ethnic music.",
     "origins_title": "Origins",
     "football_title": "From Football to Music",
     "career_title": "Career",
     "sound_title": "The Sound",
     "today_title": "Alexandros Today",
-    "today_text": "Based in Paphos, Cyprus. Latest release: \"Mia Kardia\" (2025). \"Вечная любовь\" coming soon.",
+    "today_text": "Based in Paphos, Cyprus. Latest release: \"Канитель\" (2026). \"Вечная любовь\" coming soon.",
     "book_artist": "Book Alexandros",
     "youtube_views": "YouTube Views",
     "followers": "Followers",
@@ -58,11 +58,15 @@
     "monthly": "Monthly Listeners",
     "releases_label": "Releases",
     "all_years": "All",
+    "featured_on": "Featured On",
+    "book_this_live": "Book this song live",
+    "available_live": "All tracks available for live performance. Contact for booking.",
     "meta_description": "Listen to Alexandros Tsopozidis on Spotify, Apple Music, YouTube, and more."
   },
   "videos": {
     "title": "Videos",
-    "subtitle": "Music Videos & Live Performances"
+    "subtitle": "Music Videos & Live Performances",
+    "book_performance": "Book a Live Performance"
   },
   "gallery": {
     "title": "Gallery",
@@ -181,6 +185,7 @@
     "kavkaz_single": "Released \"Kavkaz\"",
     "par_shirkhani": "Released \"Par shirkhani\"",
     "mia_kardia": "Released \"Mia Kardia\" and \"Soltera\" (feat. El Pontios)",
+    "kanitel": "Released \"Канитель\" (2026)",
     "vechnaya": "\"Вечная любовь\" — coming soon"
   },
   "footer": {

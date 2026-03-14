@@ -6,18 +6,20 @@ import { useState } from 'react';
 
 interface AlbumCoverProps {
   src?: string;
+  spotifyCoverUrl?: string;
   title: string;
   year?: number;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
 }
 
-export default function AlbumCover({ src, title, year, size = 'md', className = '' }: AlbumCoverProps) {
+export default function AlbumCover({ src, spotifyCoverUrl, title, year, size = 'md', className = '' }: AlbumCoverProps) {
   const [error, setError] = useState(false);
+  const imageSrc = spotifyCoverUrl || src;
 
   const iconSize = size === 'sm' ? 24 : size === 'md' ? 40 : 64;
 
-  if (!src || error) {
+  if (!imageSrc || error) {
     return (
       <div className={`aspect-square bg-gradient-to-br from-bg-tertiary to-bg-secondary rounded-sm border border-gold/20 flex flex-col items-center justify-center gap-2 ${className}`}>
         <Music size={iconSize} className="text-gold/30" />
@@ -34,7 +36,7 @@ export default function AlbumCover({ src, title, year, size = 'md', className = 
   return (
     <div className={`aspect-square relative rounded-sm border border-gold/20 overflow-hidden ${className}`}>
       <Image
-        src={src}
+        src={imageSrc}
         alt={`${title} — album cover`}
         fill
         className="object-cover"
