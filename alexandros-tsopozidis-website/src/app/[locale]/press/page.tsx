@@ -57,9 +57,10 @@ export default function PressPage() {
         </div>
       </section>
 
-      {/* Short Bio */}
+      {/* Artist Biographies */}
       <section className="py-24 px-4 md:px-8 bg-bg-secondary">
         <div className="max-w-3xl mx-auto">
+          {/* 50-word bio */}
           <ScrollReveal>
             <SectionHeading title={t('short_bio_title')} />
           </ScrollReveal>
@@ -69,14 +70,29 @@ export default function PressPage() {
             </blockquote>
           </ScrollReveal>
 
+          {/* 100-word bio */}
           <ScrollReveal delay={0.3}>
-            <div className="mt-12">
+            <div className="mt-16">
               <h3 className="font-display text-lg uppercase tracking-wider mb-4">
                 {t('medium_bio_title')}
               </h3>
               <p className="text-text-secondary font-sans font-light leading-relaxed">
                 {t('medium_bio')}
               </p>
+            </div>
+          </ScrollReveal>
+
+          {/* 250-word full bio */}
+          <ScrollReveal delay={0.4}>
+            <div className="mt-16">
+              <h3 className="font-display text-lg uppercase tracking-wider mb-6">
+                {t('full_bio_title')}
+              </h3>
+              <div className="text-text-secondary font-sans font-light leading-relaxed space-y-4">
+                {t('full_bio').split('\n\n').map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
             </div>
           </ScrollReveal>
         </div>
