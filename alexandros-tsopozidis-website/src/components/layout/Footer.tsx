@@ -82,10 +82,13 @@ export default function Footer() {
       </div>
 
       {/* Bottom */}
-      <div className="max-w-container mx-auto py-6 px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-text-tertiary text-xs font-sans tracking-wide">
-        <span>{t('copyright')}</span>
-        <span>{t('booking_phone')}</span>
-        <span>{t('website_credit')}</span>
+      <div className="max-w-container mx-auto py-8 px-4 md:px-8 text-center text-text-tertiary text-xs font-sans tracking-wide">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-0">
+          <span>{t('copyright')}</span>
+          <span className="hidden md:inline mx-2 text-gold/40">·</span>
+          <span>{t('booking_phone')}</span>
+        </div>
+        <p className="mt-3 text-text-tertiary/60">{t('website_credit')}</p>
       </div>
     </footer>
   );
