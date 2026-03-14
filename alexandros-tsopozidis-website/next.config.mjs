@@ -9,6 +9,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'instagram.com' },
       { protocol: 'https', hostname: 'scontent.cdninstagram.com' },
       { protocol: 'https', hostname: 'i.ytimg.com' },
+      { protocol: 'https', hostname: 'img.youtube.com' },
       { protocol: 'https', hostname: 'i.scdn.co' },
       { protocol: 'https', hostname: 'revolution-nachtpalast.disco2app.com' },
     ],
