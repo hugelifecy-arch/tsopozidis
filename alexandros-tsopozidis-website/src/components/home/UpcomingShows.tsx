@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import SectionHeading from '@/components/common/SectionHeading';
 import ScrollReveal from '@/components/common/ScrollReveal';
@@ -9,8 +9,11 @@ import { events } from '@/lib/data/events';
 export default function UpcomingShows() {
   const t = useTranslations('events');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
   const upcoming = events.filter((e) => e.isUpcoming && !e.comingSoon);
   const hasUpcoming = upcoming.length > 0;
+
+  const dateLocale = locale === 'ru' ? 'ru-RU' : locale === 'el' ? 'el-GR' : 'en-US';
 
   return (
     <section className="py-24 px-4 md:px-8">
@@ -35,7 +38,7 @@ export default function UpcomingShows() {
                           {date.getDate()}
                         </p>
                         <p className="text-xs text-text-secondary uppercase font-sans">
-                          {date.toLocaleString('en', { month: 'short' })}
+                          {date.toLocaleString(dateLocale, { month: 'short' })}
                         </p>
                       </div>
                       <div>

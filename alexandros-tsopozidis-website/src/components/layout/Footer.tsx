@@ -12,6 +12,7 @@ export default function Footer() {
     { label: tNav('about'), href: '/about' },
     { label: tNav('music'), href: '/music' },
     { label: tNav('videos'), href: '/videos' },
+    { label: tNav('gallery'), href: '/gallery' },
     { label: tNav('events'), href: '/events' },
     { label: tNav('press'), href: '/press' },
     { label: tNav('contact'), href: '/contact' },

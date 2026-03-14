@@ -1,9 +1,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Music } from 'lucide-react';
 import SectionHeading from '@/components/common/SectionHeading';
 import ScrollReveal from '@/components/common/ScrollReveal';
+import AlbumCover from '@/components/AlbumCover';
 import { singles } from '@/lib/data/discography';
 import { socialLinks } from '@/lib/data/social-links';
 
@@ -28,11 +28,7 @@ export default function LatestRelease() {
         <ScrollReveal delay={0.2}>
           <div className="flex flex-col md:flex-row gap-12 items-center">
             {/* Artwork */}
-            <div className="w-full md:w-[40%] aspect-square relative rounded-sm border border-gold/20 overflow-hidden bg-bg-secondary shadow-[0_0_60px_rgba(200,169,110,0.05)]">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Music size={64} className="text-gold/20" />
-              </div>
-            </div>
+            <AlbumCover src={latest.coverImage} title={latest.title} year={latest.year} size="lg" className="w-full md:w-[40%] shadow-[0_0_60px_rgba(200,169,110,0.05)]" />
 
             {/* Info */}
             <div className="w-full md:w-[60%]">
@@ -59,6 +55,20 @@ export default function LatestRelease() {
                   </a>
                 ))}
               </div>
+
+              {/* Spotify Player */}
+              <div className="mt-6">
+                <iframe
+                  src="https://open.spotify.com/embed/artist/6PPuuN3cvmbyuvgrGbhXge?utm_source=generator&theme=0"
+                  width="100%"
+                  height="152"
+                  frameBorder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  className="rounded-lg"
+                  title="Spotify Player"
+                />
+              </div>
             </div>
           </div>
         </ScrollReveal>
@@ -71,9 +81,7 @@ export default function LatestRelease() {
                 key={single.id}
                 className="snap-start flex-shrink-0 w-48 group"
               >
-                <div className="aspect-square bg-bg-secondary rounded-sm border border-border group-hover:border-gold/30 transition-all duration-300 flex items-center justify-center overflow-hidden">
-                  <Music size={32} className="text-gold/20" />
-                </div>
+                <AlbumCover src={single.coverImage} title={single.title} year={single.year} size="sm" />
                 <p className="mt-2 text-sm font-sans truncate">{single.title}</p>
                 <p className="text-xs text-text-secondary font-sans">
                   {single.year}

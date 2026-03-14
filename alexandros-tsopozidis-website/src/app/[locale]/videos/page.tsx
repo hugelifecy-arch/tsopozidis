@@ -1,22 +1,36 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import YouTubeFacade from '@/components/YouTubeFacade';
+import JsonLd from '@/components/JsonLd';
 import { videos } from '@/lib/data/videos';
 
 export default function VideosPage() {
   const t = useTranslations('videos');
+  const locale = useLocale();
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const featured = videos[0];
   const rest = videos.slice(1);
 
+  const viewsLabel = locale === 'ru' ? 'просмотров' : locale === 'el' ? 'προβολές' : 'views';
+
+  const videoSchemas = videos.map(v => ({
+    '@type': 'VideoObject',
+    name: v.title,
+    description: `${v.title} — Alexandros Tsopozidis music video`,
+    thumbnailUrl: `https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg`,
+    embedUrl: `https://www.youtube.com/embed/${v.youtubeId}`,
+    uploadDate: `${v.year}-01-01`,
+  }));
+
   return (
     <>
+      <JsonLd data={{ '@context': 'https://schema.org', '@graph': videoSchemas }} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       {/* Featured Video */}
@@ -37,7 +51,7 @@ export default function VideosPage() {
               <p className="text-text-secondary text-sm font-sans">
                 {featured.year}
                 {featured.featuring && ` · feat. ${featured.featuring}`}
-                {featured.views && ` · ${featured.views} views`}
+                {featured.views && ` · ${featured.views} ${viewsLabel}`}
               </p>
             </div>
           </ScrollReveal>
@@ -62,7 +76,7 @@ export default function VideosPage() {
                   <p className="font-sans text-sm">{video.title}</p>
                   <p className="text-xs text-text-secondary mt-1">
                     {video.year}
-                    {video.views && ` · ${video.views} views`}
+                    {video.views && ` · ${video.views} ${viewsLabel}`}
                   </p>
                 </div>
               </div>

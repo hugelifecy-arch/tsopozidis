@@ -31,7 +31,7 @@ export default function ComingSoon() {
             Вечная любовь
           </motion.h2>
           <p className="font-serif italic text-text-secondary text-lg mt-2">
-            Eternal Love
+            {t('translation')}
           </p>
           <p className="text-text-secondary font-sans text-sm mt-6">
             {t('subtitle')}

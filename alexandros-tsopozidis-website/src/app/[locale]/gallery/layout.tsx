@@ -1,17 +1,19 @@
-import { generatePageMetadata } from '@/lib/seo';
+import { getTranslations } from 'next-intl/server';
+import { generatePageMetadata, getArtistName } from '@/lib/seo';
 
 const galleryDescriptions: Record<string, string> = {
-  en: 'Alexandros Tsopozidis photo gallery — concert photos, behind the scenes, and press images from performances worldwide.',
-  ru: 'Фотогалерея Александроса Цопозидиса — концертные фото, закулисье и пресс-фото с выступлений по всему миру.',
-  el: 'Φωτογραφίες Αλέξανδρου Τσοποζίδη — φωτογραφίες από συναυλίες, παρασκήνια και εμφανίσεις σε όλο τον κόσμο.',
+  en: 'Photo gallery of Alexandros Tsopozidis — live performances, portraits, backstage moments and music video shoots.',
+  ru: 'Фотогалерея Александроса Цопозидиса — концерты, портреты, бэкстейдж и съёмки клипов.',
+  el: 'Φωτογραφίες του Αλέξανδρου Τσοποζίδη — ζωντανές εμφανίσεις, πορτρέτα και παρασκήνια.',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'gallery' });
   return generatePageMetadata({
     locale,
     path: 'gallery',
-    title: 'Gallery — Alexandros Tsopozidis',
+    title: `${t('title')} — ${getArtistName(locale)}`,
     description: galleryDescriptions[locale] || galleryDescriptions.en,
   });
 }

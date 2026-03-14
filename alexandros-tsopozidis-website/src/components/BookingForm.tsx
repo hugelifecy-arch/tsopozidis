@@ -12,12 +12,14 @@ interface FormData {
   eventDate?: string;
   location?: string;
   message: string;
+  website?: string; // honeypot
 }
 
 export default function BookingForm() {
   const t = useTranslations('contact');
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
   const {
     register,
@@ -27,16 +29,20 @@ export default function BookingForm() {
 
   const onSubmit = async (data: FormData) => {
     setSubmitting(true);
+    setError(false);
     try {
       const res = await fetch('/api/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (res.ok) setSubmitted(true);
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError(true);
+      }
     } catch {
-      // fallback — still show success since no email integration yet
-      setSubmitted(true);
+      setError(true);
     } finally {
       setSubmitting(false);
     }
@@ -60,6 +66,34 @@ export default function BookingForm() {
       <h3 className="font-display text-xl uppercase tracking-wider text-center mb-8">
         {t('booking_title')}
       </h3>
+
+      {error && (
+        <div className="bg-accent-red/10 border border-accent-red/30 rounded-sm p-4 text-center">
+          <p className="text-red-400 text-sm font-sans">
+            Something went wrong. Please try{' '}
+            <a
+              href="https://wa.me/79383163034"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold underline"
+            >
+              WhatsApp: +7 938 316 30 34
+            </a>
+          </p>
+        </div>
+      )}
+
+      {/* Honeypot — hidden from humans, catches bots */}
+      <div className="absolute opacity-0 -z-10 h-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          {...register('website')}
+          id="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
 
       {/* Name */}
       <div>

@@ -1,18 +1,42 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import SocialIcons from '@/components/common/SocialIcons';
+import JsonLd from '@/components/JsonLd';
 import { events } from '@/lib/data/events';
 
 export default function EventsPage() {
   const t = useTranslations('events');
+  const locale = useLocale();
   const [tab, setTab] = useState<'upcoming' | 'past'>('upcoming');
+
+  const dateLocale = locale === 'ru' ? 'ru-RU' : locale === 'el' ? 'el-GR' : 'en-US';
 
   const upcoming = events.filter((e) => e.isUpcoming);
   const past = events.filter((e) => !e.isUpcoming).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  const upcomingNonTBA = upcoming.filter(e => !e.comingSoon);
+  const eventSchemas = upcomingNonTBA.map(event => ({
+    '@type': 'MusicEvent',
+    name: event.title,
+    startDate: event.date,
+    location: {
+      '@type': 'Place',
+      name: event.venue,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: event.city,
+        addressCountry: event.country,
+      },
+    },
+    performer: {
+      '@type': 'MusicArtist',
+      name: 'Alexandros Tsopozidis',
+    },
+  }));
 
   // Group past events by year
   const pastByYear = past.reduce<Record<string, typeof past>>((acc, event) => {
@@ -24,6 +48,9 @@ export default function EventsPage() {
 
   return (
     <>
+      {eventSchemas.length > 0 && (
+        <JsonLd data={{ '@context': 'https://schema.org', '@graph': eventSchemas }} />
+      )}
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       <section className="py-24 px-4 md:px-8">
@@ -63,7 +90,7 @@ export default function EventsPage() {
                             <div className="text-center min-w-[60px]">
                               <p className="font-display text-3xl text-gold">{date.getDate()}</p>
                               <p className="text-xs text-text-secondary uppercase font-sans">
-                                {date.toLocaleString('en', { month: 'short', year: 'numeric' })}
+                                {date.toLocaleString(dateLocale, { month: 'short', year: 'numeric' })}
                               </p>
                             </div>
                             <div>
@@ -119,7 +146,7 @@ export default function EventsPage() {
                               className="flex items-center gap-6 border-l border-border pl-4 py-3"
                             >
                               <span className="text-xs text-text-tertiary font-sans min-w-[60px]">
-                                {date.toLocaleString('en', { month: 'short', day: 'numeric' })}
+                                {date.toLocaleString(dateLocale, { month: 'short', day: 'numeric' })}
                               </span>
                               <div>
                                 <p className="font-sans text-sm">{event.title}</p>
@@ -129,7 +156,7 @@ export default function EventsPage() {
                               </div>
                               {event.isFeatured && (
                                 <span className="text-[10px] bg-gold/10 text-gold px-2 py-0.5 rounded-full font-sans uppercase tracking-wider">
-                                  Featured
+                                  {t('featured')}
                                 </span>
                               )}
                             </div>

@@ -24,18 +24,18 @@ export const album: Release = {
 };
 
 export const singles: Release[] = [
-  { id: "mia-kardia", title: "Mia Kardia", year: 2025, type: "single", youtubeId: "TODO_mia_kardia", coverImage: "/images/albums/mia-kardia.jpg" },
-  { id: "soltera", title: "Soltera", year: 2025, type: "single", featuring: "El Pontios", youtubeId: "TODO_soltera", coverImage: "/images/albums/soltera.jpg" },
-  { id: "par-shirkhani", title: "Par shirkhani", year: 2024, type: "single", youtubeId: "TODO_par_shirkhani", coverImage: "/images/albums/par-shirkhani.jpg" },
-  { id: "kavkaz", title: "Kavkaz", titleRu: "Кавказ", year: 2023, type: "single", featuring: "Vasiliadis", youtubeId: "TODO_kavkaz", coverImage: "/images/albums/kavkaz.jpg" },
-  { id: "ya-grek", title: "Я грек", titleRu: "Я грек", year: 2022, type: "single", youtubeId: "TODO_ya_grek", coverImage: "/images/albums/ya-grek.jpg" },
-  { id: "kortsopon-apsimon", title: "Kortsopon apsimon", year: 2021, type: "single", youtubeId: "TODO_kortsopon", coverImage: "/images/albums/kortsopon.jpg" },
-  { id: "monahos", title: "Monahos", year: 2021, type: "single", youtubeId: "TODO_monahos", coverImage: "/images/albums/monahos.jpg" },
-  { id: "kapkan", title: "Капкан", titleRu: "Капкан", year: 2021, type: "single", youtubeId: "TODO_kapkan", coverImage: "/images/albums/kapkan.jpg" },
-  { id: "rasskazhi", title: "Расскажи", titleRu: "Расскажи", year: 2020, type: "single", youtubeId: "TODO_rasskazhi", coverImage: "/images/albums/rasskazhi.jpg" },
-  { id: "panagia-soumela", title: "Panagia Soumela", year: 2020, type: "single", youtubeId: "TODO_panagia", coverImage: "/images/albums/panagia.jpg" },
-  { id: "dumanli", title: "Dumanli", year: 2019, type: "single", youtubeId: "TODO_dumanli", coverImage: "/images/albums/dumanli.jpg" },
-  { id: "tanets-greka", title: "Танец грека", titleRu: "Танец грека", year: 2018, type: "single", youtubeId: "TODO_tanets", coverImage: "/images/albums/tanets-greka.jpg" },
+  { id: "mia-kardia", title: "Mia Kardia", year: 2025, type: "single", coverImage: "/images/albums/mia-kardia.jpg" },
+  { id: "soltera", title: "Soltera", year: 2025, type: "single", featuring: "El Pontios", coverImage: "/images/albums/soltera.jpg" },
+  { id: "par-shirkhani", title: "Par shirkhani", year: 2024, type: "single", coverImage: "/images/albums/par-shirkhani.jpg" },
+  { id: "kavkaz", title: "Kavkaz", titleRu: "Кавказ", year: 2023, type: "single", featuring: "Vasiliadis", coverImage: "/images/albums/kavkaz.jpg" },
+  { id: "ya-grek", title: "Я грек", titleRu: "Я грек", year: 2022, type: "single", coverImage: "/images/albums/ya-grek.jpg" },
+  { id: "kortsopon-apsimon", title: "Kortsopon apsimon", year: 2021, type: "single", coverImage: "/images/albums/kortsopon.jpg" },
+  { id: "monahos", title: "Monahos", year: 2021, type: "single", coverImage: "/images/albums/monahos.jpg" },
+  { id: "kapkan", title: "Капкан", titleRu: "Капкан", year: 2021, type: "single", coverImage: "/images/albums/kapkan.jpg" },
+  { id: "rasskazhi", title: "Расскажи", titleRu: "Расскажи", year: 2020, type: "single", youtubeId: "Ne_uRfKUUlk", coverImage: "/images/albums/rasskazhi.jpg" },
+  { id: "panagia-soumela", title: "Panagia Soumela", year: 2020, type: "single", coverImage: "/images/albums/panagia.jpg" },
+  { id: "dumanli", title: "Dumanli", year: 2019, type: "single", coverImage: "/images/albums/dumanli.jpg" },
+  { id: "tanets-greka", title: "Танец грека", titleRu: "Танец грека", year: 2018, type: "single", coverImage: "/images/albums/tanets-greka.jpg" },
 ];
 
 export const allReleases: Release[] = [album, ...singles];

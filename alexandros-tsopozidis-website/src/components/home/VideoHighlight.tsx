@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import SectionHeading from '@/components/common/SectionHeading';
 import ScrollReveal from '@/components/common/ScrollReveal';
@@ -10,8 +10,11 @@ import { videos } from '@/lib/data/videos';
 export default function VideoHighlight() {
   const t = useTranslations('videos');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
   const featured = videos[0]; // Бродяга
   const thumbnails = videos.slice(1, 4);
+
+  const viewsLabel = locale === 'ru' ? 'просмотров' : locale === 'el' ? 'προβολές' : 'views';
 
   return (
     <section className="py-24 bg-bg-secondary">
@@ -35,7 +38,7 @@ export default function VideoHighlight() {
             <div className="mt-4 text-center">
               <p className="font-display text-lg">{featured.title}</p>
               {featured.views && (
-                <p className="text-text-secondary text-sm font-sans mt-1">{featured.views} views</p>
+                <p className="text-text-secondary text-sm font-sans mt-1">{featured.views} {viewsLabel}</p>
               )}
             </div>
           </div>

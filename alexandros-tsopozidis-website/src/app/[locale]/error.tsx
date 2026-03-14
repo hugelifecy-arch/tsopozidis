@@ -1,9 +1,15 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { captureException } from '@/lib/error-tracking';
 
-export default function Error({ reset }: { reset: () => void }) {
+export default function Error({ error, reset }: { error: Error; reset: () => void }) {
   const t = useTranslations('error');
+
+  useEffect(() => {
+    captureException(error);
+  }, [error]);
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">

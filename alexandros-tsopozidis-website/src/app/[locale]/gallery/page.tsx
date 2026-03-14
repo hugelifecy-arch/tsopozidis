@@ -1,18 +1,19 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { X, ChevronLeft, ChevronRight, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
-import { photos, INSTAGRAM_URL, INSTAGRAM_HANDLE } from '@/lib/data/gallery';
+import { photos, INSTAGRAM_URL, INSTAGRAM_HANDLE, getPhotoAlt } from '@/lib/data/gallery';
 
 const categories = ['all', 'live', 'portrait', 'backstage', 'video-shoot'] as const;
 
 export default function GalleryPage() {
   const t = useTranslations('gallery');
+  const locale = useLocale();
   const [filter, setFilter] = useState<string>('all');
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
@@ -99,12 +100,12 @@ export default function GalleryPage() {
                   >
                     {imageErrors.has(photo.id) ? (
                       <div className="w-full h-full flex items-center justify-center text-text-tertiary text-xs font-sans">
-                        {photo.alt}
+                        {getPhotoAlt(photo, locale)}
                       </div>
                     ) : (
                       <Image
                         src={photo.src}
-                        alt={photo.alt}
+                        alt={getPhotoAlt(photo, locale)}
                         fill
                         loading="lazy"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -199,18 +200,24 @@ export default function GalleryPage() {
             >
               {imageErrors.has(filtered[lightbox].id) ? (
                 <div className="bg-bg-secondary rounded-sm p-8 text-center">
-                  <p className="text-text-secondary font-sans">{filtered[lightbox].alt}</p>
+                  <p className="text-text-secondary font-sans">{getPhotoAlt(filtered[lightbox], locale)}</p>
                 </div>
               ) : (
-                <img
-                  src={filtered[lightbox].src}
-                  alt={filtered[lightbox].alt}
-                  className="max-w-full max-h-[70vh] object-contain rounded-sm"
-                  onError={() => handleImageError(filtered[lightbox].id)}
-                />
+                <div className="relative max-w-full max-h-[70vh]" style={{ aspectRatio: `${filtered[lightbox].width}/${filtered[lightbox].height}` }}>
+                  <Image
+                    src={filtered[lightbox].src}
+                    alt={getPhotoAlt(filtered[lightbox], locale)}
+                    fill
+                    className="object-contain rounded-sm"
+                    sizes="(max-width: 768px) 100vw, 896px"
+                    quality={90}
+                    priority
+                    onError={() => handleImageError(filtered[lightbox].id)}
+                  />
+                </div>
               )}
               <p className="text-text-tertiary text-xs mt-3 text-center font-sans">
-                {filtered[lightbox].alt} — {lightbox + 1} / {filtered.length}
+                {getPhotoAlt(filtered[lightbox], locale)} — {lightbox + 1} / {filtered.length}
               </p>
             </motion.div>
           </motion.div>
