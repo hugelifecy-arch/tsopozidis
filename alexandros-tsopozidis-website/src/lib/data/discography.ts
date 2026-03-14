@@ -50,8 +50,8 @@ export const album: Release = {
   language: ["ru"],
   genre: ["pop", "eastern", "caucasian"],
   description: {
-    en: "Debut album featuring 19 tracks including the hit duets with Elbrus Dzhanmirzoev and Faxo. Announced at Karnavala-2018 in Gelendzhik with Vostok FM support. Includes Kaciyorum, Танец грека, and Ты все потеряла.",
-    ru: "Дебютный альбом из 19 треков, включая хиты с Эльбрусом Джанмирзоевым и Faxo. Анонсирован на Карнавале-2018 в Геленджике при поддержке Восток FM. Включает Kaciyorum, Танец грека и Ты все потеряла.",
+    en: "Debut album featuring 19 tracks including the hit duets with Elbrus Dzhanmirzoev and Faxo. Premiered at Karnavala 2018 in Gelendzhik with Vostok FM support. Includes Kaciyorum, Танец грека, and Ты все потеряла.",
+    ru: "Дебютный альбом из 19 треков, включая хиты с Эльбрусом Джанмирзоевым и Faxo. Презентован на Карнавале-2018 в Геленджике при поддержке Восток FM. Включает Kaciyorum, Танец грека и Ты все потеряла.",
     el: "Ντεμπούτο άλμπουμ με 19 τραγούδια, συμπεριλαμβανομένων ντουέτων με τον Elbrus Dzhanmirzoev και τον Faxo. Περιλαμβάνει Kaciyorum, Τανέτς Γκρέκα και Ты все потеряла.",
   },
   credits: "Label: Independent · Vostok FM media partner",
@@ -77,9 +77,9 @@ export const singles: Release[] = [
     language: ["ru"],
     genre: ["pop", "eastern"],
     description: {
-      en: "The newest release from Alexandros Tsopozidis. A fresh take on his signature blend of Eastern and pop sounds.",
-      ru: "Новейший релиз Александроса Цопозидиса. Свежий взгляд на его фирменное сочетание восточного и поп-звучания.",
-      el: "Η νεότερη κυκλοφορία του Αλέξανδρου Τσοποζίδη. Ανανεωμένη εκδοχή του χαρακτηριστικού μίγματος ανατολίτικου και ποπ ήχου.",
+      en: "The latest single from Alexandros Tsopozidis — his signature blend of Eastern melodies and modern pop.",
+      ru: "Последний сингл Александроса Цопозидиса — фирменное сочетание восточных мелодий и современного попа.",
+      el: "Το τελευταίο single του Αλέξανδρου Τσοποζίδη — ο χαρακτηριστικός του συνδυασμός ανατολικών μελωδιών και σύγχρονης ποπ.",
     },
     spotifyAlbumId: "1lnctFCOafDjAWWoP7AWTH",
     spotifyCoverUrl: "https://i.scdn.co/image/ab67616d00001e021f54ac012cbdf2155ad7bd8e",
