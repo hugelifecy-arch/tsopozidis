@@ -193,7 +193,9 @@
     "booking_phone": "Κρατήσεις: +7 938 316 30 34",
     "follow": "Ακολουθήστε",
     "tagline": "Ελληνική Ψυχή. Ανατολικός Ήχος.",
-    "telegram_cta": "Εγγραφείτε στο Telegram για ανακοινώσεις νέων κυκλοφοριών και συναυλιών"
+    "telegram_cta": "Εγγραφείτε στο Telegram για ανακοινώσεις νέων κυκλοφοριών και συναυλιών",
+    "telegram_button": "Telegram",
+    "website_credit": "Ιστοσελίδα από την ομάδα Tsopozidis"
   },
   "common": {
     "read_more": "Περισσότερα",

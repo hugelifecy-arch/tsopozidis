@@ -193,7 +193,9 @@
     "booking_phone": "Booking: +7 938 316 30 34",
     "follow": "Follow",
     "tagline": "Greek Soul. Eastern Sound.",
-    "telegram_cta": "Subscribe to Telegram for new track and concert announcements"
+    "telegram_cta": "Subscribe to Telegram for new track and concert announcements",
+    "telegram_button": "Telegram",
+    "website_credit": "Website by Tsopozidis Team"
   },
   "common": {
     "read_more": "Read More",
