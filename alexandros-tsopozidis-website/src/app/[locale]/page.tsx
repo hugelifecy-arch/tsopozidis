@@ -2,6 +2,7 @@ import HeroSection from '@/components/home/HeroSection';
 import LatestRelease from '@/components/home/LatestRelease';
 import ComingSoon from '@/components/home/ComingSoon';
 import AboutPreview from '@/components/home/AboutPreview';
+import WhyBook from '@/components/home/WhyBook';
 import VideoHighlight from '@/components/home/VideoHighlight';
 import UpcomingShows from '@/components/home/UpcomingShows';
 import JsonLd from '@/components/JsonLd';
@@ -31,6 +32,8 @@ export default function Home() {
       <ComingSoon />
       <div className="h-[1px] gold-line-subtle" />
       <AboutPreview />
+      <div className="h-[1px] gold-line-subtle" />
+      <WhyBook />
       <VideoHighlight />
       <div className="h-[1px] gold-line-subtle" />
       <UpcomingShows />
