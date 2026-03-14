@@ -254,6 +254,8 @@ export const singles: Release[] = [
       el: "«Πες μου» — ένα ρωσόφωνο ποπ τραγούδι με επίσημο μουσικό βίντεο στο YouTube.",
     },
     youtubeId: "Ne_uRfKUUlk",
+    spotifyAlbumId: "3qrqocYHmAkHLBImZSdlR0",
+    spotifyCoverUrl: "https://i.scdn.co/image/ab67616d00001e02a947f87fcc92af9aa1aaf186",
     coverImage: "/images/albums/rasskazhi.jpg",
   },
   {
@@ -270,6 +272,8 @@ export const singles: Release[] = [
       ru: "Духовная песня, посвящённая монастырю Панагия Сумела — самому священному месту для понтийских греков, изначально в Трабзоне. Глубоко духовное произведение, связывающее Александроса с православным наследием.",
       el: "Ένα αφιερωματικό τραγούδι στο μοναστήρι της Παναγίας Σουμελά — τον πιο ιερό τόπο για τους Πόντιους Έλληνες.",
     },
+    spotifyAlbumId: "6SSmd4Dw7KF1858tNdLBvx",
+    spotifyCoverUrl: "https://i.scdn.co/image/ab67616d00001e02243f3aef80e7ca349f48bbf7",
     coverImage: "/images/albums/panagia.jpg",
   },
   {
@@ -286,6 +290,8 @@ export const singles: Release[] = [
       el: "Τραγούδι στα τουρκικά που σημαίνει «Ομιχλώδης». Συνεργασία με τον Αγαφάγγελο Τσοποζίδη.",
     },
     credits: "feat. Agafangel Tsopozidis",
+    spotifyTrackId: "2hVxYFJTIS1a8GYlEthQB4",
+    spotifyCoverUrl: "https://i.scdn.co/image/ab67616d00001e022c8ef0554a13122e9e431fc7",
     coverImage: "/images/albums/dumanli.jpg",
   },
   {
@@ -304,6 +310,8 @@ export const singles: Release[] = [
       el: "«Ο χορός του Έλληνα» — ένα ζωηρό τραγούδι που γιορτάζει τον ελληνικό χορό. Κλασικό σε ελληνικές εκδηλώσεις.",
     },
     credits: "Written by: Fedos, Vladimir Turshiev",
+    spotifyAlbumId: "5XqFJOzeikzqlA8msKaTBt",
+    spotifyCoverUrl: "https://i.scdn.co/image/ab67616d00001e02998a7e2c12919f1ccb779f1f",
     coverImage: "/images/albums/tanets-greka.jpg",
   },
 ];
