@@ -106,6 +106,38 @@ export const photos: Photo[] = [
     width: 3,
     height: 4,
   },
+  // Portrait & lifestyle photos
+  {
+    id: "portrait-balcony-striped",
+    src: "/images/gallery/portrait-balcony-striped.jpg",
+    alt: "Alexandros Tsopozidis — portrait on balcony in striped shirt",
+    altRu: "Александрос Цопозидис — портрет на балконе в полосатой рубашке",
+    altEl: "Αλέξανδρος Τσοποζίδης — πορτρέτο στο μπαλκόνι με ριγέ πουκάμισο",
+    category: "portrait",
+    width: 4,
+    height: 5,
+  },
+  {
+    id: "portrait-balcony-camera",
+    src: "/images/gallery/portrait-balcony-camera.jpg",
+    alt: "Alexandros Tsopozidis — smiling with camera on balcony",
+    altRu: "Александрос Цопозидис — с камерой на балконе",
+    altEl: "Αλέξανδρος Τσοποζίδης — με κάμερα στο μπαλκόνι",
+    category: "backstage",
+    width: 4,
+    height: 3,
+  },
+  {
+    id: "portrait-promenade-bw",
+    src: "/images/gallery/portrait-promenade-bw.jpg",
+    alt: "Alexandros Tsopozidis — black and white walk on the promenade",
+    altRu: "Александрос Цопозидис — чёрно-белая прогулка по набережной",
+    altEl: "Αλέξανδρος Τσοποζίδης — ασπρόμαυρος περίπατος στην παραλία",
+    category: "portrait",
+    width: 3,
+    height: 4,
+  },
+
   // Music video stills
   {
     id: "video-traditional",
