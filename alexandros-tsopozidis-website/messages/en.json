@@ -50,7 +50,11 @@
     "portrait": "Portrait",
     "backstage": "Backstage",
     "video_shoot": "Video Shoots",
-    "press_note": "For press inquiries and high-resolution images, please contact us."
+    "press_note": "For press inquiries and high-resolution images, please contact us.",
+    "instagram_title": "More on Instagram",
+    "instagram_subtitle": "Follow Alexandros for exclusive behind-the-scenes content, live moments, and daily updates.",
+    "instagram_follow": "Follow",
+    "instagram_followers": "followers"
   },
   "events": {
     "title": "Events",
