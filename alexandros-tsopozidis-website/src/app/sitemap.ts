@@ -14,6 +14,16 @@ const pages = [
   { path: 'press', changeFrequency: 'monthly' as const, priority: 0.5, lastModified: '2026-01-15' },
 ];
 
+function buildAlternates(pagePath: string) {
+  const languages: Record<string, string> = {};
+  for (const locale of locales) {
+    const url = pagePath ? `${BASE_URL}/${locale}/${pagePath}` : `${BASE_URL}/${locale}`;
+    languages[locale] = url;
+  }
+  languages['x-default'] = pagePath ? `${BASE_URL}/en/${pagePath}` : `${BASE_URL}/en`;
+  return { languages };
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
@@ -28,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: page.lastModified,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
+        alternates: buildAlternates(page.path),
       });
     }
   }

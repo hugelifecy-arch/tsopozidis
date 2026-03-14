@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-const BASE_URL = 'https://tsopozidis-alexandros.com';
+export const BASE_URL = 'https://tsopozidis-alexandros.com';
 
 const localeMap: Record<string, string> = {
   en: 'en_US',
@@ -48,9 +48,18 @@ export function generatePageMetadata({
   const canonical = `${BASE_URL}/${locale}${pagePath}`;
   const image = ogImage || `${BASE_URL}/images/og-default.jpg`;
 
+  const verification: Metadata['verification'] = {};
+  if (process.env.NEXT_PUBLIC_GSC_VERIFICATION) {
+    verification.google = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
+  }
+  if (process.env.NEXT_PUBLIC_YANDEX_VERIFICATION) {
+    verification.yandex = process.env.NEXT_PUBLIC_YANDEX_VERIFICATION;
+  }
+
   return {
     title,
     description,
+    verification,
     alternates: {
       canonical,
       languages: {
