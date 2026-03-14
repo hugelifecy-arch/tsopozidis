@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { User } from 'lucide-react';
 import ScrollReveal from '@/components/common/ScrollReveal';
 
 export default function AboutPreview() {
@@ -15,8 +14,12 @@ export default function AboutPreview() {
         {/* Photo */}
         <ScrollReveal direction="left" className="w-full md:w-[45%]">
           <div className="relative">
-            <div className="aspect-[3/4] bg-bg-secondary rounded-sm flex items-center justify-center">
-              <User size={64} className="text-gold/20" />
+            <div className="aspect-[3/4] bg-bg-secondary rounded-sm overflow-hidden">
+              <img
+                src="/images/artist/portrait-balcony.jpg"
+                alt="Alexandros Tsopozidis"
+                className="w-full h-full object-cover"
+              />
             </div>
             {/* Decorative frame offset */}
             <div className="absolute -top-3 -left-3 w-full h-full border border-gold/20 rounded-sm pointer-events-none" />
