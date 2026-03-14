@@ -42,7 +42,7 @@ export default function LatestRelease() {
               <h3 className="font-display text-4xl mt-4">{latest.title}</h3>
               <p className="font-serif text-text-secondary text-lg mt-1">{latest.year}</p>
               <p className="text-text-secondary font-sans font-light mt-4 leading-relaxed">
-                The latest single from Alexandros Tsopozidis, blending Greek and Eastern musical traditions.
+                {t('latest_description')}
               </p>
 
               {/* Streaming buttons */}

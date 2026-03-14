@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'music' });
   return {
     title: `${t('title')} — Alexandros Tsopozidis`,
-    description: 'Listen to Alexandros Tsopozidis on Spotify, Apple Music, YouTube, and more.',
+    description: t('meta_description'),
   };
 }
 
@@ -44,11 +44,11 @@ export default function MusicPage() {
                 </span>
                 <h3 className="font-display text-4xl mt-4">Mia Kardia</h3>
                 <p className="text-text-secondary font-sans font-light mt-4 leading-relaxed">
-                  A heartfelt single blending Greek and Eastern musical traditions.
+                  {t('latest_description')}
                 </p>
                 {/* Spotify embed placeholder */}
                 <div className="mt-6 bg-bg-tertiary rounded-lg p-4">
-                  <p className="text-text-tertiary text-sm font-sans">Spotify Player — embed will load here</p>
+                  <p className="text-text-tertiary text-sm font-sans">{t('spotify_placeholder')}</p>
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function MusicPage() {
               </div>
               <div className="w-full md:w-[60%]">
                 <h3 className="font-display text-3xl">{album.title}</h3>
-                <p className="font-serif text-text-secondary text-lg mt-1">{album.year} · {album.trackCount} tracks</p>
+                <p className="font-serif text-text-secondary text-lg mt-1">{album.year} · {album.trackCount} {t('tracks')}</p>
                 <div className="flex flex-wrap gap-3 mt-6">
                   {streamingPlatforms.map((p) => (
                     <a
@@ -93,7 +93,7 @@ export default function MusicPage() {
       <section className="py-24 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <SectionHeading title={`${t('full_discography')} — Singles`} />
+            <SectionHeading title={`${t('full_discography')} — ${t('singles')}`} />
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {singles.map((single, i) => (

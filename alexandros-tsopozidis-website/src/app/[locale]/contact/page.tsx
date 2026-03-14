@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'contact' });
   return {
     title: `${t('title')} — Alexandros Tsopozidis`,
-    description: 'Book Alexandros Tsopozidis for concerts, festivals, and private events.',
+    description: t('meta_description'),
   };
 }
 
