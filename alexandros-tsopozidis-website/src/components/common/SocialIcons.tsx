@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Youtube, Music, type LucideIcon } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Music } from 'lucide-react';
 import { socialLinks } from '@/lib/data/social-links';
 
 interface SocialIconsProps {
@@ -8,14 +8,51 @@ interface SocialIconsProps {
 
 const sizeMap = { sm: 16, md: 20, lg: 24 };
 
-const iconMap: Record<string, LucideIcon> = {
-  instagram: Instagram,
-  facebook: Facebook,
-  youtube: Youtube,
-  spotify: Music,
+function TikTokIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.49a8.27 8.27 0 0 0 4.85 1.56V6.6a4.84 4.84 0 0 1-1.09.09z" />
+    </svg>
+  );
+}
+
+function VKIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.678.847 2.49 2.27 4.675 2.852 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.27-1.422 2.168-3.624 2.168-3.624.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z" />
+    </svg>
+  );
+}
+
+function OKIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M14.505 17.44a11.97 11.97 0 0 0 3.055-1.42.75.75 0 0 0-.75-1.3 10.52 10.52 0 0 1-5.31 1.57c-1.86 0-3.67-.53-5.31-1.57a.75.75 0 1 0-.75 1.3c.96.55 1.98.98 3.055 1.42L6.08 20.69a.75.75 0 0 0 1.06 1.06L12 16.89l4.86 4.86a.75.75 0 0 0 1.06-1.06l-3.415-3.45zM12 2.25a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5zm0 9a3.75 3.75 0 1 1 0-7.5 3.75 3.75 0 0 1 0 7.5z" />
+    </svg>
+  );
+}
+
+function TelegramIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+    </svg>
+  );
+}
+
+const iconMap: Record<string, React.FC<{ size: number }>> = {
+  instagram: ({ size }) => <Instagram size={size} />,
+  facebook: ({ size }) => <Facebook size={size} />,
+  youtube: ({ size }) => <Youtube size={size} />,
+  spotify: ({ size }) => <Music size={size} />,
+  tiktok: TikTokIcon,
+  vk: VKIcon,
+  ok: OKIcon,
+  telegram: TelegramIcon,
 };
 
 export default function SocialIcons({ size = 'md', platforms }: SocialIconsProps) {
+  const iconSize = sizeMap[size];
   const filtered = platforms
     ? socialLinks.filter((l) => platforms.includes(l.platform))
     : socialLinks.filter((l) => ['tiktok', 'youtube', 'instagram', 'facebook', 'vk', 'ok', 'telegram'].includes(l.platform));
@@ -23,7 +60,7 @@ export default function SocialIcons({ size = 'md', platforms }: SocialIconsProps
   return (
     <div className="flex items-center gap-4">
       {filtered.map((link) => {
-        const Icon = iconMap[link.platform];
+        const IconComponent = iconMap[link.platform];
         return (
           <a
             key={link.platform}
@@ -33,12 +70,10 @@ export default function SocialIcons({ size = 'md', platforms }: SocialIconsProps
             aria-label={link.label}
             className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-secondary hover:text-gold transition-colors duration-300"
           >
-            {Icon ? (
-              <Icon size={sizeMap[size]} />
+            {IconComponent ? (
+              <IconComponent size={iconSize} />
             ) : (
-              <span className="text-xs uppercase tracking-wider font-sans" style={{ fontSize: sizeMap[size] * 0.6 }}>
-                {link.platform === 'tiktok' ? 'TT' : link.platform === 'vk' ? 'VK' : link.platform === 'ok' ? 'OK' : link.platform === 'telegram' ? 'TG' : link.platform === 'zvuk' ? 'ZV' : link.label.substring(0, 2).toUpperCase()}
-              </span>
+              <span className="text-xs uppercase tracking-wider font-sans">{link.label.substring(0, 2).toUpperCase()}</span>
             )}
           </a>
         );

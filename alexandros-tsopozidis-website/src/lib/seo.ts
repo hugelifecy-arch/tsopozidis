@@ -8,6 +8,27 @@ const localeMap: Record<string, string> = {
   el: 'el_GR',
 };
 
+export const ARTIST_NAME: Record<string, string> = {
+  en: 'Alexandros Tsopozidis',
+  ru: 'Александрос Цопозидис',
+  el: 'Αλέξανδρος Τσοποζίδης',
+};
+
+export function getArtistName(locale: string): string {
+  return ARTIST_NAME[locale] || ARTIST_NAME.en;
+}
+
+export function generateBreadcrumbSchema(locale: string, pageName: string, pagePath: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: pageName, item: `${BASE_URL}/${locale}/${pagePath}` },
+    ],
+  };
+}
+
 export function generatePageMetadata({
   locale,
   path = '',

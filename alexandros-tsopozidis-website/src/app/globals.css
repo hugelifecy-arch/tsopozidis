@@ -8,6 +8,12 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --font-cinzel: 'Cinzel', serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
 body {
   background-color: #0A0A0A;
   color: #F5F0E8;
@@ -15,8 +21,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* Noise texture overlay rendered via layout.tsx fixed div — no duplicate needed here */
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {

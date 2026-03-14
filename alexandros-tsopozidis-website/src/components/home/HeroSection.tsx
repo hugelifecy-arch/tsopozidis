@@ -3,14 +3,17 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
+import { getWhatsAppUrl } from '@/lib/utm';
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export default function HeroSection() {
   const t = useTranslations('hero');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
   const { scrollY } = useScroll();
   const bgY = useTransform(scrollY, [0, 1000], [0, 300]);
 
@@ -95,7 +98,7 @@ export default function HeroSection() {
             {t('cta_listen')}
           </Link>
           <a
-            href="https://wa.me/79383163034?text=Hello!%20I%20would%20like%20to%20inquire%20about%20booking%20Alexandros%20Tsopozidis%20for%20an%20event."
+            href={getWhatsAppUrl(locale)}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gold text-bg-primary px-8 py-3 text-sm font-display uppercase tracking-wider hover:bg-gold-light transition-all duration-300"

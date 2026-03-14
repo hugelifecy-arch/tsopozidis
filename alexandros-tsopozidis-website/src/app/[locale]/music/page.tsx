@@ -1,11 +1,11 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { Music } from 'lucide-react';
-import { generatePageMetadata } from '@/lib/seo';
+import { generatePageMetadata, getArtistName } from '@/lib/seo';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import SectionHeading from '@/components/common/SectionHeading';
 import JsonLd from '@/components/JsonLd';
+import AlbumCover from '@/components/AlbumCover';
 import { album, singles } from '@/lib/data/discography';
 import { socialLinks } from '@/lib/data/social-links';
 
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return generatePageMetadata({
     locale,
     path: 'music',
-    title: `${t('title')} — Alexandros Tsopozidis`,
+    title: `${t('title')} — ${getArtistName(locale)}`,
     description: musicDescriptions[locale] || musicDescriptions.en,
   });
 }
@@ -57,9 +57,7 @@ export default function MusicPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <div className="flex flex-col md:flex-row gap-12 items-center max-w-4xl mx-auto">
-              <div className="w-full md:w-[40%] aspect-square bg-bg-secondary rounded-sm border border-gold/20 flex items-center justify-center">
-                <Music size={64} className="text-gold/20" />
-              </div>
+              <AlbumCover src={singles[0].coverImage} title={singles[0].title} year={singles[0].year} size="lg" className="w-full md:w-[40%]" />
               <div className="w-full md:w-[60%]">
                 <span className="text-xs tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full uppercase font-sans">
                   2025
@@ -68,9 +66,18 @@ export default function MusicPage() {
                 <p className="text-text-secondary font-sans font-light mt-4 leading-relaxed">
                   {t('latest_description')}
                 </p>
-                {/* Spotify embed placeholder */}
-                <div className="mt-6 bg-bg-tertiary rounded-lg p-4">
-                  <p className="text-text-tertiary text-sm font-sans">{t('spotify_placeholder')}</p>
+                {/* Spotify Player */}
+                <div className="mt-6">
+                  <iframe
+                    src="https://open.spotify.com/embed/artist/6PPuuN3cvmbyuvgrGbhXge?utm_source=generator&theme=0"
+                    width="100%"
+                    height="352"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    className="rounded-lg"
+                    title="Spotify Player — Alexandros Tsopozidis"
+                  />
                 </div>
               </div>
             </div>
@@ -86,9 +93,7 @@ export default function MusicPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <div className="flex flex-col md:flex-row gap-12 items-center max-w-4xl mx-auto">
-              <div className="w-full md:w-[40%] aspect-square bg-bg-tertiary rounded-sm border border-border flex items-center justify-center">
-                <Music size={64} className="text-gold/20" />
-              </div>
+              <AlbumCover src={album.coverImage} title={album.title} year={album.year} size="lg" className="w-full md:w-[40%]" />
               <div className="w-full md:w-[60%]">
                 <h3 className="font-display text-3xl">{album.title}</h3>
                 <p className="font-serif text-text-secondary text-lg mt-1">{album.year} · {album.trackCount} {t('tracks')}</p>
@@ -104,6 +109,18 @@ export default function MusicPage() {
                       {p.label}
                     </a>
                   ))}
+                </div>
+                <div className="mt-6">
+                  <iframe
+                    src="https://open.spotify.com/embed/artist/6PPuuN3cvmbyuvgrGbhXge?utm_source=generator&theme=0"
+                    width="100%"
+                    height="152"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    className="rounded-lg"
+                    title="Spotify Player — За тобой"
+                  />
                 </div>
               </div>
             </div>
@@ -121,8 +138,8 @@ export default function MusicPage() {
             {singles.map((single, i) => (
               <ScrollReveal key={single.id} delay={i * 0.05}>
                 <div className="group bg-bg-secondary rounded-sm border border-border hover:border-gold/30 transition-all duration-300 overflow-hidden">
-                  <div className="aspect-square bg-bg-tertiary flex items-center justify-center relative">
-                    <Music size={32} className="text-gold/20" />
+                  <div className="relative">
+                    <AlbumCover src={single.coverImage} title={single.title} year={single.year} size="sm" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <span className="absolute top-3 right-3 text-xs bg-bg-primary/80 text-gold px-2 py-1 rounded font-sans">
                       {single.year}

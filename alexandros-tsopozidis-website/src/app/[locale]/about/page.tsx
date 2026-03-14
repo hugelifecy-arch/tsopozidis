@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { generatePageMetadata } from '@/lib/seo';
+import { generatePageMetadata, getArtistName } from '@/lib/seo';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import GoldButton from '@/components/common/GoldButton';
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return generatePageMetadata({
     locale,
     path: 'about',
-    title: `${t('title')} — Alexandros Tsopozidis`,
+    title: `${t('title')} — ${getArtistName(locale)}`,
     description: aboutDescriptions[locale] || aboutDescriptions.en,
     ogType: 'profile',
   });

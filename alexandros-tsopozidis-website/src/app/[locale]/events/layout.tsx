@@ -1,4 +1,5 @@
-import { generatePageMetadata } from '@/lib/seo';
+import { getTranslations } from 'next-intl/server';
+import { generatePageMetadata, getArtistName } from '@/lib/seo';
 
 const eventsDescriptions: Record<string, string> = {
   en: 'Alexandros Tsopozidis upcoming shows and past events. Book for concerts, corporate events, weddings and private parties. Contact: +7 938 316 30 34.',
@@ -8,10 +9,11 @@ const eventsDescriptions: Record<string, string> = {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'events' });
   return generatePageMetadata({
     locale,
     path: 'events',
-    title: 'Events — Alexandros Tsopozidis',
+    title: `${t('title')} — ${getArtistName(locale)}`,
     description: eventsDescriptions[locale] || eventsDescriptions.en,
   });
 }

@@ -1,14 +1,12 @@
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Alexandros Tsopozidis — Links',
-  description: 'All links for Alexandros Tsopozidis — music, social media, booking.',
-};
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const links = [
   { label: 'Latest Release: Mia Kardia', href: 'https://tsopozidis-alexandros.com/en/music?utm_source=linkinbio&utm_medium=social', emoji: '🎵' },
   { label: 'Coming Soon: Вечная любовь', href: 'https://t.me/tsopozidis?utm_source=linkinbio&utm_medium=social', emoji: '🔥' },
-  { label: 'Watch Бродяга (22M+ views)', href: 'https://www.youtube.com/watch?v=z9ASjQE6Q2Y?utm_source=linkinbio&utm_medium=social', emoji: '▶️' },
+  { label: 'Watch Бродяга (22M+ views)', href: 'https://www.youtube.com/watch?v=z9ASjQE6Q2Y&utm_source=linkinbio&utm_medium=social', emoji: '▶️' },
   { label: 'Spotify', href: 'https://open.spotify.com/artist/6PPuuN3cvmbyuvgrGbhXge?utm_source=linkinbio&utm_medium=social', emoji: '🎧' },
   { label: 'Apple Music', href: 'https://music.apple.com/artist/alexandros-tsopozidis/839072119?utm_source=linkinbio&utm_medium=social', emoji: '🎧' },
   { label: 'Yandex Music', href: 'https://music.yandex.ru/artist/3050547?utm_source=linkinbio&utm_medium=social', emoji: '🎧' },
@@ -21,14 +19,24 @@ const links = [
 ];
 
 export default function LinksPage() {
+  const [greeting, setGreeting] = useState('Greek Soul · Eastern Sound');
+
+  useEffect(() => {
+    const lang = navigator.language?.slice(0, 2);
+    if (lang === 'ru') setGreeting('Греческая душа · Восточный звук');
+    else if (lang === 'el') setGreeting('Ελληνική ψυχή · Ανατολίτικος ήχος');
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center p-4">
       <div className="w-full max-w-[480px] py-12 text-center">
         {/* Artist photo */}
         <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-[#C8A96E] mb-4">
-          <img
+          <Image
             src="/images/artist/portrait-balcony.jpg"
             alt="Alexandros Tsopozidis"
+            width={96}
+            height={96}
             className="w-full h-full object-cover"
           />
         </div>
@@ -37,7 +45,7 @@ export default function LinksPage() {
           Alexandros Tsopozidis
         </h1>
         <p className="text-[#A09080] text-sm italic mt-1">
-          Greek Soul · Eastern Sound
+          {greeting}
         </p>
 
         {/* Links */}

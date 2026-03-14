@@ -4,18 +4,17 @@ const BASE_URL = 'https://tsopozidis-alexandros.com';
 const locales = ['en', 'ru', 'el'];
 
 const pages = [
-  { path: '', changeFrequency: 'weekly' as const, priority: 1.0 },
-  { path: 'about', changeFrequency: 'monthly' as const, priority: 0.6 },
-  { path: 'music', changeFrequency: 'weekly' as const, priority: 0.8 },
-  { path: 'videos', changeFrequency: 'monthly' as const, priority: 0.8 },
-  { path: 'gallery', changeFrequency: 'monthly' as const, priority: 0.6 },
-  { path: 'events', changeFrequency: 'weekly' as const, priority: 0.8 },
-  { path: 'contact', changeFrequency: 'monthly' as const, priority: 0.5 },
-  { path: 'press', changeFrequency: 'monthly' as const, priority: 0.5 },
+  { path: '', changeFrequency: 'weekly' as const, priority: 1.0, lastModified: '2026-03-14' },
+  { path: 'about', changeFrequency: 'monthly' as const, priority: 0.6, lastModified: '2026-03-01' },
+  { path: 'music', changeFrequency: 'weekly' as const, priority: 0.8, lastModified: '2026-03-14' },
+  { path: 'videos', changeFrequency: 'monthly' as const, priority: 0.8, lastModified: '2026-02-15' },
+  { path: 'gallery', changeFrequency: 'monthly' as const, priority: 0.6, lastModified: '2026-02-01' },
+  { path: 'events', changeFrequency: 'weekly' as const, priority: 0.8, lastModified: '2026-03-14' },
+  { path: 'contact', changeFrequency: 'monthly' as const, priority: 0.5, lastModified: '2026-01-15' },
+  { path: 'press', changeFrequency: 'monthly' as const, priority: 0.5, lastModified: '2026-01-15' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date().toISOString();
   const entries: MetadataRoute.Sitemap = [];
 
   for (const locale of locales) {
@@ -26,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       entries.push({
         url,
-        lastModified: now,
+        lastModified: page.lastModified,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
       });

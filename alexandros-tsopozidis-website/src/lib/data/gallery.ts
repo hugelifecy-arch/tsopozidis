@@ -10,6 +10,12 @@ export interface Photo {
   instagramUrl?: string;
 }
 
+export function getPhotoAlt(photo: Photo, locale: string): string {
+  if (locale === 'ru' && photo.altRu) return photo.altRu;
+  if (locale === 'el' && photo.altEl) return photo.altEl;
+  return photo.alt;
+}
+
 export const photos: Photo[] = [
   // Artist portrait photos — rain photoshoot
   {
