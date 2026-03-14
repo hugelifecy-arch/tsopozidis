@@ -1,10 +1,11 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { generatePageMetadata, getArtistName } from '@/lib/seo';
+import { generatePageMetadata, getArtistName, generateBreadcrumbSchema } from '@/lib/seo';
 import { Download, Phone } from 'lucide-react';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import SectionHeading from '@/components/common/SectionHeading';
+import JsonLd from '@/components/JsonLd';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -32,6 +33,7 @@ export default function PressPage() {
 
   return (
     <>
+      <JsonLd data={generateBreadcrumbSchema('en', 'Press', 'press')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       {/* Quick Facts */}
