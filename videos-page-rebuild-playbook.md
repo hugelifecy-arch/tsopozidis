@@ -26,35 +26,39 @@ Go to `https://www.youtube.com/@tsopozidisalexandros/videos` and collect the You
 
 | # | Title | YouTube ID | Year | Views (approx) | Category |
 |---|-------|-----------|------|-----------------|----------|
-| 1 | Бродяга (feat. Elbrus Dzhanmirzoev) | `z9ASjQE6Q2Y` | 2017 | 49M+ | Top |
-| 2 | Male Male | `o20LEgccjxY` | 2016 | 13M+ | Top |
-| 3 | Kaciyorum-Fevgo | `F9rQSin9PIY` | 2019 | 4.5M+ | Top |
-| 4 | Дай мне номер телефона | `Rxp_-wMKU5k` | 2018 | — | Top |
+| 1 | Бродяга (feat. Elbrus Dzhanmirzoev) | `z9ASjQE6Q2Y` | 2014 | 49M+ | Top |
+| 2 | Male Male | `o20LEgccjxY` | 2013 | 13M+ | Top |
+| 3 | Kaciyorum-Fevgo (feat. Faxo) | `F9rQSin9PIY` | 2013 | 4.5M+ | Top |
+| 4 | Дай мне номер телефона | `Rxp_-wMKU5k` | 2017 | — | Top |
 | 5 | Расскажи | `Ne_uRfKUUlk` | 2020 | — | Top |
 
 ### Must be added — LOOK UP IDs from YouTube channel
 
 | # | Title | YouTube ID | Year | Views (approx) | Category |
 |---|-------|-----------|------|-----------------|----------|
-| 6 | Ты все потеряла (feat. Elbrus Dzhanmirzoev) | `__LOOKUP__` | 2016 | 31M+ | Top |
-| 7 | MONAHOS-SHIRKHANI (REMIX) | `__LOOKUP__` | 2023 | 19M+ | Top |
-| 8 | KAPKAN (Капкан) | `__LOOKUP__` | 2021 | 13M+ | Top |
-| 9 | Я ГРЕК | `__LOOKUP__` | 2022 | 3.2M+ | Top |
-| 10 | За Тобой | `__LOOKUP__` | 2018 | 3M+ | Top |
-| 11 | Dumanli | `__LOOKUP__` | 2018 | 2.2M+ | Top |
-| 12 | Mia Kardia | `__LOOKUP__` | 2025 | — | Latest |
-| 13 | PAR SHIRKHANI | `__LOOKUP__` | 2024 | 1.1M+ | Latest |
-| 14 | Kavkaz | `__LOOKUP__` | 2023 | — | Latest |
+| 6 | Ты все потеряла (feat. Elbrus Dzhanmirzoev) | `H_j4mXRQYf4` | 2016 | 31M+ | Top |
+| 7 | MONAHOS-SHIRKHANI (REMIX) | `5bGsXOJuqWk` | 2023 | 19M+ | Top |
+| 8 | KAPKAN (Капкан) | `wHOp_ojf60c` | 2021 | 13M+ | Top |
+| 9 | Я ГРЕК | `sULilaPkHp0` | 2022 | 3.2M+ | Top |
+| 10 | За Тобой | `xw8ctinyw_o` | 2018 | 3M+ | Top |
+| 11 | Dumanli (feat. Agafangel Tsopozidis) | `ImJG4MWh3pA` | 2019 | 2.2M+ | Top |
+| 12 | Mia Kardia | `Dm1uJYi6qmk` | 2025 | — | Latest |
+| 13 | PAR SHIRKHANI | `vYtPMQqthVU` | 2024 | 1.1M+ | Latest |
+| 14 | Kavkaz | `6uzHGKptumI` | 2023 | 5.3M+ | Latest |
 
 ### Live / Special — LOOK UP from YouTube channel
 
 | # | Title | YouTube ID | Year | Views | Category |
 |---|-------|-----------|------|-------|----------|
-| 15 | ЖАРА В БАКУ 2018 — Бродяга live | `__LOOKUP__` | 2018 | — | Live |
-| 16 | Any festival / acoustic / TV clip | `__LOOKUP__` | — | — | Live |
+| 15 | ЖАРА В БАКУ 2018 — Бродяга live | `WT_kNA9jMVI` | 2018 | 295K+ | Live |
+| 16 | Бродяга — Бишкек live (feat. R.I.O.) | `Caewt2EQokI` | 2017 | — | Live |
+| 17 | Танец Грека — Vegas City Hall live | `DvNWi6adhAA` | 2018 | — | Live |
+| 18 | Бродяга — Челябинск live (feat. Elbrus Dzhanmirzoev) | `vDnG-nSY8jA` | — | — | Live |
+| 19 | Male Male — Нальчик live | `OMExo_xHceE` | — | — | Live |
 
-> **Note:** Search the channel for any video with "live", "концерт", "фестиваль", "acoustic" in the title. Pick 2–4 of the strongest ones.
-> Also check Facebook (https://www.facebook.com/alexandros.tsopozidis/) — a "Вечная любовь" premiere was teased ~6 days ago (as of mid-March 2026). If it has dropped, add it to Latest Releases.
+> **Note:** ЖАРА В БАКУ video is on the ЖАРА TV channel (not Tsopozidis's own). The other live clips are from his channel. Additional live clips include Greek national anthem performance (`gjEZMka3R0I`) and a New Year's gala (`EQP1wK6TAX8`).
+> **Вечная любовь update (March 2026):** A teaser video titled "Alexandros Tsopozidis-Вечная Любовь. Скоро" (`Rkd11qt45xI`) is on the channel. Also "ТЫ НЕ СВЯТАЯ" (`6yUNAOOfe5k`) appears to be the latest full release. When "Вечная любовь" drops as a full video, add it to Latest Releases.
+> **YouTube Channel ID:** `UC_25lDUqfZLnjvWxzPHGNmg` — handle: `@tsopozidisalexandros`
 
 ---
 
@@ -377,8 +381,10 @@ Run through this checklist:
 
 ## Notes
 
-- The Facebook page teased a "Вечная любовь" (Eternal Love) premiere as of early March 2026. If this video has been published by the time you run these prompts, add it to the Latest Releases section.
+- The "Вечная любовь" (Eternal Love) premiere was teased on the YouTube channel (`Rkd11qt45xI`). A new single "ТЫ НЕ СВЯТАЯ" (`6yUNAOOfe5k`) has also been uploaded. When these are fully released, add them to Latest Releases.
 - The YouTube channel handle is `@tsopozidisalexandros` — this is confirmed from the site's existing links.
 - The current site uses WhatsApp booking at `+7 938 316 30 34` — keep this consistent.
 - Existing site colour palette appears to be dark/navy backgrounds with gold/warm accents — match existing tokens, do not introduce new colours.
-- The `Бродяга` video is listed on the current site as "22M+ views" but external sources show ~49M. Always use the latest count from YouTube when populating data.
+- The `Бродяга` video (`z9ASjQE6Q2Y`) is listed on the current site as "22M+ views" but external sources show ~49M. Always use the latest count from YouTube when populating data.
+- The Kavkaz video also exists on VASILIADIS's channel (`_ixpU-11vFE` on Popnable). The version on Tsopozidis's own channel is `6uzHGKptumI`. Use whichever has more views, or reference both.
+- There are two versions of some videos on the channel (e.g., За Тобой has multiple uploads: `xw8ctinyw_o` official clip, `9YBJUo7MgOo`, `VhBmdkwbNXg`). Use the official clip version.
