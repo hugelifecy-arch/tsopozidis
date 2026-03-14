@@ -37,15 +37,19 @@ export default function ContactPage() {
               </p>
 
               {/* Phone */}
-              <div className="flex items-center justify-center gap-3 mb-8">
-                <Phone size={20} className="text-gold flex-shrink-0" />
-                <a
-                  href="tel:+79383163034"
-                  className="font-display text-xl tracking-wider text-gold hover:text-gold-light transition-colors"
-                >
-                  +7 938 316 30 34
-                </a>
-                <span className="text-text-secondary font-sans text-sm">(Liana)</span>
+              <div className="flex flex-col items-center gap-2 mb-8">
+                <span className="font-display text-sm uppercase tracking-wider text-text-secondary">
+                  Booking Manager: Liana
+                </span>
+                <div className="flex items-center gap-3">
+                  <Phone size={20} className="text-gold flex-shrink-0" />
+                  <a
+                    href="tel:+79383163034"
+                    className="font-display text-xl tracking-wider text-gold hover:text-gold-light transition-colors"
+                  >
+                    Phone / WhatsApp: +7 938 316 30 34
+                  </a>
+                </div>
               </div>
 
               {/* WhatsApp & Telegram buttons */}
