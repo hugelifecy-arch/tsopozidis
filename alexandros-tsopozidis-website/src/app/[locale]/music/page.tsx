@@ -1,19 +1,40 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Music } from 'lucide-react';
+import { generatePageMetadata } from '@/lib/seo';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import SectionHeading from '@/components/common/SectionHeading';
+import JsonLd from '@/components/JsonLd';
 import { album, singles } from '@/lib/data/discography';
 import { socialLinks } from '@/lib/data/social-links';
+
+const musicDescriptions: Record<string, string> = {
+  en: 'Listen to Alexandros Tsopozidis — Mia Kardia, Soltera, Kavkaz, Бродяга and more on Spotify, Apple Music, Yandex Music, YouTube and Zvuk.',
+  ru: 'Слушайте Александрос Цопозидис — Mia Kardia, Soltera, Кавказ, Бродяга на Spotify, Apple Music, Яндекс Музыка, YouTube и Звук.',
+  el: 'Ακούστε Αλέξανδρος Τσοποζίδης — Mia Kardia, Soltera, Kavkaz, Бродяга σε Spotify, Apple Music, YouTube και άλλες πλατφόρμες.',
+};
+
+const musicRecordingsSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'MusicRecording', name: 'Mia Kardia', datePublished: '2025', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' }, url: 'https://tsopozidis-alexandros.com/en/music' },
+    { '@type': 'MusicRecording', name: 'Soltera', datePublished: '2025', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' }, contributor: { '@type': 'MusicArtist', name: 'El Pontios' } },
+    { '@type': 'MusicRecording', name: 'Par shirkhani', datePublished: '2024', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
+    { '@type': 'MusicRecording', name: 'Kavkaz', datePublished: '2023', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
+    { '@type': 'MusicRecording', name: 'Я грек', datePublished: '2022', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
+  ],
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'music' });
-  return {
+  return generatePageMetadata({
+    locale,
+    path: 'music',
     title: `${t('title')} — Alexandros Tsopozidis`,
-    description: t('meta_description'),
-  };
+    description: musicDescriptions[locale] || musicDescriptions.en,
+  });
 }
 
 const streamingPlatforms = socialLinks.filter((l) =>
@@ -25,6 +46,7 @@ export default function MusicPage() {
 
   return (
     <>
+      <JsonLd data={musicRecordingsSchema} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       {/* Latest Release */}

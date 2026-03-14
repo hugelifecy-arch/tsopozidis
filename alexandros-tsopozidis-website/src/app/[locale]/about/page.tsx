@@ -1,17 +1,58 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { generatePageMetadata } from '@/lib/seo';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import GoldButton from '@/components/common/GoldButton';
+import JsonLd from '@/components/JsonLd';
+import CareerTimeline from '@/components/CareerTimeline';
 import { User, MapPin, Award, Music, Globe, type LucideIcon } from 'lucide-react';
+
+const aboutDescriptions: Record<string, string> = {
+  en: 'The story of Alexandros Tsopozidis — from Pontic Greek roots in Georgia to 22M+ YouTube views. Blending Caucasian, Greek and Eastern music traditions.',
+  ru: 'История Александроса Цопозидиса — от понтийских греческих корней в Грузии до 22М+ просмотров на YouTube. Кавказская и греческая музыка.',
+  el: 'Η ιστορία του Αλέξανδρου Τσοποζίδη — από τις ποντιακές ρίζες στη Γεωργία στα 22M+ views στο YouTube.',
+};
+
+const musicArtistSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicArtist',
+  name: 'Alexandros Tsopozidis',
+  alternateName: ['Александрос Цопозидис', 'Αλέξανδρος Τσοποζίδης'],
+  description: 'Greek-Caucasian singer blending Pontic Greek, Eastern and pop traditions. Known for Бродяга (22M+ YouTube views).',
+  url: 'https://tsopozidis-alexandros.com',
+  image: 'https://tsopozidis-alexandros.com/images/artist/portrait-balcony.jpg',
+  birthDate: '1986-01-01',
+  birthPlace: { '@type': 'Place', name: 'Sameba (Guniakala), Georgia' },
+  nationality: 'Greek',
+  genre: ['Greek Pop', 'Eastern Music', 'Caucasian Music', 'Pontic Greek Music'],
+  sameAs: [
+    'https://open.spotify.com/artist/6PPuuN3cvmbyuvgrGbhXge',
+    'https://music.apple.com/artist/alexandros-tsopozidis/839072119',
+    'https://www.youtube.com/channel/UC_25lDUqfZLnjvWxzPHGNmg',
+    'https://music.yandex.ru/artist/3050547',
+    'https://www.instagram.com/alexandros_official/',
+    'https://vk.com/alexandros_tsopozidis',
+    'https://www.tiktok.com/@tsopozidis',
+    'https://t.me/tsopozidis',
+    'https://ok.ru/alexandros.tsopozidis',
+    'https://www.facebook.com/alexandros.tsopozidis/',
+    'https://ru.wikipedia.org/wiki/Тсопозидис,_Александрос',
+    'https://www.wikidata.org/wiki/Q65126751',
+  ],
+  award: '9 Волна Award for Contribution to Ethnic Music (2014)',
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'about' });
-  return {
+  return generatePageMetadata({
+    locale,
+    path: 'about',
     title: `${t('title')} — Alexandros Tsopozidis`,
-    description: t('bio_paragraph_1'),
-  };
+    description: aboutDescriptions[locale] || aboutDescriptions.en,
+    ogType: 'music.musician',
+  });
 }
 
 function TimelineItem({ icon: Icon, title, children }: { icon: LucideIcon; title: string; children: React.ReactNode }) {
@@ -35,6 +76,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <JsonLd data={musicArtistSchema} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       <section className="py-24 px-4 md:px-8">
@@ -87,6 +129,8 @@ export default function AboutPage() {
           </TimelineItem>
         </div>
       </section>
+
+      <CareerTimeline />
     </>
   );
 }
