@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, getArtistName, generateBreadcrumbSchema } from '@/lib/seo';
@@ -10,7 +11,7 @@ import YouTubeFacade from '@/components/YouTubeFacade';
 import StreamingEmbed from '@/components/music/StreamingEmbed';
 import SinglesGrid from '@/components/music/SinglesGrid';
 import PlatformLinks from '@/components/music/PlatformLinks';
-import { album, singles, getSpotifyEmbedUrl, getCoverUrl } from '@/lib/data/discography';
+import { album, singles, getSpotifyEmbedUrl } from '@/lib/data/discography';
 import { socialLinks } from '@/lib/data/social-links';
 import { videos } from '@/lib/data/videos';
 
@@ -194,8 +195,8 @@ export default function MusicPage() {
               {/* Бродяга */}
               <a href="https://open.spotify.com/track/4wrHLDr6rgVFnzldOYp37t" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-4 bg-bg-tertiary/50 border border-border hover:border-gold/30 rounded-sm p-4 transition-all duration-300 group">
-                <div className="w-16 h-16 rounded-sm overflow-hidden flex-shrink-0">
-                  <img src="https://i.scdn.co/image/ab67616d00004851f57422e4fe7802226d1e613f" alt="Бродяга" className="w-full h-full object-cover" />
+                <div className="w-16 h-16 rounded-sm overflow-hidden flex-shrink-0 relative">
+                  <Image src="https://i.scdn.co/image/ab67616d00004851f57422e4fe7802226d1e613f" alt="Бродяга" fill className="object-cover" sizes="64px" />
                 </div>
                 <div>
                   <p className="font-sans font-medium group-hover:text-gold transition-colors">Бродяга</p>
@@ -207,8 +208,8 @@ export default function MusicPage() {
               {/* Ты все потеряла */}
               <a href="https://open.spotify.com/track/4XYmHQMmFOFw7NaOINtmtb" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-4 bg-bg-tertiary/50 border border-border hover:border-gold/30 rounded-sm p-4 transition-all duration-300 group">
-                <div className="w-16 h-16 rounded-sm overflow-hidden flex-shrink-0">
-                  <img src="https://i.scdn.co/image/ab67616d00004851f57422e4fe7802226d1e613f" alt="Ты все потеряла" className="w-full h-full object-cover" />
+                <div className="w-16 h-16 rounded-sm overflow-hidden flex-shrink-0 relative">
+                  <Image src="https://i.scdn.co/image/ab67616d00004851f57422e4fe7802226d1e613f" alt="Ты все потеряла" fill className="object-cover" sizes="64px" />
                 </div>
                 <div>
                   <p className="font-sans font-medium group-hover:text-gold transition-colors">Ты все потеряла</p>
