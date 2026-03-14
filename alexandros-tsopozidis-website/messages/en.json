@@ -8,12 +8,12 @@
     "events": "Events",
     "press": "Press",
     "contact": "Contact",
-    "booking": "Book Artist"
+    "booking": "Book Alexandros"
   },
   "hero": {
     "subtitle": "Greek-Russian Pop Artist",
     "cta_listen": "Listen Now",
-    "cta_booking": "Book Artist",
+    "cta_booking": "Book Alexandros",
     "tagline": "greek soul · eastern sound"
   },
   "about": {
@@ -88,14 +88,14 @@
     "upcoming_shows": "Upcoming Shows",
     "past_shows": "Past Shows",
     "no_upcoming": "New dates coming soon...",
-    "book_private": "Book Artist",
+    "book_private": "Book Alexandros",
     "follow_social": "Follow on social media for announcements.",
     "featured": "Featured"
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Reservations & Inquiries",
-    "booking_title": "Reservations",
+    "subtitle": "Booking & Inquiries",
+    "booking_title": "Booking",
     "booking_text": "For booking inquiries, please contact us directly by phone, WhatsApp, or Telegram.",
     "name": "Name",
     "email": "Email",
@@ -194,25 +194,25 @@
     "title": "Why Book Alexandros",
     "subtitle": "What makes him the right choice for your event",
     "views_title": "22M+ Views",
-    "views_desc": "Over 22 million views on major music content, with a proven track record of audience engagement.",
+    "views_desc": "Over 22 million views across his music catalogue, with a proven track record of audience engagement.",
     "multilingual_title": "Multilingual Repertoire",
     "multilingual_desc": "Performs in Russian, Greek, and Pontic Greek — connecting with diverse audiences across cultures.",
-    "event_types_title": "Any Event Format",
+    "event_types_title": "Every Event Type",
     "event_types_desc": "Suitable for weddings, festivals, private celebrations, and corporate events of any scale.",
     "international_title": "International Bookings",
     "international_desc": "Available for events worldwide. Based in Cyprus with extensive touring experience across Europe and the CIS.",
-    "custom_formats_title": "Customisable Performance",
+    "custom_formats_title": "Flexible Performance",
     "custom_formats_desc": "Flexible performance formats — from intimate acoustic sets to full-band concert productions.",
     "audience_title": "Strong Audience Connection",
     "audience_desc": "Engages Greek, Russian-speaking, and international audiences with an authentic cross-cultural sound.",
-    "cta": "Inquire for Availability"
+    "cta": "Check Availability"
   },
   "footer": {
     "copyright": "© 2026 Alexandros Tsopozidis. All rights reserved.",
     "booking_phone": "Booking: +7 938 316 30 34",
     "follow": "Follow",
     "tagline": "Greek Soul. Eastern Sound.",
-    "telegram_cta": "Subscribe to Telegram for new track and concert announcements",
+    "telegram_cta": "Subscribe on Telegram for new releases and concert announcements",
     "telegram_button": "Telegram",
     "website_credit": "Website by Tsopozidis Team"
   },
