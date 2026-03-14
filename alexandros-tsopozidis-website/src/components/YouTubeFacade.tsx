@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Image from 'next/image';
 import { Play } from 'lucide-react';
 
@@ -22,6 +22,16 @@ export default function YouTubeFacade({
   className = '',
 }: YouTubeFacadeProps) {
   const [playing, setPlaying] = useState(false);
+  const [thumbQuality, setThumbQuality] = useState(quality);
+
+  const handleImageError = useCallback(() => {
+    // maxresdefault doesn't exist for all videos — fall back through lower qualities
+    const fallbackOrder: typeof quality[] = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault'];
+    const currentIndex = fallbackOrder.indexOf(thumbQuality);
+    if (currentIndex < fallbackOrder.length - 1) {
+      setThumbQuality(fallbackOrder[currentIndex + 1]);
+    }
+  }, [thumbQuality]);
 
   if (playing) {
     return (
@@ -44,12 +54,13 @@ export default function YouTubeFacade({
       aria-label={`Play ${title} on YouTube`}
     >
       <Image
-        src={`https://img.youtube.com/vi/${videoId}/${quality}.jpg`}
+        src={`https://img.youtube.com/vi/${videoId}/${thumbQuality}.jpg`}
         alt={`${title} — music video thumbnail`}
         fill
         className="object-cover"
         sizes={sizes}
         loading="lazy"
+        onError={handleImageError}
       />
       <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300" />
       <div className="absolute inset-0 flex items-center justify-center">
