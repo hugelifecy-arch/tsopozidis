@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     locale,
     title: 'Alexandros Tsopozidis — Official Website',
     description: homeDescriptions[locale] || homeDescriptions.en,
-    ogType: 'music.musician',
+    ogType: 'profile',
   });
 }
 

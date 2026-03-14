@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     path: 'about',
     title: `${t('title')} — Alexandros Tsopozidis`,
     description: aboutDescriptions[locale] || aboutDescriptions.en,
-    ogType: 'music.musician',
+    ogType: 'profile',
   });
 }
 

@@ -20,7 +20,7 @@ export function generatePageMetadata({
   path?: string;
   title: string;
   description: string;
-  ogType?: 'website' | 'music.musician';
+  ogType?: 'website' | 'profile';
   ogImage?: string;
 }): Metadata {
   const pagePath = path ? `/${path}` : '';
@@ -43,7 +43,7 @@ export function generatePageMetadata({
       title,
       description,
       url: canonical,
-      type: ogType as 'website',
+      type: ogType,
       images: [
         {
           url: image,
