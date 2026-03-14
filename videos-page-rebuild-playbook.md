@@ -44,18 +44,19 @@ Go to `https://www.youtube.com/@tsopozidisalexandros/videos` and collect the You
 | 11 | Dumanli (feat. Agafangel Tsopozidis) | `ImJG4MWh3pA` | 2019 | 2.2M+ | Top |
 | 12 | Mia Kardia | `Dm1uJYi6qmk` | 2025 | — | Latest |
 | 13 | PAR SHIRKHANI | `vYtPMQqthVU` | 2024 | 1.1M+ | Latest |
-| 14 | Kavkaz | `6uzHGKptumI` | 2023 | 3.3M+ | Latest |
+| 14 | Kavkaz | `6uzHGKptumI` | 2023 | 5.3M+ | Latest |
 
 ### Live / Special — LOOK UP from YouTube channel
 
 | # | Title | YouTube ID | Year | Views | Category |
 |---|-------|-----------|------|-------|----------|
-| 15 | Бродяга — Бишкек live (feat. R.I.O.) | `Caewt2EQokI` | 2017 | — | Live |
-| 16 | Танец Грека — Vegas City Hall live | `DvNWi6adhAA` | 2018 | — | Live |
-| 17 | Бродяга — Челябинск live (feat. Elbrus Dzhanmirzoev) | `vDnG-nSY8jA` | — | — | Live |
-| 18 | Male Male — Нальчик live | `OMExo_xHceE` | — | — | Live |
+| 15 | ЖАРА В БАКУ 2018 — Бродяга live | `WT_kNA9jMVI` | 2018 | 295K+ | Live |
+| 16 | Бродяга — Бишкек live (feat. R.I.O.) | `Caewt2EQokI` | 2017 | — | Live |
+| 17 | Танец Грека — Vegas City Hall live | `DvNWi6adhAA` | 2018 | — | Live |
+| 18 | Бродяга — Челябинск live (feat. Elbrus Dzhanmirzoev) | `vDnG-nSY8jA` | — | — | Live |
+| 19 | Male Male — Нальчик live | `OMExo_xHceE` | — | — | Live |
 
-> **Note:** The channel has multiple live performances — the 4 strongest are listed above. Additional live clips include Greek national anthem performance (`gjEZMka3R0I`) and a New Year's gala (`EQP1wK6TAX8`).
+> **Note:** ЖАРА В БАКУ video is on the ЖАРА TV channel (not Tsopozidis's own). The other live clips are from his channel. Additional live clips include Greek national anthem performance (`gjEZMka3R0I`) and a New Year's gala (`EQP1wK6TAX8`).
 > **Вечная любовь update (March 2026):** A teaser video titled "Alexandros Tsopozidis-Вечная Любовь. Скоро" (`Rkd11qt45xI`) is on the channel. Also "ТЫ НЕ СВЯТАЯ" (`6yUNAOOfe5k`) appears to be the latest full release. When "Вечная любовь" drops as a full video, add it to Latest Releases.
 > **YouTube Channel ID:** `UC_25lDUqfZLnjvWxzPHGNmg` — handle: `@tsopozidisalexandros`
 
