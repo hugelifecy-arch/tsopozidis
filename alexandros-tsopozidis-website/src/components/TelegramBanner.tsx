@@ -47,10 +47,10 @@ export default function TelegramBanner() {
         </a>
         <button
           onClick={handleDismiss}
-          className="text-text-tertiary hover:text-text-primary transition-colors ml-2 flex-shrink-0"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-tertiary hover:text-text-primary transition-colors flex-shrink-0 -mr-2"
           aria-label="Dismiss Telegram banner"
         >
-          <X size={16} />
+          <X size={18} />
         </button>
       </div>
     </div>

@@ -35,9 +35,9 @@ export default function EventsPage() {
                 <button
                   key={tab_}
                   onClick={() => setTab(tab_)}
-                  className={`text-sm font-sans uppercase tracking-wider pb-2 transition-all duration-300 ${
+                  className={`text-sm font-sans uppercase tracking-wider py-3 px-2 min-h-[48px] transition-all duration-300 ${
                     tab === tab_
-                      ? 'text-gold border-b border-gold'
+                      ? 'text-gold border-b-2 border-gold'
                       : 'text-text-secondary hover:text-text-primary'
                   }`}
                 >

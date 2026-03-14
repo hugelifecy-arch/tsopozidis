@@ -24,7 +24,7 @@ export default function LanguageSwitcher() {
         <button
           key={l.code}
           onClick={() => handleSwitch(l.code)}
-          className={`px-3 py-1.5 rounded-full text-xs font-sans tracking-wider transition-all duration-300 ${
+          className={`px-3 py-2.5 min-h-[44px] rounded-full text-xs font-sans tracking-wider transition-all duration-300 ${
             locale === l.code
               ? 'bg-gold/15 text-gold border border-gold/30'
               : 'text-text-secondary hover:text-text-primary border border-transparent'

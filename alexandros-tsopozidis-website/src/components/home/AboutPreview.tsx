@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 import ScrollReveal from '@/components/common/ScrollReveal';
 
 export default function AboutPreview() {
@@ -14,11 +15,13 @@ export default function AboutPreview() {
         {/* Photo */}
         <ScrollReveal direction="left" className="w-full md:w-[45%]">
           <div className="relative">
-            <div className="aspect-[3/4] bg-bg-secondary rounded-sm overflow-hidden">
-              <img
+            <div className="aspect-[3/4] bg-bg-secondary rounded-sm overflow-hidden relative">
+              <Image
                 src="/images/artist/portrait-balcony.jpg"
                 alt="Alexandros Tsopozidis"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 45vw"
+                className="object-cover"
               />
             </div>
             {/* Decorative frame offset */}
