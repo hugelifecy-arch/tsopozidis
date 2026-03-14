@@ -34,9 +34,9 @@ const inter = Inter({
 });
 
 const homeDescriptions: Record<string, string> = {
-  en: 'Alexandros Tsopozidis — official website. Greek soul, Eastern sound. Listen to Бродяга, Mia Kardia, Kavkaz and more. Book for events worldwide.',
-  ru: 'Александрос Цопозидис — официальный сайт. Греческая душа, восточный звук. Слушайте Бродяга, Mia Kardia, Кавказ. Заказать на мероприятие.',
-  el: 'Αλέξανδρος Τσοποζίδης — επίσημη ιστοσελίδα. Ελληνική ψυχή, ανατολίτικος ήχος. Ακούστε Бродяга, Mia Kardia, Kavkaz. Κρατήσεις εκδηλώσεων.',
+  en: 'Alexandros Tsopozidis — official website. Greek soul, Eastern sound. Listen to Канитель, Бродяга, Mia Kardia, Kavkaz and more. Book for events worldwide.',
+  ru: 'Александрос Цопозидис — официальный сайт. Греческая душа, восточный звук. Слушайте Канитель, Бродяга, Mia Kardia, Кавказ. Заказать на мероприятие.',
+  el: 'Αλέξανδρος Τσοποζίδης — επίσημη ιστοσελίδα. Ελληνική ψυχή, ανατολίτικος ήχος. Ακούστε Канитель, Бродяга, Mia Kardia, Kavkaz. Κρατήσεις εκδηλώσεων.',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {

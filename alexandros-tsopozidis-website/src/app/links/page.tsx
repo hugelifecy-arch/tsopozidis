@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const links = [
-  { label: 'Latest Release: Mia Kardia', href: 'https://tsopozidis-alexandros.com/en/music?utm_source=linkinbio&utm_medium=social', emoji: '🎵' },
+  { label: 'Latest Release: Канитель', href: 'https://tsopozidis-alexandros.com/en/music?utm_source=linkinbio&utm_medium=social', emoji: '🎵' },
   { label: 'Coming Soon: Вечная любовь', href: 'https://t.me/tsopozidis?utm_source=linkinbio&utm_medium=social', emoji: '🔥' },
   { label: 'Watch Бродяга (22M+ views)', href: 'https://www.youtube.com/watch?v=z9ASjQE6Q2Y&utm_source=linkinbio&utm_medium=social', emoji: '▶️' },
   { label: 'Spotify', href: 'https://open.spotify.com/artist/6PPuuN3cvmbyuvgrGbhXge?utm_source=linkinbio&utm_medium=social', emoji: '🎧' },
