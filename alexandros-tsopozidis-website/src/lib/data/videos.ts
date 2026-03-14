@@ -26,7 +26,7 @@ export function getYoutubeThumbnail(youtubeId: string, quality: 'maxresdefault' 
 export const videos: Video[] = [
   {
     id: "brodyaga",
-    youtubeId: "N5-zv9xA4hI",
+    youtubeId: "z9ASjQE6Q2Y",
     title: "Бродяга",
     titleRu: "Бродяга",
     year: 2014,
