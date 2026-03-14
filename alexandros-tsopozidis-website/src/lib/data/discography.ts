@@ -137,7 +137,6 @@ export const singles: Release[] = [
       el: "Ένα τραγούδι στα αρμενικά που γιορτάζει τους βαθιούς πολιτιστικούς δεσμούς μεταξύ ελληνικών και αρμενικών κοινοτήτων του Καυκάσου.",
     },
     spotifyAlbumId: "3jQy3AACd4POpibCgYmLpt",
-    spotifyTrackId: "5npMrvUO3XfkRYQiMRQOdN",
     spotifyCoverUrl: "https://i.scdn.co/image/ab67616d00001e026115ef4e516abbf64b6afa1b",
     plays: "182K+",
     coverImage: "/images/albums/par-shirkhani.jpg",
