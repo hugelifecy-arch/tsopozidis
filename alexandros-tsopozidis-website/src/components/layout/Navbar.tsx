@@ -73,12 +73,14 @@ export default function Navbar() {
           {/* Right Section */}
           <div className="hidden lg:flex items-center gap-6">
             <LanguageSwitcher />
-            <Link
-              href="/contact"
+            <a
+              href="https://wa.me/79383163034"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border border-gold text-gold px-5 py-2 text-xs font-display uppercase tracking-wider hover:bg-gold hover:text-bg-primary transition-all duration-300"
             >
               {t('booking')}
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Hamburger */}

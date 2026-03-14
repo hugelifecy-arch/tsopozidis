@@ -89,12 +89,14 @@ export default function HeroSection() {
           >
             {t('cta_listen')}
           </Link>
-          <Link
-            href="/contact"
+          <a
+            href="https://wa.me/79383163034"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-gold text-bg-primary px-8 py-3 text-sm font-display uppercase tracking-wider hover:bg-gold-light transition-all duration-300"
           >
             {t('cta_booking')}
-          </Link>
+          </a>
         </motion.div>
       </div>
 

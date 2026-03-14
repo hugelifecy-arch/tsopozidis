@@ -54,12 +54,14 @@ export default function UpcomingShows() {
               <p className="text-text-secondary font-serif italic text-lg mb-6">
                 {t('no_upcoming')}
               </p>
-              <Link
-                href="/contact"
+              <a
+                href="https://wa.me/79383163034"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border border-gold text-gold px-6 py-3 text-sm font-display uppercase tracking-wider hover:bg-gold hover:text-bg-primary transition-all duration-300"
               >
                 {t('book_private')} →
-              </Link>
+              </a>
             </div>
           )}
         </ScrollReveal>

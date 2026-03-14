@@ -7,12 +7,12 @@
     "gallery": "Gallery",
     "events": "Events",
     "contact": "Contact",
-    "booking": "Booking"
+    "booking": "Book Artist"
   },
   "hero": {
     "subtitle": "Greek-Russian Pop Artist",
     "cta_listen": "Listen Now",
-    "cta_booking": "Book a Show"
+    "cta_booking": "Book Artist"
   },
   "about": {
     "title": "About",
@@ -58,31 +58,14 @@
     "upcoming_shows": "Upcoming Shows",
     "past_shows": "Past Shows",
     "no_upcoming": "New dates coming soon...",
-    "book_private": "Book a Private Event",
+    "book_private": "Book Artist",
     "follow_social": "Follow on social media for announcements."
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Booking & Inquiries",
-    "booking_title": "Booking Inquiries",
-    "booking_text": "For booking inquiries, please reach out via phone or fill out the contact form.",
-    "name": "Name",
-    "email": "Email",
-    "phone": "Phone",
-    "message": "Message",
-    "event_type": "Event Type",
-    "event_date": "Event Date",
-    "event_types": {
-      "concert": "Concert",
-      "festival": "Festival",
-      "private": "Private Event",
-      "corporate": "Corporate",
-      "wedding": "Wedding",
-      "other": "Other"
-    },
-    "send": "Send Inquiry",
-    "success_message": "Thank you! We'll get back to you within 48 hours.",
-    "press_note": "For press inquiries, please use the contact form."
+    "subtitle": "Reservations & Inquiries",
+    "booking_title": "Reservations",
+    "booking_text": "For booking inquiries, please contact us directly by phone, WhatsApp, or Telegram."
   },
   "footer": {
     "copyright": "© 2026 Alexandros Tsopozidis. All Rights Reserved.",
