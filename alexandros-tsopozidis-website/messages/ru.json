@@ -188,7 +188,9 @@
     "booking_phone": "Бронирование: +7 938 316 30 34",
     "follow": "Подписаться",
     "tagline": "Греческая душа. Восточное звучание.",
-    "telegram_cta": "Подпишитесь на Telegram для анонсов новых треков и концертов"
+    "telegram_cta": "Подпишитесь на Telegram для анонсов новых треков и концертов",
+    "telegram_button": "Telegram",
+    "website_credit": "Сайт от команды Tsopozidis"
   },
   "common": {
     "read_more": "Подробнее",
