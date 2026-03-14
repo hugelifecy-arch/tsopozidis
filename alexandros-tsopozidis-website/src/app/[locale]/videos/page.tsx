@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Play, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
-import { videos } from '@/lib/data/videos';
+import { videos, getYoutubeThumbnail } from '@/lib/data/videos';
 
 export default function VideosPage() {
   const t = useTranslations('videos');
@@ -29,7 +30,15 @@ export default function VideosPage() {
                   onClick={() => setFeaturedPlaying(true)}
                   className="absolute inset-0 flex items-center justify-center group cursor-pointer"
                 >
-                  <div className="w-20 h-20 rounded-full border-2 border-gold flex items-center justify-center group-hover:bg-gold/20 transition-all duration-300">
+                  <Image
+                    src={getYoutubeThumbnail(featured.youtubeId, 'maxresdefault')}
+                    alt={featured.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 896px"
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300" />
+                  <div className="relative w-20 h-20 rounded-full border-2 border-gold flex items-center justify-center group-hover:bg-gold/20 transition-all duration-300">
                     <Play size={32} className="text-gold ml-1" />
                   </div>
                 </button>
@@ -64,8 +73,16 @@ export default function VideosPage() {
                 onClick={() => setActiveVideo(video.youtubeId)}
               >
                 <div className="aspect-video bg-bg-secondary rounded-sm relative overflow-hidden">
+                  <Image
+                    src={getYoutubeThumbnail(video.youtubeId, 'hqdefault')}
+                    alt={video.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full border border-gold/40 flex items-center justify-center group-hover:bg-gold/20 group-hover:border-gold transition-all duration-300">
+                    <div className="relative w-14 h-14 rounded-full border border-gold/40 flex items-center justify-center group-hover:bg-gold/20 group-hover:border-gold transition-all duration-300">
                       <Play size={20} className="text-gold/60 group-hover:text-gold ml-0.5" />
                     </div>
                   </div>

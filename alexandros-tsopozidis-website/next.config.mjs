@@ -8,6 +8,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'instagram.com' },
       { protocol: 'https', hostname: 'scontent.cdninstagram.com' },
+      { protocol: 'https', hostname: 'img.youtube.com' },
       { protocol: 'https', hostname: 'i.scdn.co' },
     ],
   },

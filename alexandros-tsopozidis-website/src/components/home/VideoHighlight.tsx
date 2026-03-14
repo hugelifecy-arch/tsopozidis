@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Play } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import SectionHeading from '@/components/common/SectionHeading';
 import ScrollReveal from '@/components/common/ScrollReveal';
-import { videos } from '@/lib/data/videos';
+import { videos, getYoutubeThumbnail } from '@/lib/data/videos';
 
 export default function VideoHighlight() {
   const t = useTranslations('videos');
@@ -31,7 +32,15 @@ export default function VideoHighlight() {
                   onClick={() => setPlaying(true)}
                   className="absolute inset-0 flex items-center justify-center group cursor-pointer"
                 >
-                  <div className="w-20 h-20 rounded-full border-2 border-gold flex items-center justify-center group-hover:bg-gold/20 transition-all duration-300">
+                  <Image
+                    src={getYoutubeThumbnail(featured.youtubeId, 'maxresdefault')}
+                    alt={featured.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 896px"
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300" />
+                  <div className="relative w-20 h-20 rounded-full border-2 border-gold flex items-center justify-center group-hover:bg-gold/20 transition-all duration-300">
                     <Play size={32} className="text-gold ml-1" />
                   </div>
                 </button>
@@ -59,8 +68,16 @@ export default function VideoHighlight() {
             {thumbnails.map((video) => (
               <div key={video.id} className="group cursor-pointer">
                 <div className="aspect-video bg-bg-tertiary rounded-sm relative overflow-hidden">
+                  <Image
+                    src={getYoutubeThumbnail(video.youtubeId, 'hqdefault')}
+                    alt={video.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Play size={24} className="text-gold/40 group-hover:text-gold transition-colors" />
+                    <Play size={24} className="text-gold/40 group-hover:text-gold transition-colors relative" />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
                     <p className="text-xs font-sans truncate">{video.title}</p>
