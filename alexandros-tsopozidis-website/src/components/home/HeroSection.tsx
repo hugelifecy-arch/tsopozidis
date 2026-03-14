@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -20,9 +21,13 @@ export default function HeroSection() {
         style={{ y: bgY }}
         className="absolute inset-0 -top-[100px] -bottom-[100px]"
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero/hero-main.jpg')" }}
+        <Image
+          src="/images/hero/hero-main.jpg"
+          alt="Alexandros Tsopozidis performing live"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg-primary" />
@@ -90,7 +95,7 @@ export default function HeroSection() {
             {t('cta_listen')}
           </Link>
           <a
-            href="https://wa.me/79383163034"
+            href="https://wa.me/79383163034?text=Hello!%20I%20would%20like%20to%20inquire%20about%20booking%20Alexandros%20Tsopozidis%20for%20an%20event."
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gold text-bg-primary px-8 py-3 text-sm font-display uppercase tracking-wider hover:bg-gold-light transition-all duration-300"
@@ -107,7 +112,7 @@ export default function HeroSection() {
         transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-text-tertiary text-[10px] uppercase tracking-widest font-sans">
+        <span className="text-text-tertiary text-xs uppercase tracking-widest font-sans">
           {tCommon('scroll')}
         </span>
         <motion.div

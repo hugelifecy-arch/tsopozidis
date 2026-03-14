@@ -22,9 +22,9 @@ const config: Config = {
         border: "#2A2420",
       },
       fontFamily: {
-        display: ['"Cinzel"', "serif"],
-        serif: ['"Cormorant Garamond"', "serif"],
-        sans: ['"Inter"', "sans-serif"],
+        display: ['var(--font-cinzel)', '"Cinzel"', "serif"],
+        serif: ['var(--font-cormorant)', '"Cormorant Garamond"', "serif"],
+        sans: ['var(--font-inter)', '"Inter"', "sans-serif"],
       },
       keyframes: {
         fadeUp: {

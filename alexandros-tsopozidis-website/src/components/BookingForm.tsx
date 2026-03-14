@@ -68,6 +68,8 @@ export default function BookingForm() {
         </label>
         <input
           {...register('name', { required: t('form_required') })}
+          autoComplete="name"
+          enterKeyHint="next"
           className="w-full bg-bg-secondary border border-border focus:border-gold/50 rounded-sm px-4 py-3 text-sm font-sans text-text-primary outline-none transition-colors"
         />
         {errors.name && <p className="text-red-400 text-xs mt-1 font-sans">{errors.name.message}</p>}
@@ -80,6 +82,9 @@ export default function BookingForm() {
         </label>
         <input
           type="email"
+          inputMode="email"
+          autoComplete="email"
+          enterKeyHint="next"
           {...register('email', {
             required: t('form_required'),
             pattern: { value: /^\S+@\S+$/i, message: t('form_valid_email') },
@@ -96,6 +101,9 @@ export default function BookingForm() {
         </label>
         <input
           type="tel"
+          inputMode="tel"
+          autoComplete="tel"
+          enterKeyHint="next"
           {...register('phone')}
           className="w-full bg-bg-secondary border border-border focus:border-gold/50 rounded-sm px-4 py-3 text-sm font-sans text-text-primary outline-none transition-colors"
         />
@@ -137,6 +145,7 @@ export default function BookingForm() {
         </label>
         <input
           {...register('location')}
+          enterKeyHint="next"
           className="w-full bg-bg-secondary border border-border focus:border-gold/50 rounded-sm px-4 py-3 text-sm font-sans text-text-primary outline-none transition-colors"
         />
       </div>
@@ -149,6 +158,7 @@ export default function BookingForm() {
         <textarea
           {...register('message')}
           rows={4}
+          enterKeyHint="send"
           className="w-full bg-bg-secondary border border-border focus:border-gold/50 rounded-sm px-4 py-3 text-sm font-sans text-text-primary outline-none transition-colors resize-none"
         />
       </div>

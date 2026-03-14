@@ -38,7 +38,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           className="fixed inset-0 z-[60] bg-bg-primary/95 backdrop-blur-lg flex flex-col"
         >
           <div className="flex justify-end p-6">
-            <button onClick={onClose} className="text-gold">
+            <button
+              onClick={onClose}
+              className="min-w-[48px] min-h-[48px] flex items-center justify-center text-gold"
+              aria-label="Close menu"
+            >
               <X size={28} />
             </button>
           </div>
@@ -67,7 +71,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 href="https://wa.me/79383163034"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gold text-xs font-display uppercase tracking-wider hover:text-gold-light transition-colors"
+                className="min-h-[48px] flex items-center text-gold text-xs font-display uppercase tracking-wider hover:text-gold-light transition-colors px-3"
               >
                 WhatsApp
               </a>
@@ -75,7 +79,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 href="https://t.me/TsopozidisPr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gold text-xs font-display uppercase tracking-wider hover:text-gold-light transition-colors"
+                className="min-h-[48px] flex items-center text-gold text-xs font-display uppercase tracking-wider hover:text-gold-light transition-colors px-3"
               >
                 Telegram
               </a>

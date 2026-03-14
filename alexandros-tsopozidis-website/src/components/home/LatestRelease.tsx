@@ -53,7 +53,7 @@ export default function LatestRelease() {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border border-gold/30 text-gold text-xs uppercase tracking-wider px-4 py-2 font-sans hover:bg-gold/10 transition-colors duration-300"
+                    className="border border-gold/30 text-gold text-xs uppercase tracking-wider px-4 py-2.5 min-h-[44px] flex items-center font-sans hover:bg-gold/10 transition-colors duration-300"
                   >
                     {p.label}
                   </a>

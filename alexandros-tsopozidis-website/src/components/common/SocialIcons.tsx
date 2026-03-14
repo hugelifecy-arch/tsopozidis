@@ -31,7 +31,7 @@ export default function SocialIcons({ size = 'md', platforms }: SocialIconsProps
             target="_blank"
             rel="noopener noreferrer"
             aria-label={link.label}
-            className="text-text-secondary hover:text-gold transition-colors duration-300"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-text-secondary hover:text-gold transition-colors duration-300"
           >
             {Icon ? (
               <Icon size={sizeMap[size]} />
