@@ -1,9 +1,6 @@
 'use client';
 
-import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import YouTubeFacade from '@/components/YouTubeFacade';
@@ -13,7 +10,6 @@ import { videos } from '@/lib/data/videos';
 export default function VideosPage() {
   const t = useTranslations('videos');
   const locale = useLocale();
-  const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const featured = videos[0];
   const rest = videos.slice(1);
 
@@ -22,7 +18,7 @@ export default function VideosPage() {
   const videoSchemas = videos.map(v => ({
     '@type': 'VideoObject',
     name: v.title,
-    description: `${v.title} — Alexandros Tsopozidis music video`,
+    description: v.description[locale as keyof typeof v.description] || v.description.en,
     thumbnailUrl: `https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg`,
     embedUrl: `https://www.youtube.com/embed/${v.youtubeId}`,
     uploadDate: `${v.year}-01-01`,
@@ -34,7 +30,7 @@ export default function VideosPage() {
       <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tsopozidis-alexandros.com' }, { '@type': 'ListItem', position: 2, name: 'Videos', item: 'https://tsopozidis-alexandros.com/en/videos' }] }} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
-      {/* Featured Video */}
+      {/* Featured Video — Бродяга hero section */}
       <section className="py-24 px-4 md:px-8">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
@@ -47,80 +43,88 @@ export default function VideosPage() {
                 sizes="(max-width: 768px) 100vw, 896px"
               />
             </div>
-            <div className="mt-4">
-              <h2 className="font-display text-xl">{featured.title}</h2>
-              <p className="text-text-secondary text-sm font-sans">
+            <div className="mt-6">
+              <h2 className="font-display text-2xl">{featured.title}</h2>
+              <p className="text-text-secondary text-sm font-sans mt-1">
                 {featured.year}
                 {featured.featuring && ` · feat. ${featured.featuring}`}
                 {featured.views && ` · ${featured.views} ${viewsLabel}`}
               </p>
+              <p className="text-text-secondary font-sans font-light mt-4 leading-relaxed">
+                {featured.description[locale as keyof typeof featured.description] || featured.description.en}
+              </p>
+              {featured.context && (
+                <p className="text-text-tertiary text-xs font-sans mt-3 italic">
+                  {featured.context}
+                </p>
+              )}
+              <a
+                href="/contact"
+                className="inline-block mt-6 border border-gold/30 text-gold px-5 py-2 text-xs font-display uppercase tracking-wider hover:bg-gold/10 transition-all duration-300"
+              >
+                {t('book_performance')} →
+              </a>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Video Grid */}
+      {/* Remaining Videos — Alternating Layout */}
       <section className="py-12 pb-24 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-6xl mx-auto">
           {rest.map((video, i) => (
-            <ScrollReveal key={video.id} delay={i * 0.05}>
-              <div
-                className="group cursor-pointer rounded-sm overflow-hidden"
-                onClick={() => setActiveVideo(video.youtubeId)}
-              >
-                <YouTubeFacade
-                  videoId={video.youtubeId}
-                  title={video.title}
-                  views={video.views}
-                />
-                <div className="mt-2 px-1">
-                  <p className="font-sans text-sm">{video.title}</p>
-                  <p className="text-xs text-text-secondary mt-1">
+            <ScrollReveal key={video.id}>
+              <div className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center py-12 ${i > 0 ? 'border-t border-border' : ''}`}>
+                {/* Video embed — 60% width */}
+                <div className="w-full md:w-[60%]">
+                  <div className="rounded-sm overflow-hidden">
+                    <YouTubeFacade
+                      videoId={video.youtubeId}
+                      title={video.title}
+                      views={video.views}
+                      quality="maxresdefault"
+                    />
+                  </div>
+                </div>
+
+                {/* Info — 40% width */}
+                <div className="w-full md:w-[40%]">
+                  <h3 className="font-display text-2xl">{video.title}</h3>
+                  <p className="text-text-secondary text-sm font-sans mt-1">
                     {video.year}
+                    {video.featuring && ` · feat. ${video.featuring}`}
                     {video.views && ` · ${video.views} ${viewsLabel}`}
                   </p>
+
+                  <p className="text-text-secondary font-sans font-light mt-4 leading-relaxed">
+                    {video.description[locale as keyof typeof video.description] || video.description.en}
+                  </p>
+
+                  {video.context && (
+                    <p className="text-text-tertiary text-xs font-sans mt-3 italic">
+                      {video.context}
+                    </p>
+                  )}
+
+                  {video.shotLocation && (
+                    <p className="text-gold/60 text-xs font-sans mt-2">
+                      Filmed in {video.shotLocation}
+                    </p>
+                  )}
+
+                  {/* CTA */}
+                  <a
+                    href="/contact"
+                    className="inline-block mt-6 border border-gold/30 text-gold px-5 py-2 text-xs font-display uppercase tracking-wider hover:bg-gold/10 transition-all duration-300"
+                  >
+                    {t('book_performance')} →
+                  </a>
                 </div>
               </div>
             </ScrollReveal>
           ))}
         </div>
       </section>
-
-      {/* Video Lightbox */}
-      <AnimatePresence>
-        {activeVideo && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] bg-black/95 flex items-center justify-center p-4"
-            onClick={() => setActiveVideo(null)}
-          >
-            <button
-              onClick={() => setActiveVideo(null)}
-              className="absolute top-6 right-6 text-gold z-10"
-              aria-label="Close video"
-            >
-              <X size={28} />
-            </button>
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="w-full max-w-4xl aspect-video"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <iframe
-                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
-                className="w-full h-full rounded-sm"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-                title="Video player"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

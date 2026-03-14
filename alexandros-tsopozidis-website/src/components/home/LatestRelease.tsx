@@ -32,7 +32,7 @@ export default function LatestRelease() {
           <div className="flex flex-col md:flex-row gap-12 items-center">
             {/* Artwork */}
             <div className="w-full md:w-[40%]">
-              <AlbumCover src={selected.coverImage} title={selected.title} year={selected.year} size="lg" className="w-full shadow-[0_0_60px_rgba(200,169,110,0.05)]" />
+              <AlbumCover src={selected.coverImage} spotifyCoverUrl={selected.spotifyCoverUrl} title={selected.title} year={selected.year} size="lg" className="w-full shadow-[0_0_60px_rgba(200,169,110,0.05)]" />
 
               {/* Release Selector */}
               <div className="flex gap-2 mt-4 justify-center md:justify-start flex-wrap">
