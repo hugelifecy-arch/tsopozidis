@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import SocialIcons from '@/components/common/SocialIcons';
@@ -90,12 +89,14 @@ export default function EventsPage() {
                   <div className="flex justify-center mb-8">
                     <SocialIcons size="lg" />
                   </div>
-                  <Link
-                    href="/contact"
+                  <a
+                    href="https://wa.me/79383163034"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block border border-gold text-gold px-8 py-3 text-sm font-display uppercase tracking-wider hover:bg-gold hover:text-bg-primary transition-all duration-300"
                   >
                     {t('book_private')} →
-                  </Link>
+                  </a>
                 </div>
               )}
             </ScrollReveal>

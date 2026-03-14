@@ -61,6 +61,24 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <a href="tel:+79383163034" className="text-text-secondary text-sm font-sans">
               +7 938 316 30 34
             </a>
+            <div className="flex gap-4">
+              <a
+                href="https://wa.me/79383163034"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold text-xs font-display uppercase tracking-wider hover:text-gold-light transition-colors"
+              >
+                WhatsApp
+              </a>
+              <a
+                href="https://t.me/TsopozidisPr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold text-xs font-display uppercase tracking-wider hover:text-gold-light transition-colors"
+              >
+                Telegram
+              </a>
+            </div>
           </div>
         </motion.div>
       )}
