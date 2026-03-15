@@ -59,7 +59,7 @@ export default function BookingForm() {
     );
   }
 
-  const eventTypes = ['concert', 'festival', 'corporate', 'wedding', 'private', 'other'] as const;
+  const eventTypes = ['wedding', 'christening', 'birthday', 'engagement', 'nameday', 'corporate', 'concert', 'festival', 'private', 'other'] as const;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-xl mx-auto">

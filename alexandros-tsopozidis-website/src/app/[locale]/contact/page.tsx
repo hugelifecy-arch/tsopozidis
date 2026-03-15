@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { generatePageMetadata, getArtistName, generateBreadcrumbSchema } from '@/lib/seo';
+import { generatePageMetadata, getArtistName, generateBreadcrumbSchema, generatePerformerSchema, generateBookingFAQSchema } from '@/lib/seo';
 import { Phone } from 'lucide-react';
 import PageHero from '@/components/common/PageHero';
 import JsonLd from '@/components/JsonLd';
@@ -8,23 +8,32 @@ import ScrollReveal from '@/components/common/ScrollReveal';
 import SocialIcons from '@/components/common/SocialIcons';
 import BookingForm from '@/components/BookingForm';
 
+const contactTitles: Record<string, string> = {
+  en: 'Book Alexandros Tsopozidis — Singer for Weddings, Christenings & Events',
+  ru: 'Заказать Александроса Цопозидиса — Певец на свадьбу, крестины и мероприятия',
+  el: 'Κλείστε τον Αλέξανδρο Τσοποζίδη — Τραγουδιστής για Γάμους, Βαπτίσεις & Εκδηλώσεις',
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contact' });
   return generatePageMetadata({
     locale,
     path: 'contact',
-    title: `${t('title')} — ${getArtistName(locale)}`,
+    title: contactTitles[locale] || contactTitles.en,
     description: t('meta_description'),
   });
 }
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = useTranslations('contact');
 
   return (
     <>
-      <JsonLd data={generateBreadcrumbSchema('en', 'Contact', 'contact')} />
+      <JsonLd data={generateBreadcrumbSchema(locale, 'Contact', 'contact')} />
+      <JsonLd data={generatePerformerSchema(locale)} />
+      <JsonLd data={generateBookingFAQSchema(locale)} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       <section className="py-24 px-4 md:px-8">

@@ -34,9 +34,9 @@ const inter = Inter({
 });
 
 const homeDescriptions: Record<string, string> = {
-  en: 'Alexandros Tsopozidis — official website. Greek soul, Eastern sound. Listen to Канитель, Бродяга, Mia Kardia, Kavkaz and more. Book for events worldwide.',
-  ru: 'Александрос Цопозидис — официальный сайт. Греческая душа, восточный звук. Слушайте Канитель, Бродяга, Mia Kardia, Кавказ. Заказать на мероприятие.',
-  el: 'Αλέξανδρος Τσοποζίδης — επίσημη ιστοσελίδα. Ελληνική ψυχή, ανατολίτικος ήχος. Ακούστε Канитель, Бродяга, Mia Kardia, Kavkaz. Κρατήσεις εκδηλώσεων.',
+  en: 'Alexandros Tsopozidis — Greek-Russian pop artist. Book for weddings, christenings, corporate events, birthdays & private celebrations worldwide. 22M+ YouTube views. Listen to Бродяга, Канитель, Mia Kardia.',
+  ru: 'Александрос Цопозидис — греко-русский поп-артист. Заказать на свадьбу, крестины, корпоратив, юбилей, день рождения. 22М+ просмотров YouTube. Слушайте Бродяга, Канитель, Mia Kardia.',
+  el: 'Αλέξανδρος Τσοποζίδης — Ελληνορώσος ποπ καλλιτέχνης. Κρατήσεις για γάμους, βαπτίσεις, εταιρικές εκδηλώσεις, γενέθλια & ιδιωτικές γιορτές. 22M+ YouTube views. Ακούστε Бродяга, Канитель, Mia Kardia.',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {

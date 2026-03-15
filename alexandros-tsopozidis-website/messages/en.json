@@ -108,7 +108,7 @@
     "success_message": "Thank you! We'll get back to you within 24 hours.",
     "form_required": "Required",
     "form_valid_email": "Valid email required",
-    "meta_description": "Book Alexandros Tsopozidis for concerts, festivals, and private events.",
+    "meta_description": "Book Alexandros Tsopozidis for weddings, christenings, corporate events, birthdays, festivals & private celebrations. Greek-Russian singer available worldwide.",
     "urgent_note": "For urgent inquiries, contact via WhatsApp: +7 938 316 30 34",
     "event_types": {
       "concert": "Concert",
@@ -116,13 +116,17 @@
       "private": "Private Event",
       "corporate": "Corporate Event",
       "wedding": "Wedding",
+      "christening": "Christening / Baptism",
+      "birthday": "Birthday / Anniversary",
+      "engagement": "Engagement Party",
+      "nameday": "Name Day Celebration",
       "other": "Other"
     }
   },
   "press": {
     "title": "Press Kit",
     "subtitle": "For media, event organizers, and booking agents",
-    "meta_description": "Alexandros Tsopozidis press kit — bio, photos, booking info for media and event organizers.",
+    "meta_description": "Alexandros Tsopozidis press kit — bio, photos, booking info for media, wedding planners, and event organizers. Book for weddings, christenings & private events.",
     "quick_facts": "Quick Facts",
     "fact_name_label": "Full Name",
     "fact_origin_label": "Origin",
@@ -148,7 +152,7 @@
     "photo_logo": "Artist Logo / Wordmark",
     "hires_note": "For hi-res images, contact booking@tsopozidis-alexandros.com",
     "booking_title": "Booking Information",
-    "available_for": "Available for: Corporate Events, Festivals, Weddings, Private Events, TV/Radio Appearances",
+    "available_for": "Available for: Weddings, Christenings, Corporate Events, Festivals, Birthdays, Anniversaries, Engagements, Name Days, Private Celebrations, TV/Radio Appearances",
     "booking_cta": "Book via WhatsApp"
   },
   "coming_soon": {
@@ -198,7 +202,7 @@
     "multilingual_title": "Multilingual Repertoire",
     "multilingual_desc": "Performs in Russian, Greek, and Pontic Greek — connecting with diverse audiences across cultures.",
     "event_types_title": "Every Event Type",
-    "event_types_desc": "Suitable for weddings, festivals, private celebrations, and corporate events of any scale.",
+    "event_types_desc": "Perfect for weddings, christenings, baptisms, birthday parties, anniversaries, engagements, name days, corporate galas, and festivals of any scale.",
     "international_title": "International Bookings",
     "international_desc": "Available for events worldwide. Based in Cyprus with extensive touring experience across Europe and the CIS.",
     "custom_formats_title": "Flexible Performance",

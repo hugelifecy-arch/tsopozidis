@@ -4,7 +4,13 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
 User-agent: Yandex
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://www.tsopozidis-alexandros.com/sitemap.xml
