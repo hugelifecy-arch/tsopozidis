@@ -22,16 +22,11 @@ const nextConfig = {
   async redirects() {
     return [
       // Redirect non-www to www (301 permanent)
+      // Note: Only matches the bare domain, not www subdomain, to prevent loops
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'tsopozidis-alexandros.com' }],
-        destination: 'https://www.tsopozidis-alexandros.com/:path*',
-        permanent: true,
-      },
-      // Redirect http to https (301 permanent)
-      {
-        source: '/:path*',
-        has: [{ type: 'header', key: 'x-forwarded-proto', value: 'http' }],
+        missing: [{ type: 'host', value: 'www.tsopozidis-alexandros.com' }],
         destination: 'https://www.tsopozidis-alexandros.com/:path*',
         permanent: true,
       },
