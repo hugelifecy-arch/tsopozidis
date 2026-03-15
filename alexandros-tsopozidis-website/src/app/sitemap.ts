@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 const BASE_URL = 'https://www.tsopozidis-alexandros.com';
-const locales = ['en', 'ru', 'el'];
+const locales = ['en', 'ru', 'el'] as const;
 
 const pages = [
   { path: '', changeFrequency: 'weekly' as const, priority: 1.0, lastModified: '2026-03-14' },
@@ -17,17 +17,27 @@ const pages = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
-  for (const locale of locales) {
-    for (const page of pages) {
-      const url = page.path
-        ? `${BASE_URL}/${locale}/${page.path}`
-        : `${BASE_URL}/${locale}`;
+  for (const page of pages) {
+    const pagePath = page.path ? `/${page.path}` : '';
+
+    for (const locale of locales) {
+      const url = `${BASE_URL}/${locale}${pagePath}`;
+
+      // Build hreflang alternates for all locales + x-default
+      const languages: Record<string, string> = {};
+      for (const alt of locales) {
+        languages[alt] = `${BASE_URL}/${alt}${pagePath}`;
+      }
+      languages['x-default'] = `${BASE_URL}/en${pagePath}`;
 
       entries.push({
         url,
         lastModified: page.lastModified,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
+        alternates: {
+          languages,
+        },
       });
     }
   }

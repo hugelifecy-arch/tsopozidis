@@ -58,9 +58,21 @@ export function generatePageMetadata({
   const image = ogImage || `${BASE_URL}/images/og-default.jpg`;
 
   return {
+    metadataBase: new URL(BASE_URL),
     title,
     description,
     keywords: keywords || EVENT_BOOKING_KEYWORDS[locale] || EVENT_BOOKING_KEYWORDS.en,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     alternates: {
       canonical,
       languages: {
