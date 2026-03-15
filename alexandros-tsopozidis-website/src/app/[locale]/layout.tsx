@@ -39,6 +39,10 @@ const homeDescriptions: Record<string, string> = {
   el: 'Αλέξανδρος Τσοποζίδης — Ελληνορώσος ποπ καλλιτέχνης. Κρατήσεις για γάμους, βαπτίσεις, εταιρικές εκδηλώσεις, γενέθλια & ιδιωτικές γιορτές. 22M+ YouTube views. Ακούστε Бродяга, Канитель, Mia Kardia.',
 };
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const siteLabel = locale === 'ru' ? 'Официальный сайт' : locale === 'el' ? 'Επίσημη ιστοσελίδα' : 'Official Website';
