@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { generatePageMetadata, getArtistName, generateBreadcrumbSchema, generatePerformerSchema, generateBookingFAQSchema } from '@/lib/seo';
+import { generatePageMetadata, generateBreadcrumbSchema, generatePerformerSchema, generateBookingFAQSchema } from '@/lib/seo';
 import { Phone } from 'lucide-react';
 import PageHero from '@/components/common/PageHero';
 import JsonLd from '@/components/JsonLd';
