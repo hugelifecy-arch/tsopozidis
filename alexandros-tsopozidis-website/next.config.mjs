@@ -19,18 +19,6 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
-  async redirects() {
-    return [
-      // Redirect non-www to www (301 permanent)
-      // Uses anchored regex with escaped dots to match only the bare domain
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: '^tsopozidis-alexandros\\.com$' }],
-        destination: 'https://www.tsopozidis-alexandros.com/:path*',
-        permanent: true,
-      },
-    ];
-  },
   async headers() {
     return [
       {
