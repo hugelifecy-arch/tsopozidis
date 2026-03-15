@@ -19,6 +19,17 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'tsopozidis-alexandros.com' }],
+        destination: 'https://www.tsopozidis-alexandros.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

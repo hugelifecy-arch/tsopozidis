@@ -27,7 +27,7 @@ export default function VideosPage() {
   return (
     <>
       <JsonLd data={{ '@context': 'https://schema.org', '@graph': videoSchemas }} />
-      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tsopozidis-alexandros.com' }, { '@type': 'ListItem', position: 2, name: 'Videos', item: 'https://tsopozidis-alexandros.com/en/videos' }] }} />
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.tsopozidis-alexandros.com' }, { '@type': 'ListItem', position: 2, name: 'Videos', item: `https://www.tsopozidis-alexandros.com/${locale}/videos` }] }} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       {/* Featured Video — Бродяга hero section */}

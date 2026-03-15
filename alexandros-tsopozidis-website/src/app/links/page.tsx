@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const links = [
-  { label: 'Latest Release: Канитель', href: 'https://tsopozidis-alexandros.com/en/music?utm_source=linkinbio&utm_medium=social', emoji: '🎵' },
+  { label: 'Latest Release: Канитель', href: 'https://www.tsopozidis-alexandros.com/en/music?utm_source=linkinbio&utm_medium=social', emoji: '🎵' },
   { label: 'Coming Soon: Вечная любовь', href: 'https://t.me/tsopozidis?utm_source=linkinbio&utm_medium=social', emoji: '🔥' },
   { label: 'Watch Бродяга (69M+ views)', href: 'https://www.youtube.com/watch?v=z9ASjQE6Q2Y&utm_source=linkinbio&utm_medium=social', emoji: '▶️' },
   { label: 'Spotify', href: 'https://open.spotify.com/artist/6PPuuN3cvmbyuvgrGbhXge?utm_source=linkinbio&utm_medium=social', emoji: '🎧' },
@@ -15,7 +15,7 @@ const links = [
   { label: 'VK', href: 'https://vk.com/alexandros_tsopozidis?utm_source=linkinbio&utm_medium=social', emoji: '📱' },
   { label: 'Instagram', href: 'https://instagram.com/alexandros_official?utm_source=linkinbio&utm_medium=social', emoji: '📱' },
   { label: 'Book for Event', href: 'https://wa.me/79383163034?text=Hi%2C%20I%27d%20like%20to%20inquire%20about%20booking.&utm_source=linkinbio&utm_medium=social', emoji: '✉️' },
-  { label: 'Official Website', href: 'https://tsopozidis-alexandros.com?utm_source=linkinbio&utm_medium=social', emoji: '🌐' },
+  { label: 'Official Website', href: 'https://www.tsopozidis-alexandros.com?utm_source=linkinbio&utm_medium=social', emoji: '🌐' },
 ];
 
 export default function LinksPage() {
