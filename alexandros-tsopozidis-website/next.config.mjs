@@ -22,11 +22,10 @@ const nextConfig = {
   async redirects() {
     return [
       // Redirect non-www to www (301 permanent)
-      // Note: Only matches the bare domain, not www subdomain, to prevent loops
+      // Uses anchored regex with escaped dots to match only the bare domain
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'tsopozidis-alexandros.com' }],
-        missing: [{ type: 'host', value: 'www.tsopozidis-alexandros.com' }],
+        has: [{ type: 'host', value: '^tsopozidis-alexandros\\.com$' }],
         destination: 'https://www.tsopozidis-alexandros.com/:path*',
         permanent: true,
       },
