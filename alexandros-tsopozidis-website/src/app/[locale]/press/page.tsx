@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, getArtistName, generateBreadcrumbSchema } from '@/lib/seo';
 import { Download, Phone } from 'lucide-react';
@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default function PressPage() {
   const t = useTranslations('press');
+  const locale = useLocale();
 
   const quickFacts = [
     { label: t('fact_name_label'), value: 'Alexandros Tsopozidis' },
@@ -33,7 +34,7 @@ export default function PressPage() {
 
   return (
     <>
-      <JsonLd data={generateBreadcrumbSchema('en', 'Press', 'press')} />
+      <JsonLd data={generateBreadcrumbSchema(locale, 'Press', 'press')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       {/* Quick Facts */}

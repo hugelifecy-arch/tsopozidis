@@ -21,17 +21,18 @@ const musicDescriptions: Record<string, string> = {
   el: 'Ακούστε Αλέξανδρος Τσοποζίδης — Канитель, Mia Kardia, Soltera, Kavkaz, Бродяга σε Spotify, Apple Music, YouTube και άλλες πλατφόρμες.',
 };
 
-const musicRecordingsSchema = {
+const getMusicRecordingsSchema = (locale: string) => ({
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'MusicRecording', name: 'Канитель', datePublished: '2026', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' }, url: 'https://tsopozidis-alexandros.com/en/music' },
+    { '@type': 'MusicRecording', name: 'Канитель', datePublished: '2026', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' }, url: `https://www.tsopozidis-alexandros.com/${locale}/music` },
     { '@type': 'MusicRecording', name: 'Mia Kardia', datePublished: '2025', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
     { '@type': 'MusicRecording', name: 'Soltera', datePublished: '2025', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' }, contributor: { '@type': 'MusicArtist', name: 'El Pontios' } },
     { '@type': 'MusicRecording', name: 'Par shirkhani', datePublished: '2024', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
     { '@type': 'MusicRecording', name: 'Kavkaz', datePublished: '2023', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
     { '@type': 'MusicRecording', name: 'Я грек', datePublished: '2022', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
   ],
-};
+});
+
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -56,8 +57,8 @@ export default function MusicPage() {
 
   return (
     <>
-      <JsonLd data={musicRecordingsSchema} />
-      <JsonLd data={generateBreadcrumbSchema('en', 'Music', 'music')} />
+      <JsonLd data={getMusicRecordingsSchema(locale)} />
+      <JsonLd data={generateBreadcrumbSchema(locale, 'Music', 'music')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       {/* Stats Bar */}

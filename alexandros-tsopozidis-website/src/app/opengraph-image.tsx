@@ -31,7 +31,7 @@ export default async function Image() {
           greek soul · eastern sound
         </div>
         <div style={{ color: '#605040', fontSize: '14px', position: 'absolute', bottom: '40px' }}>
-          tsopozidis-alexandros.com
+          www.tsopozidis-alexandros.com
         </div>
         <div style={{ width: '100%', height: '4px', backgroundColor: '#C8A96E', position: 'absolute', bottom: 0 }} />
       </div>

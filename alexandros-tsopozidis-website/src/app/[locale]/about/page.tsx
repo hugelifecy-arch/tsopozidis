@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, getArtistName, generateBreadcrumbSchema } from '@/lib/seo';
 import PageHero from '@/components/common/PageHero';
@@ -20,8 +20,8 @@ const musicArtistSchema = {
   name: 'Alexandros Tsopozidis',
   alternateName: ['Александрос Цопозидис', 'Αλέξανδρος Τσοποζίδης'],
   description: 'Greek-Caucasian singer blending Pontic Greek, Eastern and pop traditions. Known for Бродяга (22M+ YouTube views). Available for weddings, christenings, corporate events, birthdays, and festivals worldwide.',
-  url: 'https://tsopozidis-alexandros.com',
-  image: 'https://tsopozidis-alexandros.com/images/artist/portrait-balcony.jpg',
+  url: 'https://www.tsopozidis-alexandros.com',
+  image: 'https://www.tsopozidis-alexandros.com/images/artist/portrait-balcony.jpg',
   birthDate: '1986-01-01',
   birthPlace: { '@type': 'Place', name: 'Sameba (Guniakala), Georgia' },
   nationality: 'Greek',
@@ -73,11 +73,12 @@ function TimelineItem({ icon: Icon, title, children }: { icon: LucideIcon; title
 
 export default function AboutPage() {
   const t = useTranslations('about');
+  const locale = useLocale();
 
   return (
     <>
       <JsonLd data={musicArtistSchema} />
-      <JsonLd data={generateBreadcrumbSchema('en', 'About', 'about')} />
+      <JsonLd data={generateBreadcrumbSchema(locale, 'About', 'about')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       <section className="py-24 px-4 md:px-8">
