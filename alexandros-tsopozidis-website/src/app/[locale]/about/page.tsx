@@ -9,9 +9,9 @@ import CareerTimeline from '@/components/CareerTimeline';
 import { User, MapPin, Award, Music, Globe, type LucideIcon } from 'lucide-react';
 
 const aboutDescriptions: Record<string, string> = {
-  en: 'The story of Alexandros Tsopozidis — from Pontic Greek roots in Georgia to 22M+ YouTube views. Blending Caucasian, Greek and Eastern music traditions.',
-  ru: 'История Александроса Цопозидиса — от понтийских греческих корней в Грузии до 22М+ просмотров на YouTube. Кавказская и греческая музыка.',
-  el: 'Η ιστορία του Αλέξανδρου Τσοποζίδη — από τις ποντιακές ρίζες στη Γεωργία στα 22M+ views στο YouTube.',
+  en: 'Alexandros Tsopozidis — Greek-Russian pop artist from Pontic Greek roots. 22M+ YouTube views, 310K followers. Available for weddings, christenings, corporate events & festivals worldwide.',
+  ru: 'Александрос Цопозидис — греко-русский поп-артист понтийского происхождения. 22М+ просмотров YouTube, 310К подписчиков. Доступен для свадеб, крестин, корпоративов и фестивалей.',
+  el: 'Αλέξανδρος Τσοποζίδης — Ελληνορώσος ποπ καλλιτέχνης ποντιακής καταγωγής. 22M+ YouTube views, 310K followers. Διαθέσιμος για γάμους, βαπτίσεις, εταιρικές εκδηλώσεις & φεστιβάλ.',
 };
 
 const musicArtistSchema = {
@@ -19,7 +19,7 @@ const musicArtistSchema = {
   '@type': 'MusicArtist',
   name: 'Alexandros Tsopozidis',
   alternateName: ['Александрос Цопозидис', 'Αλέξανδρος Τσοποζίδης'],
-  description: 'Greek-Caucasian singer blending Pontic Greek, Eastern and pop traditions. Known for Бродяга (22M+ YouTube views).',
+  description: 'Greek-Caucasian singer blending Pontic Greek, Eastern and pop traditions. Known for Бродяга (22M+ YouTube views). Available for weddings, christenings, corporate events, birthdays, and festivals worldwide.',
   url: 'https://tsopozidis-alexandros.com',
   image: 'https://tsopozidis-alexandros.com/images/artist/portrait-balcony.jpg',
   birthDate: '1986-01-01',

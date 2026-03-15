@@ -10,8 +10,8 @@ const pages = [
   { path: 'videos', changeFrequency: 'monthly' as const, priority: 0.8, lastModified: '2026-03-14' },
   { path: 'gallery', changeFrequency: 'monthly' as const, priority: 0.6, lastModified: '2026-02-01' },
   { path: 'events', changeFrequency: 'weekly' as const, priority: 0.8, lastModified: '2026-03-14' },
-  { path: 'contact', changeFrequency: 'monthly' as const, priority: 0.5, lastModified: '2026-01-15' },
-  { path: 'press', changeFrequency: 'monthly' as const, priority: 0.5, lastModified: '2026-01-15' },
+  { path: 'contact', changeFrequency: 'weekly' as const, priority: 0.9, lastModified: '2026-03-15' },
+  { path: 'press', changeFrequency: 'monthly' as const, priority: 0.7, lastModified: '2026-03-15' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
