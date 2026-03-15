@@ -69,6 +69,8 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <head>
         <meta name="yandex-verification" content="998677740d9e0f8b" />
+        <meta name="theme-color" content="#C8A96E" />
+        <meta name="msapplication-TileColor" content="#0A0A0A" />
       </head>
       <body className={`${cinzel.variable} ${cormorant.variable} ${inter.variable} min-h-screen bg-bg-primary text-text-primary font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>
