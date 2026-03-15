@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, getArtistName, generateBreadcrumbSchema, generatePerformerSchema, generateBookingFAQSchema } from '@/lib/seo';
 import { Phone } from 'lucide-react';
@@ -27,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = useTranslations('contact');
+  const t = await getTranslations({ locale, namespace: 'contact' });
 
   return (
     <>
