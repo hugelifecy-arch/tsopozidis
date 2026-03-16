@@ -4,9 +4,9 @@ import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/routing';
 
 const locales = [
-  { code: 'en' as const, label: 'EN', name: 'English', flag: '🇬🇧' },
-  { code: 'ru' as const, label: 'RU', name: 'Русский', flag: '🇷🇺' },
-  { code: 'el' as const, label: 'EL', name: 'Ελληνικά', flag: '🇬🇷' },
+  { code: 'en' as const, label: 'EN', name: 'English' },
+  { code: 'ru' as const, label: 'RU', name: 'Русский' },
+  { code: 'el' as const, label: 'EL', name: 'Ελληνικά' },
 ];
 
 export default function LanguageSwitcher() {
@@ -31,7 +31,6 @@ export default function LanguageSwitcher() {
           }`}
           title={l.name}
         >
-          <span className="mr-1">{l.flag}</span>
           {l.label}
         </button>
       ))}
