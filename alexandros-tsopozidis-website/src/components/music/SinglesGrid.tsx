@@ -6,7 +6,7 @@ import ScrollReveal from '@/components/common/ScrollReveal';
 import SectionHeading from '@/components/common/SectionHeading';
 import AlbumCover from '@/components/AlbumCover';
 import Waveform from '@/components/music/Waveform';
-import { singles, getSpotifyEmbedUrl } from '@/lib/data/discography';
+import { singles, getSpotifyEmbedUrl, getDisplayTitle } from '@/lib/data/discography';
 
 const years = Array.from(new Set(singles.map(s => s.year))).sort((a, b) => b - a);
 
@@ -121,7 +121,7 @@ export default function SinglesGrid() {
 
                   {/* Info */}
                   <div className="p-4 pt-2">
-                    <p className="font-sans font-medium truncate">{single.title}</p>
+                    <p className="font-sans font-medium truncate">{getDisplayTitle(single, locale)}</p>
                     {single.featuring && (
                       <p className="text-xs text-text-secondary font-sans mt-1">
                         {t('featuring')} {single.featuring}

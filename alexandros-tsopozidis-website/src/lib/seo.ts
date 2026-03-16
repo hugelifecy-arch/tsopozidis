@@ -204,7 +204,7 @@ export function generateBookingFAQSchema(locale: string) {
     { q: 'Μπορώ να τον καλέσω σε εταιρική εκδήλωση ή πάρτι γενεθλίων;', a: 'Φυσικά. Ο Αλέξανδρος εμφανίζεται σε εταιρικές εκδηλώσεις, πάρτι γενεθλίων, ονομαστικές γιορτές και αρραβώνες. Η μορφή κυμαίνεται από ακουστικό σετ έως πλήρη συναυλία.' },
     { q: 'Σε ποιες χώρες είναι διαθέσιμος;', a: 'Ο Αλέξανδρος εμφανίζεται σε όλο τον κόσμο. Βρίσκεται στην Κύπρο και περιοδεύει ενεργά σε Ελλάδα, Ρωσία, Γερμανία, ΗΑΕ και αλλού. Επικοινωνήστε για διεθνείς κρατήσεις.' },
     { q: 'Σε ποιες γλώσσες τραγουδάει ο Αλέξανδρος;', a: 'Ο Αλέξανδρος τραγουδά στα ρωσικά, ελληνικά, ποντιακά, αρμενικά και ισπανικά. Αυτό τον καθιστά ιδανική επιλογή για πολυπολιτισμικές εκδηλώσεις.' },
-    { q: 'Τι ρεπερτόριο είναι διαθέσιμο για γάμο;', a: 'Για γάμους διατίθεται πλήρες ρεπερτόριο: από hits όπως «Бродяга» (22M+ views) και «Male Male» μέχρι λυρικά και χορευτικά κομμάτια. Το πρόγραμμα διαμορφώνεται ανάλογα.' },
+    { q: 'Τι ρεπερτόριο είναι διαθέσιμο για γάμο;', a: 'Για γάμους διατίθεται πλήρες ρεπερτόριο: από hits όπως «Бродяга» (Αλήτης, 22M+ views) και «Male Male» μέχρι λυρικά και χορευτικά κομμάτια. Το πρόγραμμα διαμορφώνεται ανάλογα.' },
   ] : [
     { q: 'Can I book Alexandros Tsopozidis for a wedding?', a: 'Yes, Alexandros is available for wedding performances worldwide. He sings in Russian, Greek, and Pontic Greek, creating an unforgettable atmosphere for your celebration. Contact booking manager Liana via WhatsApp: +7 938 316 30 34.' },
     { q: 'Does Alexandros perform at christenings and baptisms?', a: 'Yes, Alexandros regularly performs at christenings and baptisms. His repertoire includes traditional Greek, Pontic Greek, and Russian songs perfect for such celebrations.' },
