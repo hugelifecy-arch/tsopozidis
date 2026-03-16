@@ -2,10 +2,21 @@ import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
+const CANONICAL_HOST = 'www.tsopozidis-alexandros.com';
+
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const host = request.headers.get('host') || '';
+
+  // Enforce canonical www host (301 redirect non-www → www)
+  if (host === 'tsopozidis-alexandros.com') {
+    const url = request.nextUrl.clone();
+    url.host = CANONICAL_HOST;
+    url.protocol = 'https';
+    return NextResponse.redirect(url, 301);
+  }
 
   // Skip locale middleware for static/public files and API routes
   if (
