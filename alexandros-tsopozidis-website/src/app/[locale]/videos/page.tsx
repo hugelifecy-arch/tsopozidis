@@ -5,7 +5,7 @@ import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import YouTubeFacade from '@/components/YouTubeFacade';
 import JsonLd from '@/components/JsonLd';
-import { videos } from '@/lib/data/videos';
+import { videos, getVideoDisplayTitle } from '@/lib/data/videos';
 
 export default function VideosPage() {
   const t = useTranslations('videos');
@@ -44,7 +44,7 @@ export default function VideosPage() {
               />
             </div>
             <div className="mt-6">
-              <h2 className="font-display text-2xl">{featured.title}</h2>
+              <h2 className="font-display text-2xl">{getVideoDisplayTitle(featured, locale)}</h2>
               <p className="text-text-secondary text-sm font-sans mt-1">
                 {featured.year}
                 {featured.featuring && ` · feat. ${featured.featuring}`}
@@ -89,7 +89,7 @@ export default function VideosPage() {
 
                 {/* Info — 40% width */}
                 <div className="w-full md:w-[40%]">
-                  <h3 className="font-display text-2xl">{video.title}</h3>
+                  <h3 className="font-display text-2xl">{getVideoDisplayTitle(video, locale)}</h3>
                   <p className="text-text-secondary text-sm font-sans mt-1">
                     {video.year}
                     {video.featuring && ` · feat. ${video.featuring}`}

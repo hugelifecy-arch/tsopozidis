@@ -2,6 +2,7 @@ export interface Video {
   id: string;
   youtubeId: string;
   title: string;
+  titleEn?: string;
   titleRu?: string;
   titleEl?: string;
   year: number;
@@ -23,12 +24,22 @@ export function getYoutubeThumbnail(youtubeId: string, quality: 'maxresdefault' 
   return `https://img.youtube.com/vi/${youtubeId}/${quality}.jpg`;
 }
 
+/** Get locale-aware display title for a video */
+export function getVideoDisplayTitle(video: Video, locale: string): string {
+  if (locale === 'ru') return video.title;
+  if (locale === 'el' && video.titleEl) return video.titleEl;
+  if (locale === 'en' && video.titleEn) return video.titleEn;
+  return video.title;
+}
+
 export const videos: Video[] = [
   {
     id: "brodyaga",
     youtubeId: "z9ASjQE6Q2Y",
     title: "Бродяга",
+    titleEn: "Brodyaga (Wanderer)",
     titleRu: "Бродяга",
+    titleEl: "Бродяга (Αλήτης)",
     year: 2014,
     featuring: "Elbrus Dzhanmirzoev",
     views: "69M+",
@@ -74,7 +85,9 @@ export const videos: Video[] = [
     id: "dai-mne-nomer",
     youtubeId: "Rxp_-wMKU5k",
     title: "Дай мне номер телефона",
+    titleEn: "Dai Mne Nomer Telefona (Give Me Your Phone Number)",
     titleRu: "Дай мне номер телефона",
+    titleEl: "Дай мне номер телефона (Δώσε μου τον αριθμό τηλεφώνου)",
     year: 2017,
     description: {
       en: "'Give Me Your Phone Number' — a flirtatious Russian-language pop track released as a single in July 2017. Light-hearted and catchy, it showcases Alexandros's versatility beyond the emotional ballads.",
@@ -88,7 +101,9 @@ export const videos: Video[] = [
     id: "rasskazhi",
     youtubeId: "Ne_uRfKUUlk",
     title: "Расскажи",
+    titleEn: "Rasskazhi (Tell Me)",
     titleRu: "Расскажи",
+    titleEl: "Расскажи (Πες μου)",
     year: 2020,
     description: {
       en: "'Tell Me' — a Russian pop ballad exploring themes of communication and vulnerability in relationships. Released in 2020 as a standalone single.",
@@ -102,7 +117,9 @@ export const videos: Video[] = [
     id: "ty-vse-poteryala",
     youtubeId: "H_j4mXRQYf4",
     title: "Ты все потеряла",
+    titleEn: "Ty Vsyo Poteryala (You Lost Everything)",
     titleRu: "Ты все потеряла",
+    titleEl: "Ты все потеряла (Τα έχασες όλα)",
     year: 2016,
     featuring: "Elbrus Dzhanmirzoev",
     views: "31M+",
@@ -147,7 +164,9 @@ export const videos: Video[] = [
     id: "kapkan",
     youtubeId: "wHOp_ojf60c",
     title: "Капкан",
+    titleEn: "Kapkan (Trap)",
     titleRu: "Капкан",
+    titleEl: "Капкан (Παγίδα)",
     year: 2021,
     views: "14M+",
     description: {
@@ -177,8 +196,9 @@ export const videos: Video[] = [
     id: "tanets-greka-clip",
     youtubeId: "KmiV3qwNPBc",
     title: "Танец Грека",
+    titleEn: "Tanets Greka (Dance of the Greek)",
     titleRu: "Танец Грека",
-    titleEl: "Ο χορός του Έλληνα",
+    titleEl: "Танец Грека (Ο χορός του Έλληνα)",
     year: 2021,
     views: "7.8M+",
     description: {
@@ -193,7 +213,9 @@ export const videos: Video[] = [
     id: "kavkaz",
     youtubeId: "6uzHGKptumI",
     title: "Kavkaz",
+    titleEn: "Kavkaz (Caucasus)",
     titleRu: "Кавказ",
+    titleEl: "Kavkaz (Καύκασος)",
     year: 2023,
     views: "5.3M+",
     description: {
@@ -208,7 +230,9 @@ export const videos: Video[] = [
     id: "diana",
     youtubeId: "GSaHrBTOvt8",
     title: "Диана",
+    titleEn: "Diana",
     titleRu: "Диана",
+    titleEl: "Ντιάνα",
     year: 2014,
     views: "3.5M+",
     description: {
@@ -223,8 +247,9 @@ export const videos: Video[] = [
     id: "ya-grek",
     youtubeId: "sULilaPkHp0",
     title: "Я ГРЕК",
+    titleEn: "Ya Grek (I Am Greek)",
     titleRu: "Я грек",
-    titleEl: "Είμαι Έλληνας",
+    titleEl: "Я грек (Είμαι Έλληνας)",
     year: 2022,
     views: "3.2M+",
     description: {
@@ -239,7 +264,9 @@ export const videos: Video[] = [
     id: "za-toboi",
     youtubeId: "xw8ctinyw_o",
     title: "За Тобой",
+    titleEn: "Za Toboy (After You)",
     titleRu: "За Тобой",
+    titleEl: "За Тобой (Πίσω σου)",
     year: 2016,
     views: "3M+",
     description: {

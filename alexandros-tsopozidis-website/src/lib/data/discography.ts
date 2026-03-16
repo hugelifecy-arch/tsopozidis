@@ -1,6 +1,7 @@
 export interface Release {
   id: string;
   title: string;
+  titleEn?: string;
   titleRu?: string;
   titleEl?: string;
   year: number;
@@ -41,8 +42,9 @@ export const languageLabels: Record<string, Record<string, string>> = {
 export const album: Release = {
   id: "za-toboi",
   title: "За тобой",
+  titleEn: "Za Toboy (After You)",
   titleRu: "За тобой",
-  titleEl: "Πίσω σου",
+  titleEl: "За тобой (Πίσω σου)",
   year: 2018,
   releaseDate: "2018-05-18",
   type: "album",
@@ -70,7 +72,9 @@ export const singles: Release[] = [
   {
     id: "kanitel",
     title: "Канитель",
+    titleEn: "Kanitel",
     titleRu: "Канитель",
+    titleEl: "Κανιτέλ",
     year: 2026,
     releaseDate: "2026-01-01",
     type: "single",
@@ -144,7 +148,9 @@ export const singles: Release[] = [
   {
     id: "kavkaz",
     title: "Kavkaz",
+    titleEn: "Kavkaz (Caucasus)",
     titleRu: "Кавказ",
+    titleEl: "Kavkaz (Καύκασος)",
     year: 2023,
     releaseDate: "2023-03-10",
     type: "single",
@@ -165,8 +171,9 @@ export const singles: Release[] = [
   {
     id: "ya-grek",
     title: "Я грек",
+    titleEn: "Ya Grek (I Am Greek)",
     titleRu: "Я грек",
-    titleEl: "Είμαι Έλληνας",
+    titleEl: "Я грек (Είμαι Έλληνας)",
     year: 2022,
     releaseDate: "2022-11-02",
     type: "single",
@@ -221,7 +228,9 @@ export const singles: Release[] = [
   {
     id: "kapkan",
     title: "Капкан",
+    titleEn: "Kapkan (Trap)",
     titleRu: "Капкан",
+    titleEl: "Капкан (Παγίδα)",
     year: 2021,
     releaseDate: "2020-12-17",
     type: "single",
@@ -240,7 +249,9 @@ export const singles: Release[] = [
   {
     id: "rasskazhi",
     title: "Расскажи",
+    titleEn: "Rasskazhi (Tell Me)",
     titleRu: "Расскажи",
+    titleEl: "Расскажи (Πες μου)",
     year: 2020,
     releaseDate: "2020-08-01",
     type: "single",
@@ -295,8 +306,9 @@ export const singles: Release[] = [
   {
     id: "tanets-greka",
     title: "Танец грека",
+    titleEn: "Tanets Greka (Dance of the Greek)",
     titleRu: "Танец грека",
-    titleEl: "Ο χορός του Έλληνα",
+    titleEl: "Танец грека (Ο χορός του Έλληνα)",
     year: 2018,
     releaseDate: "2018-05-18",
     type: "single",
@@ -315,6 +327,18 @@ export const singles: Release[] = [
 ];
 
 export const allReleases: Release[] = [album, ...singles];
+
+// ============================================================
+// HELPER: Get locale-aware display title
+// For non-Russian locales, uses titleEn/titleEl instead of
+// raw Cyrillic so English/Greek visitors see readable titles.
+// ============================================================
+export function getDisplayTitle(release: Release, locale: string): string {
+  if (locale === 'ru') return release.title;
+  if (locale === 'el' && release.titleEl) return release.titleEl;
+  if (locale === 'en' && release.titleEn) return release.titleEn;
+  return release.title;
+}
 
 // ============================================================
 // HELPER: Get Spotify embed URL for a release

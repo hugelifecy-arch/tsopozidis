@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import SectionHeading from '@/components/common/SectionHeading';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import AlbumCover from '@/components/AlbumCover';
 import StreamingEmbed from '@/components/music/StreamingEmbed';
-import { singles } from '@/lib/data/discography';
+import { singles, getDisplayTitle } from '@/lib/data/discography';
 import { socialLinks } from '@/lib/data/social-links';
 
 const streamingPlatforms = ['spotify', 'apple-music', 'youtube', 'yandex-music', 'zvuk'];
@@ -14,6 +14,7 @@ const streamingPlatforms = ['spotify', 'apple-music', 'youtube', 'yandex-music',
 export default function LatestRelease() {
   const t = useTranslations('music');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
   const [selectedIdx, setSelectedIdx] = useState(0);
   const topReleases = singles.slice(0, 4);
   const selected = topReleases[selectedIdx];
@@ -46,7 +47,7 @@ export default function LatestRelease() {
                         : 'text-text-tertiary hover:text-text-secondary border border-transparent'
                     }`}
                   >
-                    {s.title.length > 12 ? s.title.substring(0, 12) + '…' : s.title}
+                    {(() => { const t = getDisplayTitle(s, locale); return t.length > 12 ? t.substring(0, 12) + '…' : t; })()}
                   </button>
                 ))}
               </div>
@@ -57,7 +58,7 @@ export default function LatestRelease() {
               <span className="text-xs tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full uppercase font-sans">
                 {selectedIdx === 0 ? tCommon('new_single') : t('single')}
               </span>
-              <h3 className="font-display text-4xl mt-4">{selected.title}</h3>
+              <h3 className="font-display text-4xl mt-4">{getDisplayTitle(selected, locale)}</h3>
               <p className="font-serif text-text-secondary text-lg mt-1">
                 {selected.year}
                 {selected.featuring && ` · ${t('featuring')} ${selected.featuring}`}
