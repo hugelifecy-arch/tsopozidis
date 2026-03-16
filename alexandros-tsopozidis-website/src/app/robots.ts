@@ -1,6 +1,5 @@
 import { MetadataRoute } from 'next';
-
-const BASE_URL = 'https://www.tsopozidis-alexandros.com';
+import { BASE_URL } from '@/lib/seo';
 
 export default function robots(): MetadataRoute.Robots {
   return {

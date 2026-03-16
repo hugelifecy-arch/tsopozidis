@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
+import { BASE_URL } from '@/lib/seo';
 
-const BASE_URL = 'https://www.tsopozidis-alexandros.com';
 const locales = ['en', 'ru', 'el'] as const;
 
 const pages = [
