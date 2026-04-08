@@ -21,7 +21,7 @@ export default function middleware(request: NextRequest) {
   // Skip locale middleware for static/public files and API routes
   if (
     pathname.startsWith('/robots.txt') ||
-    pathname.startsWith('/sitemap.xml') ||
+    pathname.startsWith('/sitemap') ||
     pathname.startsWith('/favicon') ||
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
@@ -51,6 +51,6 @@ export default function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Match all paths except Next.js internals, static files, and SEO files
-    '/((?!_next/static|_next/image|favicon\\.ico|robots\\.txt|sitemap\\.xml|.*\\.(?:ico|png|jpg|jpeg|svg|gif|webp|avif|woff|woff2|ttf|eot|xml|txt|json|webmanifest)$).*)',
+    '/((?!_next/static|_next/image|favicon\\.ico|robots\\.txt|sitemap\\.xml|sitemap/|.*\\.(?:ico|png|jpg|jpeg|svg|gif|webp|avif|woff|woff2|ttf|eot|xml|txt|json|webmanifest)$).*)',
   ],
 };
