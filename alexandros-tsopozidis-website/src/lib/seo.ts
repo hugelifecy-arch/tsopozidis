@@ -62,6 +62,9 @@ export function generatePageMetadata({
     title,
     description,
     keywords: keywords || EVENT_BOOKING_KEYWORDS[locale] || EVENT_BOOKING_KEYWORDS.en,
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    },
     robots: {
       index: true,
       follow: true,
