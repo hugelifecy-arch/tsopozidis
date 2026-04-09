@@ -21,7 +21,7 @@ export async function generateSitemaps() {
 
 export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
   const locale = locales[id];
-  const now = new Date();
+  const now = new Date('2026-04-09');
 
   return pages.map((page) => {
     const pagePath = page.path ? `/${page.path}` : '';
