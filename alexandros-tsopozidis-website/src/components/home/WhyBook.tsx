@@ -1,6 +1,4 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import SectionHeading from '@/components/common/SectionHeading';
@@ -8,8 +6,8 @@ import { Eye, Globe, CalendarHeart, Plane, SlidersHorizontal, Users } from 'luci
 
 const icons = [Eye, Globe, CalendarHeart, Plane, SlidersHorizontal, Users];
 
-export default function WhyBook() {
-  const t = useTranslations('why_book');
+export default async function WhyBook() {
+  const t = await getTranslations('why_book');
 
   const items = [
     'views',

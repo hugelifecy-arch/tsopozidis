@@ -1,13 +1,11 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import ScrollReveal from '@/components/common/ScrollReveal';
 
-export default function AboutPreview() {
-  const t = useTranslations('about');
-  const tCommon = useTranslations('common');
+export default async function AboutPreview() {
+  const t = await getTranslations('about');
+  const tCommon = await getTranslations('common');
 
   return (
     <section className="py-24 px-4 md:px-8">
