@@ -1,15 +1,13 @@
-'use client';
-
-import { useTranslations, useLocale } from 'next-intl';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import SectionHeading from '@/components/common/SectionHeading';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import { events } from '@/lib/data/events';
 
-export default function UpcomingShows() {
-  const t = useTranslations('events');
-  const tCommon = useTranslations('common');
-  const locale = useLocale();
+export default async function UpcomingShows() {
+  const t = await getTranslations('events');
+  const tCommon = await getTranslations('common');
+  const locale = await getLocale();
   const upcoming = events.filter((e) => e.isUpcoming && !e.comingSoon);
   const hasUpcoming = upcoming.length > 0;
 

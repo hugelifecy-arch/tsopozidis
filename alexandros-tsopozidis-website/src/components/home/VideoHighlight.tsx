@@ -1,16 +1,14 @@
-'use client';
-
-import { useTranslations, useLocale } from 'next-intl';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import SectionHeading from '@/components/common/SectionHeading';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import YouTubeFacade from '@/components/YouTubeFacade';
 import { videos } from '@/lib/data/videos';
 
-export default function VideoHighlight() {
-  const t = useTranslations('videos');
-  const tCommon = useTranslations('common');
-  const locale = useLocale();
+export default async function VideoHighlight() {
+  const t = await getTranslations('videos');
+  const tCommon = await getTranslations('common');
+  const locale = await getLocale();
   const featured = videos[0]; // Бродяга
   const thumbnails = videos.slice(1, 4);
 

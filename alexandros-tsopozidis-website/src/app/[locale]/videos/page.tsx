@@ -1,15 +1,13 @@
-'use client';
-
-import { useTranslations, useLocale } from 'next-intl';
+import { getTranslations, getLocale } from 'next-intl/server';
 import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import YouTubeFacade from '@/components/YouTubeFacade';
 import JsonLd from '@/components/JsonLd';
 import { videos, getVideoDisplayTitle } from '@/lib/data/videos';
 
-export default function VideosPage() {
-  const t = useTranslations('videos');
-  const locale = useLocale();
+export default async function VideosPage() {
+  const t = await getTranslations('videos');
+  const locale = await getLocale();
   const featured = videos[0];
   const rest = videos.slice(1);
 

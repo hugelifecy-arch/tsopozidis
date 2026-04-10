@@ -1,15 +1,12 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { getTranslations } from 'next-intl/server';
 import ScrollReveal from '@/components/common/ScrollReveal';
 
-export default function ComingSoon() {
-  const t = useTranslations('coming_soon');
+export default async function ComingSoon() {
+  const t = await getTranslations('coming_soon');
 
   return (
     <section className="py-24 px-4 md:px-8 relative overflow-hidden">
-      {/* Animated gradient background */}
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-bg-primary via-bg-secondary to-bg-primary opacity-50" />
 
       <div className="relative max-w-3xl mx-auto text-center">
@@ -17,19 +14,9 @@ export default function ComingSoon() {
           <p className="text-xs tracking-[0.3em] text-gold uppercase font-sans mb-4">
             {t('label')}
           </p>
-          <motion.h2
-            animate={{
-              textShadow: [
-                '0 0 20px rgba(200,169,110,0.2)',
-                '0 0 40px rgba(200,169,110,0.4)',
-                '0 0 20px rgba(200,169,110,0.2)',
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity }}
-            className="font-display text-4xl md:text-5xl text-gold tracking-wider"
-          >
+          <h2 className="font-display text-4xl md:text-5xl text-gold tracking-wider">
             Вечная любовь
-          </motion.h2>
+          </h2>
           <p className="font-serif italic text-text-secondary text-lg mt-2">
             {t('translation')}
           </p>
