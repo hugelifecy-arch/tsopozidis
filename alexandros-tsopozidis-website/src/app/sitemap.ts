@@ -14,33 +14,32 @@ const pages = [
   { path: 'press', changeFrequency: 'monthly' as const, priority: 0.7 },
 ];
 
-// Generate a sub-sitemap per locale so Google re-processes all locale URLs
-export async function generateSitemaps() {
-  return locales.map((_, id) => ({ id }));
-}
-
-export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
-  const locale = locales[id];
+export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date('2026-04-09');
+  const entries: MetadataRoute.Sitemap = [];
 
-  return pages.map((page) => {
-    const pagePath = page.path ? `/${page.path}` : '';
+  for (const locale of locales) {
+    for (const page of pages) {
+      const pagePath = page.path ? `/${page.path}` : '';
 
-    // Build hreflang alternates for all locales + x-default
-    const languages: Record<string, string> = {};
-    for (const alt of locales) {
-      languages[alt] = `${BASE_URL}/${alt}${pagePath}`;
+      // Build hreflang alternates for all locales + x-default
+      const languages: Record<string, string> = {};
+      for (const alt of locales) {
+        languages[alt] = `${BASE_URL}/${alt}${pagePath}`;
+      }
+      languages['x-default'] = `${BASE_URL}/en${pagePath}`;
+
+      entries.push({
+        url: `${BASE_URL}/${locale}${pagePath}`,
+        lastModified: now,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+        alternates: {
+          languages,
+        },
+      });
     }
-    languages['x-default'] = `${BASE_URL}/en${pagePath}`;
+  }
 
-    return {
-      url: `${BASE_URL}/${locale}${pagePath}`,
-      lastModified: now,
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
-      alternates: {
-        languages,
-      },
-    };
-  });
+  return entries;
 }
