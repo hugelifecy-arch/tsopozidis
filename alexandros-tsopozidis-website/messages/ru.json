@@ -8,7 +8,9 @@
     "events": "Концерты",
     "press": "Пресс-кит",
     "contact": "Контакты",
-    "booking": "Забронировать Александроса"
+    "booking": "Забронировать Александроса",
+    "open_menu": "Открыть меню",
+    "close_menu": "Закрыть меню"
   },
   "hero": {
     "subtitle": "Греко-русский поп-исполнитель",
@@ -37,7 +39,8 @@
     "years": "Лет на сцене",
     "lang_russian": "Русский",
     "lang_greek": "Греческий",
-    "lang_pontic": "Понтийский"
+    "lang_pontic": "Понтийский",
+    "breadcrumb": "Обо мне"
   },
   "music": {
     "title": "Музыка",
@@ -61,12 +64,18 @@
     "featured_on": "С участием",
     "book_this_live": "Заказать эту песню вживую",
     "available_live": "Все треки доступны для живого исполнения. Свяжитесь для букинга.",
-    "meta_description": "Слушайте Александроса Цопозидиса на Spotify, Apple Music, YouTube и других платформах."
+    "meta_description": "Слушайте Александроса Цопозидиса на Spotify, Apple Music, YouTube и других платформах.",
+    "breadcrumb": "Музыка",
+    "plays_suffix": "прослушиваний",
+    "no_releases_year": "Нет релизов за этот год."
   },
   "videos": {
     "title": "Видео",
     "subtitle": "Музыкальные клипы и живые выступления",
-    "book_performance": "Заказать выступление"
+    "book_performance": "Заказать выступление",
+    "filmed_in": "Снято в {location}",
+    "breadcrumb": "Видео",
+    "play_on_youtube": "Смотреть «{title}» на YouTube"
   },
   "gallery": {
     "title": "Галерея",
@@ -80,7 +89,11 @@
     "instagram_title": "Больше в Instagram",
     "instagram_subtitle": "Подписывайтесь на Александроса — эксклюзивные закулисные моменты, живые выступления и ежедневные обновления.",
     "instagram_follow": "Подписаться",
-    "instagram_followers": "подписчиков"
+    "instagram_followers": "подписчиков",
+    "close_lightbox": "Закрыть просмотр",
+    "previous_image": "Предыдущее фото",
+    "next_image": "Следующее фото",
+    "view_photo": "Открыть фото: {alt}"
   },
   "events": {
     "title": "Концерты",
@@ -90,7 +103,8 @@
     "no_upcoming": "Новые даты скоро будут объявлены...",
     "book_private": "Забронировать Александроса",
     "follow_social": "Следите за новостями в социальных сетях.",
-    "featured": "Хит"
+    "featured": "Хит",
+    "breadcrumb": "Мероприятия"
   },
   "contact": {
     "title": "Контакты",
@@ -121,7 +135,13 @@
       "engagement": "Помолвка",
       "nameday": "Именины",
       "other": "Другое"
-    }
+    },
+    "booking_manager_label": "Букинг-менеджер",
+    "booking_manager_name": "Лиана",
+    "phone_whatsapp_label": "Телефон / WhatsApp",
+    "breadcrumb": "Контакты",
+    "form_error_generic": "Что-то пошло не так. Пожалуйста, напишите в",
+    "form_error_whatsapp_cta": "WhatsApp: +7 938 316 30 34"
   },
   "press": {
     "title": "Пресс-кит",
@@ -153,7 +173,9 @@
     "hires_note": "Для фото в высоком разрешении: booking@tsopozidis-alexandros.com",
     "booking_title": "Букинг",
     "available_for": "Доступен для: свадеб, крестин, корпоративов, фестивалей, юбилеев, дней рождения, помолвок, именин, частных торжеств, ТВ/радио",
-    "booking_cta": "Забронировать через WhatsApp"
+    "booking_cta": "Забронировать через WhatsApp",
+    "download": "Скачать",
+    "breadcrumb": "Пресса"
   },
   "coming_soon": {
     "label": "Скоро",

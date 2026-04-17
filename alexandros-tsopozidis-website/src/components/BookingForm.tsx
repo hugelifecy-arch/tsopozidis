@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
 interface FormData {
@@ -18,6 +18,7 @@ interface FormData {
 export default function BookingForm() {
   const t = useTranslations('contact');
   const [submitted, setSubmitted] = useState(false);
+  const locale = useLocale();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
 
@@ -34,7 +35,7 @@ export default function BookingForm() {
       const res = await fetch('/api/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, locale }),
       });
       if (res.ok) {
         setSubmitted(true);
@@ -70,14 +71,14 @@ export default function BookingForm() {
       {error && (
         <div className="bg-accent-red/10 border border-accent-red/30 rounded-sm p-4 text-center">
           <p className="text-red-400 text-sm font-sans">
-            Something went wrong. Please try{' '}
+            {t('form_error_generic')}{' '}
             <a
               href="https://wa.me/79383163034"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gold underline"
             >
-              WhatsApp: +7 938 316 30 34
+              {t('form_error_whatsapp_cta')}
             </a>
           </p>
         </div>

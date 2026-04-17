@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Play } from 'lucide-react';
 
@@ -21,6 +22,7 @@ export default function YouTubeFacade({
   sizes = '(max-width: 768px) 100vw, 50vw',
   className = '',
 }: YouTubeFacadeProps) {
+  const t = useTranslations('videos');
   const [playing, setPlaying] = useState(false);
   const [thumbQuality, setThumbQuality] = useState(quality);
 
@@ -51,7 +53,7 @@ export default function YouTubeFacade({
     <button
       onClick={() => setPlaying(true)}
       className={`aspect-video relative group cursor-pointer w-full ${className}`}
-      aria-label={`Play ${title} on YouTube`}
+      aria-label={t('play_on_youtube', { title })}
     >
       <Image
         src={`https://img.youtube.com/vi/${videoId}/${thumbQuality}.jpg`}

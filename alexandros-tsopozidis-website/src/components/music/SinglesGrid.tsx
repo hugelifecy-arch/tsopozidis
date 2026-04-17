@@ -80,7 +80,7 @@ export default function SinglesGrid() {
                     {/* Play count badge */}
                     {single.plays && (
                       <span className="absolute top-3 left-3 text-[10px] bg-bg-primary/80 text-text-secondary px-2 py-1 rounded font-sans">
-                        {single.plays} plays
+                        {single.plays} {t('plays_suffix')}
                       </span>
                     )}
 
@@ -195,7 +195,7 @@ export default function SinglesGrid() {
 
         {filtered.length === 0 && (
           <p className="text-center text-text-tertiary font-serif italic py-12">
-            No releases for this year.
+            {t('no_releases_year')}
           </p>
         )}
       </div>

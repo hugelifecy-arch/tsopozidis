@@ -34,7 +34,7 @@ export default function PressPage() {
 
   return (
     <>
-      <JsonLd data={generateBreadcrumbSchema(locale, 'Press', 'press')} />
+      <JsonLd data={generateBreadcrumbSchema(locale, t('breadcrumb'), 'press')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       {/* Quick Facts */}
@@ -107,14 +107,41 @@ export default function PressPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {['landscape', 'portrait', 'logo'].map((type) => (
-                <div
+              {(
+                [
+                  {
+                    type: 'landscape',
+                    href: '/press/alexandros-tsopozidis-landscape.jpg',
+                    filename: 'alexandros-tsopozidis-landscape.jpg',
+                  },
+                  {
+                    type: 'portrait',
+                    href: '/press/alexandros-tsopozidis-portrait.jpg',
+                    filename: 'alexandros-tsopozidis-portrait.jpg',
+                  },
+                  {
+                    type: 'logo',
+                    href: '/press/alexandros-tsopozidis-logo.png',
+                    filename: 'alexandros-tsopozidis-logo.png',
+                  },
+                ] as const
+              ).map(({ type, href, filename }) => (
+                <a
                   key={type}
-                  className="bg-bg-secondary border border-border rounded-sm p-6 text-center"
+                  href={href}
+                  download={filename}
+                  className="group bg-bg-secondary border border-border rounded-sm p-6 text-center hover:border-gold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                  aria-label={`${t(`photo_${type}`)} — ${t('download')}`}
                 >
-                  <Download size={24} className="text-gold mx-auto mb-3" />
+                  <Download
+                    size={24}
+                    className="text-gold mx-auto mb-3 transition-transform duration-300 group-hover:-translate-y-0.5"
+                  />
                   <p className="font-sans text-sm">{t(`photo_${type}`)}</p>
-                </div>
+                  <p className="font-sans text-[11px] text-text-tertiary mt-1 uppercase tracking-wider">
+                    {t('download')}
+                  </p>
+                </a>
               ))}
             </div>
             <p className="text-text-tertiary text-xs text-center mt-4 font-sans">

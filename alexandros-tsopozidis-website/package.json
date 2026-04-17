@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
-    "format": "prettier --write 'src/**/*.{ts,tsx}'"
+    "format": "prettier --write 'src/**/*.{ts,tsx}'",
+    "check:album-art": "node scripts/check-album-art.mjs",
+    "prebuild": "node scripts/check-album-art.mjs",
+    "smoke:i18n": "bash scripts/smoke-i18n.sh"
   },
   "dependencies": {
     "framer-motion": "^12.36.0",

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { type Photo, getPhotoAlt } from '@/lib/data/gallery';
 
 interface GalleryClientProps {
@@ -14,12 +15,17 @@ interface GalleryClientProps {
 }
 
 export default function GalleryClient({ photos, locale, categoryLabels, categories }: GalleryClientProps) {
+  const t = useTranslations('gallery');
   const [filter, setFilter] = useState<string>('all');
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
 
   const filtered = filter === 'all' ? photos : photos.filter((p) => p.category === filter);
   const touchStartX = useRef<number | null>(null);
+
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+  const lastFocusedRef = useRef<HTMLElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -39,15 +45,57 @@ export default function GalleryClient({ photos, locale, categoryLabels, categori
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (lightbox === null) return;
-    if (e.key === 'Escape') setLightbox(null);
-    if (e.key === 'ArrowRight') setLightbox((prev) => (prev !== null && prev < filtered.length - 1 ? prev + 1 : prev));
-    if (e.key === 'ArrowLeft') setLightbox((prev) => (prev !== null && prev > 0 ? prev - 1 : prev));
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      setLightbox(null);
+      return;
+    }
+    if (e.key === 'ArrowRight') {
+      setLightbox((prev) => (prev !== null && prev < filtered.length - 1 ? prev + 1 : prev));
+      return;
+    }
+    if (e.key === 'ArrowLeft') {
+      setLightbox((prev) => (prev !== null && prev > 0 ? prev - 1 : prev));
+      return;
+    }
+    // Simple focus trap
+    if (e.key === 'Tab' && dialogRef.current) {
+      const focusables = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   }, [lightbox, filtered.length]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
+
+  // Scroll lock while open + focus management (move into dialog on open,
+  // restore to the previously focused thumbnail on close).
+  useEffect(() => {
+    if (lightbox === null) return;
+    lastFocusedRef.current = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const id = window.setTimeout(() => closeBtnRef.current?.focus(), 50);
+    return () => {
+      window.clearTimeout(id);
+      document.body.style.overflow = previousOverflow;
+      lastFocusedRef.current?.focus?.();
+    };
+  }, [lightbox]);
 
   const handleImageError = (photoId: string) => {
     setImageErrors((prev) => new Set(prev).add(photoId));
@@ -61,6 +109,7 @@ export default function GalleryClient({ photos, locale, categoryLabels, categori
           <button
             key={cat}
             onClick={() => setFilter(cat)}
+            type="button"
             className={`text-sm font-sans uppercase tracking-wider transition-all duration-300 py-3 px-2 min-h-[48px] ${
               filter === cat
                 ? 'text-gold border-b-2 border-gold'
@@ -75,13 +124,15 @@ export default function GalleryClient({ photos, locale, categoryLabels, categori
       {/* Masonry Grid */}
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
         {filtered.map((photo, i) => (
-          <div
+          <button
             key={photo.id}
-            className="break-inside-avoid cursor-pointer group overflow-hidden rounded-sm"
+            type="button"
             onClick={() => setLightbox(i)}
+            aria-label={t('view_photo', { alt: getPhotoAlt(photo, locale) })}
+            className="break-inside-avoid cursor-pointer group overflow-hidden rounded-sm block w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
           >
             <div
-              className="relative bg-bg-secondary hover:border-gold/30 border border-transparent transition-all duration-300 overflow-hidden"
+              className="relative bg-bg-secondary group-hover:border-gold/30 border border-transparent transition-all duration-300 overflow-hidden"
               style={{ aspectRatio: `${photo.width}/${photo.height}` }}
             >
               {imageErrors.has(photo.id) ? (
@@ -100,7 +151,7 @@ export default function GalleryClient({ photos, locale, categoryLabels, categori
                 />
               )}
             </div>
-          </div>
+          </button>
         ))}
       </div>
 
@@ -108,6 +159,10 @@ export default function GalleryClient({ photos, locale, categoryLabels, categori
       <AnimatePresence>
         {lightbox !== null && (
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={getPhotoAlt(filtered[lightbox], locale)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -117,9 +172,11 @@ export default function GalleryClient({ photos, locale, categoryLabels, categori
             onTouchEnd={handleTouchEnd}
           >
             <button
+              ref={closeBtnRef}
               onClick={() => setLightbox(null)}
-              className="absolute top-4 right-4 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold z-10"
-              aria-label="Close lightbox"
+              type="button"
+              className="absolute top-4 right-4 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
+              aria-label={t('close_lightbox')}
             >
               <X size={28} />
             </button>
@@ -127,8 +184,9 @@ export default function GalleryClient({ photos, locale, categoryLabels, categori
             {lightbox > 0 && (
               <button
                 onClick={(e) => { e.stopPropagation(); setLightbox(lightbox - 1); }}
-                className="absolute left-2 md:left-6 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold/60 hover:text-gold"
-                aria-label="Previous image"
+                type="button"
+                className="absolute left-2 md:left-6 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold/60 hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
+                aria-label={t('previous_image')}
               >
                 <ChevronLeft size={36} />
               </button>
@@ -137,8 +195,9 @@ export default function GalleryClient({ photos, locale, categoryLabels, categori
             {lightbox < filtered.length - 1 && (
               <button
                 onClick={(e) => { e.stopPropagation(); setLightbox(lightbox + 1); }}
-                className="absolute right-2 md:right-6 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold/60 hover:text-gold"
-                aria-label="Next image"
+                type="button"
+                className="absolute right-2 md:right-6 min-w-[48px] min-h-[48px] flex items-center justify-center text-gold/60 hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
+                aria-label={t('next_image')}
               >
                 <ChevronRight size={36} />
               </button>
