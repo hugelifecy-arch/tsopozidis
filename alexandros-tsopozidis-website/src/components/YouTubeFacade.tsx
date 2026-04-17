@@ -37,7 +37,7 @@ export default function YouTubeFacade({
     return (
       <div className={`aspect-video relative ${className}`}>
         <iframe
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`}
           className="absolute inset-0 w-full h-full"
           allow="autoplay; encrypted-media"
           allowFullScreen

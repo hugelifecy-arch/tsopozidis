@@ -34,9 +34,9 @@ const inter = Inter({
 });
 
 const homeDescriptions: Record<string, string> = {
-  en: 'Alexandros Tsopozidis — Greek-Russian pop artist. Book for weddings, christenings, corporate events, birthdays & private celebrations worldwide. 22M+ YouTube views. Listen to Бродяга, Канитель, Mia Kardia.',
-  ru: 'Александрос Цопозидис — греко-русский поп-артист. Заказать на свадьбу, крестины, корпоратив, юбилей, день рождения. 22М+ просмотров YouTube. Слушайте Бродяга, Канитель, Mia Kardia.',
-  el: 'Αλέξανδρος Τσοποζίδης — Ελληνορώσος ποπ καλλιτέχνης. Κρατήσεις για γάμους, βαπτίσεις, εταιρικές εκδηλώσεις, γενέθλια & ιδιωτικές γιορτές. 22M+ YouTube views. Ακούστε Бродяга, Канитель, Mia Kardia.',
+  en: 'Alexandros Tsopozidis — Greek-Russian pop artist. Book for weddings, christenings, corporate events, birthdays & private celebrations worldwide. 69M+ YouTube views. Listen to Бродяга, Канитель, Mia Kardia.',
+  ru: 'Александрос Цопозидис — греко-русский поп-артист. Заказать на свадьбу, крестины, корпоратив, юбилей, день рождения. 69М+ просмотров YouTube. Слушайте Бродяга, Канитель, Mia Kardia.',
+  el: 'Αλέξανδρος Τσοποζίδης — Ελληνορώσος ποπ καλλιτέχνης. Κρατήσεις για γάμους, βαπτίσεις, εταιρικές εκδηλώσεις, γενέθλια & ιδιωτικές γιορτές. 69M+ YouTube views. Ακούστε Бродяга, Канитель, Mia Kardia.',
 };
 
 export function generateStaticParams() {

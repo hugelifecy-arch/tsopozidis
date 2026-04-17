@@ -13,6 +13,13 @@ export interface Event {
   comingSoon?: boolean;
 }
 
+/** Get locale-aware display title for an event */
+export function getEventDisplayTitle(event: Event, locale: string): string {
+  if (locale === 'ru' && event.titleRu) return event.titleRu;
+  if (locale === 'el' && event.titleEl) return event.titleEl;
+  return event.title;
+}
+
 export const events: Event[] = [
   {
     id: "upcoming-tba",

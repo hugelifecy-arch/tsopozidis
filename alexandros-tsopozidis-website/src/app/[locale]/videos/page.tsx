@@ -4,6 +4,7 @@ import ScrollReveal from '@/components/common/ScrollReveal';
 import YouTubeFacade from '@/components/YouTubeFacade';
 import JsonLd from '@/components/JsonLd';
 import { videos, getVideoDisplayTitle } from '@/lib/data/videos';
+import { Link } from '@/i18n/routing';
 
 export default async function VideosPage() {
   const t = await getTranslations('videos');
@@ -18,7 +19,7 @@ export default async function VideosPage() {
     name: v.title,
     description: v.description[locale as keyof typeof v.description] || v.description.en,
     thumbnailUrl: `https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg`,
-    embedUrl: `https://www.youtube.com/embed/${v.youtubeId}`,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${v.youtubeId}`,
     uploadDate: `${v.year}-01-01`,
   }));
 
@@ -56,12 +57,12 @@ export default async function VideosPage() {
                   {featured.context}
                 </p>
               )}
-              <a
+              <Link
                 href="/contact"
                 className="inline-block mt-6 border border-gold/30 text-gold px-5 py-2 text-xs font-display uppercase tracking-wider hover:bg-gold/10 transition-all duration-300"
               >
                 {t('book_performance')} →
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         </div>
