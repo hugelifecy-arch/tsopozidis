@@ -27,8 +27,8 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
               className="h-[1px] gold-line mx-auto mb-6"
             />
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-display text-4xl md:text-5xl uppercase tracking-wider"
             >
@@ -36,8 +36,8 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
             </motion.h1>
             {subtitle && (
               <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ y: 10 }}
+                animate={{ y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="mt-4 font-serif italic text-text-secondary text-lg"
               >

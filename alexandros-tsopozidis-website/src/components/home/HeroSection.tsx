@@ -72,8 +72,8 @@ export default function HeroSection() {
 
             {/* First name */}
             <motion.p
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: -20 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.6, delay: 0.5, ease }}
               className="font-serif font-light text-lg sm:text-xl md:text-2xl tracking-[0.5em] text-gold/70"
             >
@@ -82,8 +82,8 @@ export default function HeroSection() {
 
             {/* Last name */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.8, delay: 0.8, ease }}
               className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[0.1em] text-gold-gradient mt-2"
             >
@@ -92,8 +92,8 @@ export default function HeroSection() {
 
             {/* Tagline */}
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ y: 10 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.6, delay: 1.2, ease }}
               className="font-serif italic text-base text-text-secondary tracking-[0.3em] lowercase mt-4"
             >
@@ -110,8 +110,8 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.6, delay: 1.5, ease }}
               className="flex flex-col sm:flex-row gap-4 justify-center mt-12"
             >
@@ -168,8 +168,8 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       {animate && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ y: 10 }}
+          animate={{ y: 0 }}
           transition={{ delay: 2 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
