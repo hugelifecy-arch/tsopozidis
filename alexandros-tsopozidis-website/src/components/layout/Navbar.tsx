@@ -77,8 +77,11 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(true)}
-            className="lg:hidden min-w-[48px] min-h-[48px] flex items-center justify-center text-text-primary hover:text-gold transition-colors"
-            aria-label="Open menu"
+            type="button"
+            className="lg:hidden min-w-[48px] min-h-[48px] flex items-center justify-center text-text-primary hover:text-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-sm"
+            aria-label={t('open_menu')}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             <Menu size={24} />
           </button>

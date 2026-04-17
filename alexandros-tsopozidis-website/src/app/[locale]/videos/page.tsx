@@ -3,6 +3,7 @@ import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import YouTubeFacade from '@/components/YouTubeFacade';
 import JsonLd from '@/components/JsonLd';
+import { generateBreadcrumbSchema } from '@/lib/seo';
 import { videos, getVideoDisplayTitle } from '@/lib/data/videos';
 import { Link } from '@/i18n/routing';
 
@@ -26,7 +27,7 @@ export default async function VideosPage() {
   return (
     <>
       <JsonLd data={{ '@context': 'https://schema.org', '@graph': videoSchemas }} />
-      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.tsopozidis-alexandros.com' }, { '@type': 'ListItem', position: 2, name: 'Videos', item: `https://www.tsopozidis-alexandros.com/${locale}/videos` }] }} />
+      <JsonLd data={generateBreadcrumbSchema(locale, t('breadcrumb'), 'videos')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       {/* Featured Video — Бродяга hero section */}
@@ -107,7 +108,7 @@ export default async function VideosPage() {
 
                   {video.shotLocation && (
                     <p className="text-gold/60 text-xs font-sans mt-2">
-                      Filmed in {video.shotLocation}
+                      {t('filmed_in', { location: video.shotLocation })}
                     </p>
                   )}
 

@@ -1,27 +1,37 @@
-# Album artwork
+# Album / Single Cover Art
 
-Local fallbacks for releases referenced in `src/lib/data/discography.ts`.
+Files in this folder are linked from `src/lib/data/discography.ts` via the
+`coverImage` field and rendered by `SinglesGrid`. If a file is missing, the UI
+shows a broken-image placeholder — which is exactly the issue flagged by
+AUDIT 2026-04-17 §1.5.
 
-The site prefers `spotifyCoverUrl` (Spotify CDN). If that URL 404s, `AlbumCover`
-falls back to the local `/images/albums/*.jpg` file. If that is also missing,
-it renders a styled placeholder with the release title.
+## Required filenames
 
-Expected filenames match each `Release.coverImage` entry in `discography.ts`:
+Every one of the filenames below must exist (recommended size: **1000×1000 px**,
+sRGB, ≤ 300 KB, JPG unless transparency is needed):
 
-- `za-toboi.jpg`
-- `kanitel.jpg`
-- `mia-kardia.jpg`
-- `soltera.jpg`
-- `par-shirkhani.jpg`
-- `kavkaz.jpg`
-- `ya-grek.jpg`
-- `kortsopon.jpg`
-- `monahos.jpg`
-- `kapkan.jpg`
-- `rasskazhi.jpg`
-- `panagia.jpg`
-- `dumanli.jpg`
-- `tanets-greka.jpg`
+- `za-toboi.jpg` — *За тобой* (2018 album)
+- `kanitel.jpg` — *Канитель* (2019)
+- `mia-kardia.jpg` — *Μια Καρδιά* (2020)
+- `soltera.jpg` — *Soltera* (2020)
+- `par-shirkhani.jpg` — *Par Shirkhani* (2021)
+- `kavkaz.jpg` — *Кавказ* (2021)
+- `ya-grek.jpg` — *Я грек* (2022)
+- `kortsopon.jpg` — *Kortsopon* (2022)
+- `monahos.jpg` — *Μοναχός* (2023)
+- `kapkan.jpg` — *Капкан* (2023)
+- `rasskazhi.jpg` — *Расскажи* (2024)
+- `panagia.jpg` — *Παναγία* (2024)
+- `dumanli.jpg` — *Dumanlı* (2024)
+- `tanets-greka.jpg` — *Танец грека* (2025)
 
-Add 640×640 JPGs (or WEBP) when available. The directory is kept committed
-so the fallback path resolves in production.
+## Guardrail
+
+Run `npm run check:album-art` locally to see which files are missing.
+It also runs automatically as a `prebuild` hook so every `next build` /
+Vercel deploy prints a warning list if anything is missing. To make the
+check fatal in CI instead:
+
+```
+CHECK_ALBUM_ART_STRICT=1 npm run build
+```

@@ -3,6 +3,7 @@ import PageHero from '@/components/common/PageHero';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import SocialIcons from '@/components/common/SocialIcons';
 import JsonLd from '@/components/JsonLd';
+import { generateBreadcrumbSchema } from '@/lib/seo';
 import EventsTabs from '@/components/events/EventsTabs';
 import { events, getEventDisplayTitle } from '@/lib/data/events';
 
@@ -143,7 +144,7 @@ export default async function EventsPage() {
       {eventSchemas.length > 0 && (
         <JsonLd data={{ '@context': 'https://schema.org', '@graph': eventSchemas }} />
       )}
-      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.tsopozidis-alexandros.com' }, { '@type': 'ListItem', position: 2, name: 'Events', item: `https://www.tsopozidis-alexandros.com/${locale}/events` }] }} />
+      <JsonLd data={generateBreadcrumbSchema(locale, t('breadcrumb'), 'events')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       <section className="py-24 px-4 md:px-8">
@@ -153,6 +154,7 @@ export default async function EventsPage() {
             pastLabel={t('past_shows')}
             upcomingContent={upcomingContent}
             pastContent={pastContent}
+            defaultToPast={upcomingNonTBA.length === 0 && past.length > 0}
           />
         </div>
       </section>

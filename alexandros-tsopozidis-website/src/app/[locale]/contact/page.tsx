@@ -30,7 +30,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   return (
     <>
-      <JsonLd data={generateBreadcrumbSchema(locale, 'Contact', 'contact')} />
+      <JsonLd data={generateBreadcrumbSchema(locale, t('breadcrumb'), 'contact')} />
       <JsonLd data={generatePerformerSchema(locale)} />
       <JsonLd data={generateBookingFAQSchema(locale)} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
@@ -47,7 +47,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               {/* Phone */}
               <div className="flex flex-col items-center gap-2 mb-8">
                 <span className="font-display text-sm uppercase tracking-wider text-text-secondary">
-                  Booking Manager: Liana
+                  {t('booking_manager_label')}: {t('booking_manager_name')}
                 </span>
                 <div className="flex items-center gap-3">
                   <Phone size={20} className="text-gold flex-shrink-0" />
@@ -55,7 +55,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                     href="tel:+79383163034"
                     className="font-display text-xl tracking-wider text-gold hover:text-gold-light transition-colors"
                   >
-                    Phone / WhatsApp: +7 938 316 30 34
+                    {t('phone_whatsapp_label')}: +7 938 316 30 34
                   </a>
                 </div>
               </div>

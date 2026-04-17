@@ -3,6 +3,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { COOKIE_CONSENT_EVENT } from '@/components/CookieConsent';
 
 declare global {
   interface Window {
@@ -41,6 +42,26 @@ export default function Analytics() {
 
   useEffect(() => {
     setConsent(localStorage.getItem('cookie-consent') === 'accepted');
+
+    const handler = (event: Event) => {
+      const detail = (event as CustomEvent<{ accepted: boolean }>).detail;
+      setConsent(Boolean(detail?.accepted));
+      // Fire GA4 consent_update + an initial page_view if accept happened on
+      // the current page — otherwise tracking would miss this visit entirely.
+      if (detail?.accepted && typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          ad_storage: 'granted',
+          analytics_storage: 'granted',
+        });
+        window.gtag('event', 'page_view', {
+          page_path: window.location.pathname + window.location.search,
+          page_location: window.location.href,
+        });
+      }
+    };
+
+    window.addEventListener(COOKIE_CONSENT_EVENT, handler as EventListener);
+    return () => window.removeEventListener(COOKIE_CONSENT_EVENT, handler as EventListener);
   }, []);
 
   if (!consent) return null;

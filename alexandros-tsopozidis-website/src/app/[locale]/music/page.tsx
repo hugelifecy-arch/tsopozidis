@@ -84,7 +84,7 @@ export default function MusicPage() {
   return (
     <>
       <JsonLd data={getMusicRecordingsSchema(locale)} />
-      <JsonLd data={generateBreadcrumbSchema(locale, 'Music', 'music')} />
+      <JsonLd data={generateBreadcrumbSchema(locale, t('breadcrumb'), 'music')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       {/* Stats Bar */}

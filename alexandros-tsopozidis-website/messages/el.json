@@ -8,7 +8,9 @@
     "events": "Εκδηλώσεις",
     "press": "Press Kit",
     "contact": "Επικοινωνία",
-    "booking": "Κλείστε τον Αλέξανδρο"
+    "booking": "Κλείστε τον Αλέξανδρο",
+    "open_menu": "Άνοιγμα μενού",
+    "close_menu": "Κλείσιμο μενού"
   },
   "hero": {
     "subtitle": "Ελληνορώσος Ποπ Καλλιτέχνης",
@@ -37,7 +39,8 @@
     "years": "Χρόνια",
     "lang_russian": "Ρωσικά",
     "lang_greek": "Ελληνικά",
-    "lang_pontic": "Ποντιακά"
+    "lang_pontic": "Ποντιακά",
+    "breadcrumb": "Σχετικά"
   },
   "music": {
     "title": "Μουσική",
@@ -61,12 +64,18 @@
     "featured_on": "Συμμετοχή σε",
     "book_this_live": "Κράτηση ζωντανά",
     "available_live": "Όλα τα τραγούδια διαθέσιμα για ζωντανή εκτέλεση.",
-    "meta_description": "Ακούστε τον Αλέξανδρο Τσοποζίδη στο Spotify, Apple Music, YouTube και άλλες πλατφόρμες."
+    "meta_description": "Ακούστε τον Αλέξανδρο Τσοποζίδη στο Spotify, Apple Music, YouTube και άλλες πλατφόρμες.",
+    "breadcrumb": "Μουσική",
+    "plays_suffix": "ακροάσεις",
+    "no_releases_year": "Δεν υπάρχουν κυκλοφορίες γι' αυτό το έτος."
   },
   "videos": {
     "title": "Βίντεο",
     "subtitle": "Μουσικά βίντεο & ζωντανές εμφανίσεις",
-    "book_performance": "Κράτηση εμφάνισης"
+    "book_performance": "Κράτηση εμφάνισης",
+    "filmed_in": "Γυρισμένο στο {location}",
+    "breadcrumb": "Βίντεο",
+    "play_on_youtube": "Αναπαραγωγή «{title}» στο YouTube"
   },
   "gallery": {
     "title": "Γκαλερί",
@@ -80,7 +89,11 @@
     "instagram_title": "Περισσότερα στο Instagram",
     "instagram_subtitle": "Ακολουθήστε τον Αλέξανδρο για αποκλειστικό περιεχόμενο από τα παρασκήνια, ζωντανές στιγμές και καθημερινές ενημερώσεις.",
     "instagram_follow": "Ακολουθήστε",
-    "instagram_followers": "ακόλουθοι"
+    "instagram_followers": "ακόλουθοι",
+    "close_lightbox": "Κλείσιμο προβολής",
+    "previous_image": "Προηγούμενη φωτογραφία",
+    "next_image": "Επόμενη φωτογραφία",
+    "view_photo": "Δείτε τη φωτογραφία: {alt}"
   },
   "events": {
     "title": "Εκδηλώσεις",
@@ -90,7 +103,8 @@
     "no_upcoming": "Νέες ημερομηνίες σύντομα...",
     "book_private": "Κλείστε τον Αλέξανδρο",
     "follow_social": "Ακολουθήστε μας στα μέσα κοινωνικής δικτύωσης για ανακοινώσεις.",
-    "featured": "Κορυφαίο"
+    "featured": "Κορυφαίο",
+    "breadcrumb": "Εκδηλώσεις"
   },
   "contact": {
     "title": "Επικοινωνία",
@@ -121,7 +135,13 @@
       "engagement": "Αρραβώνας",
       "nameday": "Ονομαστική Γιορτή",
       "other": "Άλλο"
-    }
+    },
+    "booking_manager_label": "Υπεύθυνη Κρατήσεων",
+    "booking_manager_name": "Λιάνα",
+    "phone_whatsapp_label": "Τηλέφωνο / WhatsApp",
+    "breadcrumb": "Επικοινωνία",
+    "form_error_generic": "Κάτι πήγε στραβά. Δοκιμάστε",
+    "form_error_whatsapp_cta": "WhatsApp: +7 938 316 30 34"
   },
   "press": {
     "title": "Press Kit",
@@ -153,7 +173,9 @@
     "hires_note": "Για φωτογραφίες υψηλής ανάλυσης: booking@tsopozidis-alexandros.com",
     "booking_title": "Πληροφορίες Κρατήσεων",
     "available_for": "Διαθέσιμος για: Γάμους, Βαπτίσεις, Εταιρικές εκδηλώσεις, Φεστιβάλ, Γενέθλια, Επετείους, Αρραβώνες, Ονομαστικές γιορτές, Ιδιωτικές γιορτές, Τηλεόραση/Ραδιόφωνο",
-    "booking_cta": "Κράτηση μέσω WhatsApp"
+    "booking_cta": "Κράτηση μέσω WhatsApp",
+    "download": "Λήψη",
+    "breadcrumb": "Τύπος"
   },
   "coming_soon": {
     "label": "Σύντομα",

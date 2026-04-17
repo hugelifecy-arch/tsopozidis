@@ -77,7 +77,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={musicArtistSchema} />
-      <JsonLd data={generateBreadcrumbSchema(locale, 'About', 'about')} />
+      <JsonLd data={generateBreadcrumbSchema(locale, t('breadcrumb'), 'about')} />
       <PageHero title={t('title')} subtitle={t('subtitle')} />
 
       <section className="py-24 px-4 md:px-8">

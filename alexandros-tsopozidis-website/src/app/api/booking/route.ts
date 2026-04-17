@@ -9,6 +9,8 @@ function getResendClient() {
   return new Resend(key);
 }
 
+type BookingLocale = 'en' | 'ru' | 'el';
+
 interface BookingData {
   name: string;
   email: string;
@@ -18,6 +20,7 @@ interface BookingData {
   location?: string;
   message: string;
   website?: string; // honeypot
+  locale?: BookingLocale | string;
 }
 
 const RATE_LIMIT = 3;
@@ -25,6 +28,54 @@ const RATE_WINDOW_MS = 3_600_000;
 
 // Reject obviously malformed email addresses before hitting Resend.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const SUPPORTED_LOCALES: readonly BookingLocale[] = ['en', 'ru', 'el'];
+
+interface ConfirmationCopy {
+  subject: string;
+  greeting: (name: string) => string;
+  body: string;
+  urgentIntro: string;
+  phoneLine: string;
+  signoff: string;
+}
+
+const CONFIRMATIONS: Record<BookingLocale, ConfirmationCopy> = {
+  en: {
+    subject: 'Booking Inquiry Received — Alexandros Tsopozidis',
+    greeting: (name) => `Dear ${name},`,
+    body:
+      'Thank you for your booking inquiry. We have received your request and will get back to you within 24 hours.',
+    urgentIntro: 'For urgent matters, please contact us directly:',
+    phoneLine: '+7 938 316 30 34 (Liana)',
+    signoff: 'Best regards,<br>Team Alexandros Tsopozidis',
+  },
+  ru: {
+    subject: 'Ваша заявка получена — Александрос Цопозидис',
+    greeting: (name) => `Здравствуйте, ${name}!`,
+    body:
+      'Спасибо за заявку на букинг. Мы получили ваше сообщение и ответим в течение 24 часов.',
+    urgentIntro: 'По срочным вопросам свяжитесь с нами напрямую:',
+    phoneLine: '+7 938 316 30 34 (Лиана)',
+    signoff: 'С уважением,<br>Команда Александроса Цопозидиса',
+  },
+  el: {
+    subject: 'Λάβαμε το αίτημά σας — Αλέξανδρος Τσοποζίδης',
+    greeting: (name) => `Αγαπητέ/ή ${name},`,
+    body:
+      'Ευχαριστούμε για το αίτημα κράτησης. Το λάβαμε και θα σας απαντήσουμε εντός 24 ωρών.',
+    urgentIntro: 'Για επείγοντα, επικοινωνήστε μαζί μας απευθείας:',
+    phoneLine: '+7 938 316 30 34 (Λιάνα)',
+    signoff: 'Με εκτίμηση,<br>Ομάδα Αλέξανδρου Τσοποζίδη',
+  },
+};
+
+function normalizeLocale(raw: unknown): BookingLocale {
+  if (typeof raw !== 'string') return 'en';
+  const lc = raw.toLowerCase();
+  return (SUPPORTED_LOCALES as readonly string[]).includes(lc) ? (lc as BookingLocale) : 'en';
+}
+
 
 function escapeHtml(value: string | undefined | null): string {
   if (!value) return '';
@@ -102,18 +153,21 @@ export async function POST(request: Request) {
       `,
     });
 
+    const locale = normalizeLocale(data.locale);
+    const copy = CONFIRMATIONS[locale];
+
     await resend.emails.send({
       from: 'Alexandros Tsopozidis <noreply@tsopozidis-alexandros.com>',
       to: [data.email],
-      subject: 'Booking Inquiry Received — Alexandros Tsopozidis',
+      subject: copy.subject,
       html: `
-        <p>Dear ${safe.name},</p>
-        <p>Thank you for your booking inquiry. We have received your request and will get back to you within 24 hours.</p>
-        <p>For urgent matters, please contact us directly:</p>
-        <p>+7 938 316 30 34 (Liana)<br>
+        <p>${copy.greeting(safe.name)}</p>
+        <p>${copy.body}</p>
+        <p>${copy.urgentIntro}</p>
+        <p>${copy.phoneLine}<br>
         <a href="https://wa.me/79383163034">WhatsApp</a><br>
         <a href="https://t.me/TsopozidisPr">Telegram</a></p>
-        <p>Best regards,<br>Team Alexandros Tsopozidis</p>
+        <p>${copy.signoff}</p>
       `,
     });
 

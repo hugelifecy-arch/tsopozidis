@@ -8,7 +8,9 @@
     "events": "Events",
     "press": "Press",
     "contact": "Contact",
-    "booking": "Book Alexandros"
+    "booking": "Book Alexandros",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu"
   },
   "hero": {
     "subtitle": "Greek-Russian Pop Artist",
@@ -37,7 +39,8 @@
     "years": "Years",
     "lang_russian": "Russian",
     "lang_greek": "Greek",
-    "lang_pontic": "Pontic Greek"
+    "lang_pontic": "Pontic Greek",
+    "breadcrumb": "About"
   },
   "music": {
     "title": "Music",
@@ -61,12 +64,18 @@
     "featured_on": "Featured On",
     "book_this_live": "Book this song live",
     "available_live": "All tracks available for live performance. Contact for booking.",
-    "meta_description": "Listen to Alexandros Tsopozidis on Spotify, Apple Music, YouTube, and more."
+    "meta_description": "Listen to Alexandros Tsopozidis on Spotify, Apple Music, YouTube, and more.",
+    "breadcrumb": "Music",
+    "plays_suffix": "plays",
+    "no_releases_year": "No releases for this year."
   },
   "videos": {
     "title": "Videos",
     "subtitle": "Music Videos & Live Performances",
-    "book_performance": "Book a Live Performance"
+    "book_performance": "Book a Live Performance",
+    "filmed_in": "Filmed in {location}",
+    "breadcrumb": "Videos",
+    "play_on_youtube": "Play {title} on YouTube"
   },
   "gallery": {
     "title": "Gallery",
@@ -80,7 +89,11 @@
     "instagram_title": "More on Instagram",
     "instagram_subtitle": "Follow Alexandros for exclusive behind-the-scenes content, live moments, and daily updates.",
     "instagram_follow": "Follow",
-    "instagram_followers": "followers"
+    "instagram_followers": "followers",
+    "close_lightbox": "Close lightbox",
+    "previous_image": "Previous image",
+    "next_image": "Next image",
+    "view_photo": "View photo: {alt}"
   },
   "events": {
     "title": "Events",
@@ -90,7 +103,8 @@
     "no_upcoming": "New dates coming soon...",
     "book_private": "Book Alexandros",
     "follow_social": "Follow on social media for announcements.",
-    "featured": "Featured"
+    "featured": "Featured",
+    "breadcrumb": "Events"
   },
   "contact": {
     "title": "Contact",
@@ -121,7 +135,13 @@
       "engagement": "Engagement Party",
       "nameday": "Name Day Celebration",
       "other": "Other"
-    }
+    },
+    "booking_manager_label": "Booking Manager",
+    "booking_manager_name": "Liana",
+    "phone_whatsapp_label": "Phone / WhatsApp",
+    "breadcrumb": "Contact",
+    "form_error_generic": "Something went wrong. Please try",
+    "form_error_whatsapp_cta": "WhatsApp: +7 938 316 30 34"
   },
   "press": {
     "title": "Press Kit",
@@ -153,7 +173,9 @@
     "hires_note": "For hi-res images, contact booking@tsopozidis-alexandros.com",
     "booking_title": "Booking Information",
     "available_for": "Available for: Weddings, Christenings, Corporate Events, Festivals, Birthdays, Anniversaries, Engagements, Name Days, Private Celebrations, TV/Radio Appearances",
-    "booking_cta": "Book via WhatsApp"
+    "booking_cta": "Book via WhatsApp",
+    "download": "Download",
+    "breadcrumb": "Press"
   },
   "coming_soon": {
     "label": "Coming Soon",

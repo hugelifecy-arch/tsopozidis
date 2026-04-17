@@ -76,12 +76,26 @@ export function generateOrganizationSchema() {
   };
 }
 
+/** Localized label for the Home breadcrumb. */
+export const BREADCRUMB_HOME: Record<string, string> = {
+  en: 'Home',
+  ru: 'Главная',
+  el: 'Αρχική',
+};
+
+/**
+ * Build a BreadcrumbList JSON-LD node. `pageName` should already be localized
+ * by the caller (use `t('breadcrumb')` from the page's next-intl namespace).
+ * The Home label is localized automatically from `BREADCRUMB_HOME` so /ru and
+ * /el no longer advertise "Home" to Google (AUDIT 2026-04-17 §2.1).
+ */
 export function generateBreadcrumbSchema(locale: string, pageName: string, pagePath: string) {
+  const homeLabel = BREADCRUMB_HOME[locale] || BREADCRUMB_HOME.en;
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/${locale}` },
+      { '@type': 'ListItem', position: 1, name: homeLabel, item: `${BASE_URL}/${locale}` },
       { '@type': 'ListItem', position: 2, name: pageName, item: `${BASE_URL}/${locale}/${pagePath}` },
     ],
   };
