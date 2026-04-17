@@ -21,15 +21,40 @@ const musicDescriptions: Record<string, string> = {
   el: 'Ακούστε Αλέξανδρος Τσοποζίδης — Κανιτέλ, Mia Kardia, Soltera, Kavkaz, Бродяга (Αλήτης) σε Spotify, Apple Music, YouTube και άλλες πλατφόρμες.',
 };
 
+const byArtist = { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } as const;
+
+const listenActions = [
+  { platform: 'Spotify', url: 'https://open.spotify.com/artist/6PPuuN3cvmbyuvgrGbhXge' },
+  { platform: 'Apple Music', url: 'https://music.apple.com/artist/alexandros-tsopozidis/839072119' },
+  { platform: 'Yandex Music', url: 'https://music.yandex.ru/artist/3050547' },
+  { platform: 'YouTube', url: 'https://www.youtube.com/channel/UC_25lDUqfZLnjvWxzPHGNmg' },
+].map(({ platform, url }) => ({
+  '@type': 'ListenAction',
+  target: {
+    '@type': 'EntryPoint',
+    urlTemplate: url,
+    actionPlatform: [
+      'http://schema.org/DesktopWebPlatform',
+      'http://schema.org/MobileWebPlatform',
+    ],
+  },
+  expectsAcceptanceOf: {
+    '@type': 'Offer',
+    category: 'streaming',
+    eligibleRegion: { '@type': 'Country', name: 'Worldwide' },
+  },
+  name: `Listen on ${platform}`,
+}));
+
 const getMusicRecordingsSchema = (locale: string) => ({
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'MusicRecording', name: locale === 'ru' ? 'Канитель' : 'Kanitel', datePublished: '2026', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' }, url: `https://www.tsopozidis-alexandros.com/${locale}/music` },
-    { '@type': 'MusicRecording', name: 'Mia Kardia', datePublished: '2025', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
-    { '@type': 'MusicRecording', name: 'Soltera', datePublished: '2025', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' }, contributor: { '@type': 'MusicArtist', name: 'El Pontios' } },
-    { '@type': 'MusicRecording', name: 'Par shirkhani', datePublished: '2024', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
-    { '@type': 'MusicRecording', name: 'Kavkaz', datePublished: '2023', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
-    { '@type': 'MusicRecording', name: locale === 'ru' ? 'Я грек' : 'Ya Grek (I Am Greek)', datePublished: '2022', byArtist: { '@type': 'MusicArtist', name: 'Alexandros Tsopozidis' } },
+    { '@type': 'MusicRecording', name: locale === 'ru' ? 'Канитель' : 'Kanitel', datePublished: '2026', byArtist, url: `https://www.tsopozidis-alexandros.com/${locale}/music`, potentialAction: listenActions },
+    { '@type': 'MusicRecording', name: 'Mia Kardia', datePublished: '2025', byArtist, potentialAction: listenActions },
+    { '@type': 'MusicRecording', name: 'Soltera', datePublished: '2025', byArtist, contributor: { '@type': 'MusicArtist', name: 'El Pontios' }, potentialAction: listenActions },
+    { '@type': 'MusicRecording', name: 'Par shirkhani', datePublished: '2024', byArtist, potentialAction: listenActions },
+    { '@type': 'MusicRecording', name: 'Kavkaz', datePublished: '2023', byArtist, potentialAction: listenActions },
+    { '@type': 'MusicRecording', name: locale === 'ru' ? 'Я грек' : 'Ya Grek (I Am Greek)', datePublished: '2022', byArtist, potentialAction: listenActions },
   ],
 });
 
