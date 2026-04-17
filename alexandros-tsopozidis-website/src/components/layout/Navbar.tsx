@@ -7,17 +7,7 @@ import { Menu } from 'lucide-react';
 import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
-
-const navItems = ['home', 'about', 'music', 'videos', 'gallery', 'events', 'press'] as const;
-const navPaths: Record<string, string> = {
-  home: '/',
-  about: '/about',
-  music: '/music',
-  videos: '/videos',
-  gallery: '/gallery',
-  events: '/events',
-  press: '/press',
-};
+import { navItems, navPaths } from '@/config/nav';
 
 export default function Navbar() {
   const t = useTranslations('nav');

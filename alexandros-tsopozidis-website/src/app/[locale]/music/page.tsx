@@ -13,7 +13,8 @@ import SinglesGrid from '@/components/music/SinglesGrid';
 import PlatformLinks from '@/components/music/PlatformLinks';
 import { album, singles, getSpotifyEmbedUrl, getDisplayTitle } from '@/lib/data/discography';
 import { socialLinks } from '@/lib/data/social-links';
-import { videos, getVideoDisplayTitle } from '@/lib/data/videos';
+import { videos, getVideoDisplayTitle, getYoutubeThumbnail } from '@/lib/data/videos';
+import { Link } from '@/i18n/routing';
 
 const musicDescriptions: Record<string, string> = {
   en: 'Listen to Alexandros Tsopozidis — Kanitel, Mia Kardia, Soltera, Kavkaz, Brodyaga and more on Spotify, Apple Music, Yandex Music, YouTube and Zvuk.',
@@ -91,7 +92,7 @@ export default function MusicPage() {
         <div className="max-w-4xl mx-auto py-8 px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <p className="font-display text-2xl md:text-3xl text-gold">22M+</p>
+              <p className="font-display text-2xl md:text-3xl text-gold">69M+</p>
               <p className="text-xs text-text-tertiary font-sans uppercase tracking-wider mt-1">YouTube {t('views_label')}</p>
             </div>
             <div>
@@ -222,14 +223,14 @@ export default function MusicPage() {
               <a href="https://open.spotify.com/track/4wrHLDr6rgVFnzldOYp37t" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-4 bg-bg-tertiary/50 border border-border hover:border-gold/30 rounded-sm p-4 transition-all duration-300 group">
                 <div className="w-16 h-16 rounded-sm overflow-hidden flex-shrink-0 relative">
-                  <Image src="https://i.scdn.co/image/ab67616d00004851f57422e4fe7802226d1e613f" alt="Brodyaga" fill className="object-cover" sizes="64px" />
+                  <Image src={getYoutubeThumbnail('z9ASjQE6Q2Y', 'mqdefault')} alt="Brodyaga" fill className="object-cover" sizes="64px" />
                 </div>
                 <div>
                   <p className="font-sans font-medium group-hover:text-gold transition-colors">
                     {locale === 'ru' ? 'Бродяга' : locale === 'el' ? 'Бродяга (Αλήτης)' : 'Brodyaga (Wanderer)'}
                   </p>
                   <p className="text-xs text-text-secondary font-sans">Elbrus Dzhanmirzoev ft. Alexandros</p>
-                  <p className="text-[10px] text-text-tertiary font-sans mt-1">551K+ plays · 22M+ YouTube views</p>
+                  <p className="text-[10px] text-text-tertiary font-sans mt-1">551K+ plays · 69M+ YouTube views</p>
                 </div>
               </a>
 
@@ -237,7 +238,7 @@ export default function MusicPage() {
               <a href="https://open.spotify.com/track/4XYmHQMmFOFw7NaOINtmtb" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-4 bg-bg-tertiary/50 border border-border hover:border-gold/30 rounded-sm p-4 transition-all duration-300 group">
                 <div className="w-16 h-16 rounded-sm overflow-hidden flex-shrink-0 relative">
-                  <Image src="https://i.scdn.co/image/ab67616d00004851f57422e4fe7802226d1e613f" alt="Ty Vsyo Poteryala" fill className="object-cover" sizes="64px" />
+                  <Image src={album.spotifyCoverUrl || `https://i.scdn.co/image/ab67616d00004851f57422e4fe7802226d1e613f`} alt="Ty Vsyo Poteryala" fill className="object-cover" sizes="64px" />
                 </div>
                 <div>
                   <p className="font-sans font-medium group-hover:text-gold transition-colors">
@@ -278,9 +279,9 @@ export default function MusicPage() {
                     {videos[0].views && ` · ${videos[0].views} ${t('views_label')}`}
                   </p>
                 </div>
-                <a href="/videos" className="text-gold text-sm font-sans hover:text-gold-light transition-colors">
+                <Link href="/videos" className="text-gold text-sm font-sans hover:text-gold-light transition-colors">
                   {t('all_videos')} →
-                </a>
+                </Link>
               </div>
             </div>
           </ScrollReveal>

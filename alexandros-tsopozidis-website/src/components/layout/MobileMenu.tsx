@@ -6,23 +6,12 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import LanguageSwitcher from './LanguageSwitcher';
 import SocialIcons from '@/components/common/SocialIcons';
+import { navItems, navPaths } from '@/config/nav';
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-const navItems = ['home', 'about', 'music', 'videos', 'gallery', 'events', 'press', 'contact'] as const;
-const navPaths: Record<string, string> = {
-  home: '/',
-  about: '/about',
-  music: '/music',
-  videos: '/videos',
-  gallery: '/gallery',
-  events: '/events',
-  press: '/press',
-  contact: '/contact',
-};
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const t = useTranslations('nav');

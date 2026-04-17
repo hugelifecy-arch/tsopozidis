@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import ScrollReveal from '@/components/common/ScrollReveal';
 import SectionHeading from '@/components/common/SectionHeading';
 import AlbumCover from '@/components/AlbumCover';
@@ -179,12 +180,12 @@ export default function SinglesGrid() {
 
                   {/* Booking CTA */}
                   <div className="px-4 pb-4 pt-2 border-t border-border/30">
-                    <a
+                    <Link
                       href="/contact"
                       className="text-[10px] text-gold/50 hover:text-gold font-sans uppercase tracking-wider transition-colors"
                     >
                       {t('book_this_live')} →
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </ScrollReveal>

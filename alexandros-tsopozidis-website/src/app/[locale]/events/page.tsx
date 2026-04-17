@@ -4,7 +4,7 @@ import ScrollReveal from '@/components/common/ScrollReveal';
 import SocialIcons from '@/components/common/SocialIcons';
 import JsonLd from '@/components/JsonLd';
 import EventsTabs from '@/components/events/EventsTabs';
-import { events } from '@/lib/data/events';
+import { events, getEventDisplayTitle } from '@/lib/data/events';
 
 export default async function EventsPage() {
   const t = await getTranslations('events');
@@ -18,7 +18,7 @@ export default async function EventsPage() {
   const upcomingNonTBA = upcoming.filter(e => !e.comingSoon);
   const eventSchemas = upcomingNonTBA.map(event => ({
     '@type': 'MusicEvent',
-    name: event.title,
+    name: getEventDisplayTitle(event, locale),
     startDate: event.date,
     location: {
       '@type': 'Place',
@@ -63,7 +63,7 @@ export default async function EventsPage() {
                       </p>
                     </div>
                     <div>
-                      <p className="font-sans font-medium text-lg">{event.title}</p>
+                      <p className="font-sans font-medium text-lg">{getEventDisplayTitle(event, locale)}</p>
                       <p className="text-sm text-text-secondary font-sans">
                         {event.venue} · {event.city}, {event.country}
                       </p>
@@ -118,7 +118,7 @@ export default async function EventsPage() {
                         {date.toLocaleString(dateLocale, { month: 'short', day: 'numeric' })}
                       </span>
                       <div>
-                        <p className="font-sans text-sm">{event.title}</p>
+                        <p className="font-sans text-sm">{getEventDisplayTitle(event, locale)}</p>
                         <p className="text-xs text-text-secondary font-sans">
                           {event.venue} · {event.city}, {event.country}
                         </p>
