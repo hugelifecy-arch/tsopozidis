@@ -22,7 +22,6 @@ const musicArtistSchema = {
   description: 'Greek-Caucasian singer blending Pontic Greek, Eastern and pop traditions. Known for Бродяга (22M+ YouTube views). Available for weddings, christenings, corporate events, birthdays, and festivals worldwide.',
   url: 'https://www.tsopozidis-alexandros.com',
   image: 'https://www.tsopozidis-alexandros.com/images/artist/portrait-balcony.jpg',
-  birthDate: '1986-01-01',
   birthPlace: { '@type': 'Place', name: 'Sameba (Guniakala), Georgia' },
   nationality: 'Greek',
   genre: ['Greek Pop', 'Eastern Music', 'Caucasian Music', 'Pontic Greek Music'],

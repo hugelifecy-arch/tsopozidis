@@ -15,7 +15,7 @@ const pages = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date('2026-04-09');
+  const now = new Date();
 
   return locales.flatMap((locale) =>
     pages.map((page) => {

@@ -14,15 +14,66 @@ export const ARTIST_NAME: Record<string, string> = {
   el: 'Αλέξανδρος Τσοποζίδης',
 };
 
-/** SEO keywords targeting event booking searches per locale */
+/** SEO keywords targeting event booking searches per locale. Kept focused (5-10 phrases) to avoid dilution. */
 export const EVENT_BOOKING_KEYWORDS: Record<string, string> = {
-  en: 'book singer for wedding, hire singer for event, Greek singer for hire, singer for christening, singer for baptism, singer for corporate event, singer for birthday party, book artist for engagement party, singer for private event, singer for festival, Greek Russian singer, Eastern European singer for hire, book live singer, wedding entertainment, christening entertainment, event singer Cyprus, event singer Europe, Pontic Greek singer, Caucasian singer for wedding, multilingual singer for events',
-  ru: 'заказать певца на свадьбу, певец на свадьбу, певец на корпоратив, певец на юбилей, певец на крестины, певец на день рождения, заказать артиста на мероприятие, греческий певец на свадьбу, певец на банкет, певец на праздник, заказать певца на крестины, кавказский певец на свадьбу, певец на помолвку, певец на именины, артист на свадьбу Москва, артист на свадьбу Россия, живая музыка на свадьбу, артист на корпоратив, певец на частное мероприятие, восточный певец на праздник',
-  el: 'τραγουδιστής για γάμο, τραγουδιστής για βάπτιση, τραγουδιστής για πάρτι, τραγουδιστής για εκδήλωση, καλλιτέχνης για γάμο, κρατήσεις τραγουδιστή, τραγουδιστής για αρραβώνα, τραγουδιστής για γενέθλια, τραγουδιστής για ονομαστική γιορτή, Πόντιος τραγουδιστής για γάμο, Ελληνορώσος τραγουδιστής, τραγουδιστής για εταιρική εκδήλωση, ζωντανή μουσική για γάμο, τραγουδιστής Κύπρος, τραγουδιστής Ελλάδα, τραγουδιστής για πανηγύρι, μουσική για βάπτιση, τραγουδιστής για γιορτή',
+  en: 'book singer for wedding, hire Greek singer, singer for christening, singer for corporate event, Pontic Greek singer, multilingual live performer, Alexandros Tsopozidis booking',
+  ru: 'заказать певца на свадьбу, певец на корпоратив, певец на крестины, греческий певец на свадьбу, кавказский певец на праздник, живая музыка на свадьбу, Александрос Цопозидис',
+  el: 'τραγουδιστής για γάμο, τραγουδιστής για βάπτιση, καλλιτέχνης για εκδήλωση, ζωντανή μουσική για γάμο, Πόντιος τραγουδιστής, Ελληνορώσος τραγουδιστής, Αλέξανδρος Τσοποζίδης',
 };
 
 export function getArtistName(locale: string): string {
   return ARTIST_NAME[locale] || ARTIST_NAME.en;
+}
+
+const SOCIAL_PROFILES = [
+  'https://open.spotify.com/artist/6PPuuN3cvmbyuvgrGbhXge',
+  'https://music.apple.com/artist/alexandros-tsopozidis/839072119',
+  'https://www.youtube.com/channel/UC_25lDUqfZLnjvWxzPHGNmg',
+  'https://music.yandex.ru/artist/3050547',
+  'https://www.instagram.com/alexandros_official/',
+  'https://vk.com/alexandros_tsopozidis',
+  'https://www.tiktok.com/@tsopozidis',
+  'https://t.me/tsopozidis',
+];
+
+/** Site-wide WebSite schema, localized across supported locales. */
+export function generateWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Alexandros Tsopozidis — Official Website',
+    alternateName: Object.values(ARTIST_NAME),
+    url: BASE_URL,
+    inLanguage: ['en', 'ru', 'el'],
+    description:
+      'Official website of Alexandros Tsopozidis — Greek-Russian pop artist. Book for weddings, christenings, corporate events, birthdays & private celebrations worldwide.',
+    publisher: {
+      '@type': 'Person',
+      name: 'Alexandros Tsopozidis',
+    },
+  };
+}
+
+/** Organization schema to feed the Knowledge Panel with contact + social graph. */
+export function generateOrganizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Alexandros Tsopozidis',
+    alternateName: Object.values(ARTIST_NAME),
+    url: BASE_URL,
+    logo: `${BASE_URL}/images/og-default.jpg`,
+    sameAs: SOCIAL_PROFILES,
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+7-938-316-30-34',
+        contactType: 'Booking',
+        availableLanguage: ['Russian', 'Greek', 'English'],
+        areaServed: 'Worldwide',
+      },
+    ],
+  };
 }
 
 export function generateBreadcrumbSchema(locale: string, pageName: string, pagePath: string) {
@@ -62,9 +113,6 @@ export function generatePageMetadata({
     title,
     description,
     keywords: keywords || EVENT_BOOKING_KEYWORDS[locale] || EVENT_BOOKING_KEYWORDS.en,
-    verification: {
-      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
-    },
     robots: {
       index: true,
       follow: true,

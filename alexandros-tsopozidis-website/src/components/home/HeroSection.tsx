@@ -7,6 +7,7 @@ import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { getWhatsAppUrl } from '@/lib/utm';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 import { useState, useEffect } from 'react';
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
@@ -18,13 +19,15 @@ export default function HeroSection() {
   const { scrollY } = useScroll();
   const bgY = useTransform(scrollY, [0, 1000], [0, 300]);
   const [mounted, setMounted] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
+  const animate = mounted && !reducedMotion;
 
   useEffect(() => setMounted(true), []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with parallax */}
-      {mounted ? (
+      {animate ? (
         <motion.div
           style={{ y: bgY }}
           className="absolute inset-0 -top-[100px] -bottom-[100px]"
@@ -57,7 +60,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
-        {mounted ? (
+        {animate ? (
           <>
             {/* Top decorative line */}
             <motion.div
@@ -163,7 +166,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      {mounted && (
+      {animate && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

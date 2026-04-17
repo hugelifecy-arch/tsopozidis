@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 
 interface PageHeroProps {
   title: string;
@@ -11,12 +12,13 @@ interface PageHeroProps {
 export default function PageHero({ title, subtitle }: PageHeroProps) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+  const reducedMotion = usePrefersReducedMotion();
 
   return (
     <section className="relative pt-32 pb-20 px-4 md:px-8 bg-bg-secondary overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-bg-primary to-bg-secondary" />
       <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {mounted ? (
+        {mounted && !reducedMotion ? (
           <>
             <motion.div
               initial={{ width: 0 }}
