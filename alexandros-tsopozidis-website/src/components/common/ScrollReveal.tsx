@@ -27,24 +27,15 @@ export default function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  // 'ssr' = initial server/hydration render (content visible for SEO)
-  // 'animate' = below-fold element, apply scroll animation
-  // 'visible' = above-fold element, already in viewport — skip animation
-  const [state, setState] = useState<'ssr' | 'animate' | 'visible'>('ssr');
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
-      setState(inViewport ? 'visible' : 'animate');
-    } else {
-      setState('animate');
-    }
+    setHydrated(true);
   }, []);
 
-  // SSR + hydration: render visible content so search engines see it
-  // Above-fold elements: stay visible without animation
-  if (state === 'ssr' || state === 'visible') {
+  // SSR and first client render: plain div so content is always visible
+  // (prevents flash-to-invisible if framer-motion / IntersectionObserver stalls).
+  if (!hydrated) {
     return (
       <div ref={ref} className={className}>
         {children}
@@ -52,12 +43,13 @@ export default function ScrollReveal({
     );
   }
 
-  // Below-fold elements: animate in on scroll
+  // After hydration: add a subtle slide-in when the element enters the viewport.
+  // Content stays fully visible (opacity always 1) — only the translate animates.
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, ...offsets[direction] }}
-      animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
+      initial={offsets[direction]}
+      animate={isInView ? { x: 0, y: 0 } : offsets[direction]}
       transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
       className={className}
     >
