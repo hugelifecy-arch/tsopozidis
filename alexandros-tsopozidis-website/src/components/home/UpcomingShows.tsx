@@ -2,7 +2,7 @@ import { getTranslations, getLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import SectionHeading from '@/components/common/SectionHeading';
 import ScrollReveal from '@/components/common/ScrollReveal';
-import { events } from '@/lib/data/events';
+import { events, getEventDisplayTitle } from '@/lib/data/events';
 
 export default async function UpcomingShows() {
   const t = await getTranslations('events');
@@ -40,7 +40,7 @@ export default async function UpcomingShows() {
                         </p>
                       </div>
                       <div>
-                        <p className="font-sans">{event.title}</p>
+                        <p className="font-sans">{getEventDisplayTitle(event, locale)}</p>
                         <p className="text-sm text-text-secondary font-sans">
                           {event.venue} · {event.city}, {event.country}
                         </p>

@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Cinzel, Cormorant_Garamond, Inter } from 'next/font/google';
 import { routing } from '@/i18n/routing';
@@ -68,6 +68,7 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
+  const tNav = await getTranslations('nav');
 
   return (
     <html lang={locale}>
@@ -80,7 +81,7 @@ export default async function LocaleLayout({
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-gold focus:text-bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-sans"
           >
-            Skip to content
+            {tNav('skip_to_content')}
           </a>
           <Navbar />
           <main id="main-content" className="relative z-[2]">{children}</main>
