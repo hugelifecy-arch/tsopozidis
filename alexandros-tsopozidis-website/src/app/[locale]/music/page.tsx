@@ -238,7 +238,7 @@ export default function MusicPage() {
               <a href="https://open.spotify.com/track/4XYmHQMmFOFw7NaOINtmtb" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-4 bg-bg-tertiary/50 border border-border hover:border-gold/30 rounded-sm p-4 transition-all duration-300 group">
                 <div className="w-16 h-16 rounded-sm overflow-hidden flex-shrink-0 relative">
-                  <Image src={album.spotifyCoverUrl || `https://i.scdn.co/image/ab67616d00004851f57422e4fe7802226d1e613f`} alt="Ty Vsyo Poteryala" fill className="object-cover" sizes="64px" />
+                  <Image src={getYoutubeThumbnail('H_j4mXRQYf4', 'mqdefault')} alt="Ty Vsyo Poteryala" fill className="object-cover" sizes="64px" />
                 </div>
                 <div>
                   <p className="font-sans font-medium group-hover:text-gold transition-colors">
