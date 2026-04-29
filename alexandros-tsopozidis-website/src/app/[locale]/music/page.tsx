@@ -92,7 +92,7 @@ export default function MusicPage() {
         <div className="max-w-4xl mx-auto py-8 px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <p className="font-display text-2xl md:text-3xl text-gold">69M+</p>
+              <p className="font-display text-2xl md:text-3xl text-gold">100M+</p>
               <p className="text-xs text-text-tertiary font-sans uppercase tracking-wider mt-1">YouTube {t('views_label')}</p>
             </div>
             <div>
@@ -230,7 +230,7 @@ export default function MusicPage() {
                     {locale === 'ru' ? 'Бродяга' : locale === 'el' ? 'Бродяга (Αλήτης)' : 'Brodyaga (Wanderer)'}
                   </p>
                   <p className="text-xs text-text-secondary font-sans">Elbrus Dzhanmirzoev ft. Alexandros</p>
-                  <p className="text-[10px] text-text-tertiary font-sans mt-1">551K+ plays · 69M+ YouTube views</p>
+                  <p className="text-[10px] text-text-tertiary font-sans mt-1">551K+ plays · 100M+ YouTube views</p>
                 </div>
               </a>
 

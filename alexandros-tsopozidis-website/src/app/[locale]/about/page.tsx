@@ -9,9 +9,9 @@ import CareerTimeline from '@/components/CareerTimeline';
 import { User, MapPin, Award, Music, Globe, type LucideIcon } from 'lucide-react';
 
 const aboutDescriptions: Record<string, string> = {
-  en: 'Alexandros Tsopozidis — Greek-Russian pop artist from Pontic Greek roots. 69M+ YouTube views, 310K followers. Available for weddings, christenings, corporate events & festivals worldwide.',
-  ru: 'Александрос Цопозидис — греко-русский поп-артист понтийского происхождения. 69М+ просмотров YouTube, 310К подписчиков. Доступен для свадеб, крестин, корпоративов и фестивалей.',
-  el: 'Αλέξανδρος Τσοποζίδης — Ελληνορώσος ποπ καλλιτέχνης ποντιακής καταγωγής. 69M+ YouTube views, 310K followers. Διαθέσιμος για γάμους, βαπτίσεις, εταιρικές εκδηλώσεις & φεστιβάλ.',
+  en: 'Alexandros Tsopozidis — Greek-Russian pop artist from Pontic Greek roots. 100M+ YouTube views, 310K followers. Available for weddings, christenings, corporate events & festivals worldwide.',
+  ru: 'Александрос Цопозидис — греко-русский поп-артист понтийского происхождения. 100М+ просмотров YouTube, 310К подписчиков. Доступен для свадеб, крестин, корпоративов и фестивалей.',
+  el: 'Αλέξανδρος Τσοποζίδης — Ελληνορώσος ποπ καλλιτέχνης ποντιακής καταγωγής. 100M+ YouTube views, 310K followers. Διαθέσιμος για γάμους, βαπτίσεις, εταιρικές εκδηλώσεις & φεστιβάλ.',
 };
 
 const musicArtistSchema = {
@@ -19,7 +19,7 @@ const musicArtistSchema = {
   '@type': 'MusicArtist',
   name: 'Alexandros Tsopozidis',
   alternateName: ['Александрос Цопозидис', 'Αλέξανδρος Τσοποζίδης'],
-  description: 'Greek-Caucasian singer blending Pontic Greek, Eastern and pop traditions. Known for Бродяга (69M+ YouTube views). Available for weddings, christenings, corporate events, birthdays, and festivals worldwide.',
+  description: 'Greek-Caucasian singer blending Pontic Greek, Eastern and pop traditions. Known for Бродяга (100M+ YouTube views). Available for weddings, christenings, corporate events, birthdays, and festivals worldwide.',
   url: 'https://www.tsopozidis-alexandros.com',
   image: 'https://www.tsopozidis-alexandros.com/images/artist/portrait-balcony.jpg',
   birthPlace: { '@type': 'Place', name: 'Sameba (Guniakala), Georgia' },
@@ -95,7 +95,7 @@ export default function AboutPage() {
             <p>{t('bio_paragraph_4')}</p>
             <div className="grid grid-cols-3 gap-4 mt-6">
               <div className="text-center py-4 bg-bg-secondary rounded-sm">
-                <p className="font-display text-2xl text-gold">69M+</p>
+                <p className="font-display text-2xl text-gold">100M+</p>
                 <p className="text-xs text-text-tertiary mt-1">{t('youtube_views')}</p>
               </div>
               <div className="text-center py-4 bg-bg-secondary rounded-sm">

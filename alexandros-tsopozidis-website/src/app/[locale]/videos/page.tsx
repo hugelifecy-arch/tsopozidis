@@ -113,12 +113,12 @@ export default async function VideosPage() {
                   )}
 
                   {/* CTA */}
-                  <a
+                  <Link
                     href="/contact"
                     className="inline-block mt-6 border border-gold/30 text-gold px-5 py-2 text-xs font-display uppercase tracking-wider hover:bg-gold/10 transition-all duration-300"
                   >
                     {t('book_performance')} →
-                  </a>
+                  </Link>
                 </div>
               </div>
             </ScrollReveal>
