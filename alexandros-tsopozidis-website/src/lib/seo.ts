@@ -174,12 +174,16 @@ export function generatePageMetadata({
   };
 }
 
-/** Generate performer/entertainer JSON-LD for booking pages */
+/**
+ * Generate MusicArtist (Person) JSON-LD for booking pages. Alexandros is a solo
+ * vocalist, so the correct Schema.org type is `MusicArtist` (subtype of Person),
+ * not `PerformingGroup` (which is for bands/ensembles).
+ */
 export function generatePerformerSchema(locale: string) {
   const name = ARTIST_NAME[locale] || ARTIST_NAME.en;
   return {
     '@context': 'https://schema.org',
-    '@type': 'PerformingGroup',
+    '@type': ['MusicArtist', 'Person'],
     name,
     alternateName: Object.values(ARTIST_NAME).filter(n => n !== name),
     description: locale === 'ru'
@@ -188,7 +192,13 @@ export function generatePerformerSchema(locale: string) {
         ? 'Ελληνο-καυκάσιος τραγουδιστής. Διαθέσιμος για γάμους, βαπτίσεις, εταιρικά events, γενέθλια, αρραβώνες και ιδιωτικές εκδηλώσεις.'
         : 'Greek-Caucasian singer. Available for weddings, christenings, corporate events, birthdays, engagements, and private celebrations.',
     url: `${BASE_URL}/${locale}/contact`,
+    mainEntityOfPage: `${BASE_URL}/${locale}/about`,
     image: `${BASE_URL}/images/og-default.jpg`,
+    sameAs: SOCIAL_PROFILES,
+    jobTitle: locale === 'ru' ? 'Певец' : locale === 'el' ? 'Τραγουδιστής' : 'Singer',
+    nationality: { '@type': 'Country', name: 'Greece' },
+    birthPlace: { '@type': 'Place', name: 'Sameba (Guniakala), Georgia' },
+    award: '9 Волна Award for Contribution to Ethnic Music (2014)',
     genre: ['Greek Pop', 'Eastern Music', 'Caucasian Music', 'Pontic Greek Music'],
     knowsLanguage: ['ru', 'el', 'en'],
     areaServed: [
@@ -262,21 +272,21 @@ export function generateBookingFAQSchema(locale: string) {
     { q: 'Можно ли пригласить певца на корпоратив или юбилей?', a: 'Конечно. Александрос выступает на корпоративных мероприятиях, юбилеях, днях рождения и банкетах. Формат — от камерного акустического сета до полноценного концерта.' },
     { q: 'В каких странах доступны выступления?', a: 'Александрос выступает по всему миру. Базируется на Кипре, активно гастролирует по России, Греции, Германии, странам СНГ, ОАЭ и другим. Для международного букинга свяжитесь с нами.' },
     { q: 'На каких языках поёт Александрос?', a: 'Александрос исполняет песни на русском, греческом, понтийском греческом, армянском и испанском языках. Это делает его идеальным выбором для мультикультурных мероприятий.' },
-    { q: 'Какой репертуар доступен для свадьбы?', a: 'Для свадеб доступен полный репертуар: от хитов «Бродяга» (69М+ просмотров) и «Male Male» до лирических и танцевальных композиций. Программа согласовывается индивидуально.' },
+    { q: 'Какой репертуар доступен для свадьбы?', a: 'Для свадеб доступен полный репертуар: от хитов «Бродяга» (100М+ просмотров) и «Male Male» до лирических и танцевальных композиций. Программа согласовывается индивидуально.' },
   ] : locale === 'el' ? [
     { q: 'Μπορώ να κλείσω τον Αλέξανδρο Τσοποζίδη για γάμο;', a: 'Ναι, ο Αλέξανδρος είναι διαθέσιμος για εμφανίσεις σε γάμους σε όλο τον κόσμο. Τραγουδά στα ρωσικά, ελληνικά και ποντιακά, δημιουργώντας μια αξέχαστη ατμόσφαιρα. Επικοινωνήστε μέσω WhatsApp: +7 938 316 30 34.' },
     { q: 'Εμφανίζεται ο Αλέξανδρος σε βαπτίσεις;', a: 'Ναι, ο Αλέξανδρος εμφανίζεται τακτικά σε βαπτίσεις και χριστουγεννιάτικες εκδηλώσεις. Το ρεπερτόριό του περιλαμβάνει παραδοσιακά ελληνικά, ποντιακά και ρωσικά τραγούδια.' },
     { q: 'Μπορώ να τον καλέσω σε εταιρική εκδήλωση ή πάρτι γενεθλίων;', a: 'Φυσικά. Ο Αλέξανδρος εμφανίζεται σε εταιρικές εκδηλώσεις, πάρτι γενεθλίων, ονομαστικές γιορτές και αρραβώνες. Η μορφή κυμαίνεται από ακουστικό σετ έως πλήρη συναυλία.' },
     { q: 'Σε ποιες χώρες είναι διαθέσιμος;', a: 'Ο Αλέξανδρος εμφανίζεται σε όλο τον κόσμο. Βρίσκεται στην Κύπρο και περιοδεύει ενεργά σε Ελλάδα, Ρωσία, Γερμανία, ΗΑΕ και αλλού. Επικοινωνήστε για διεθνείς κρατήσεις.' },
     { q: 'Σε ποιες γλώσσες τραγουδάει ο Αλέξανδρος;', a: 'Ο Αλέξανδρος τραγουδά στα ρωσικά, ελληνικά, ποντιακά, αρμενικά και ισπανικά. Αυτό τον καθιστά ιδανική επιλογή για πολυπολιτισμικές εκδηλώσεις.' },
-    { q: 'Τι ρεπερτόριο είναι διαθέσιμο για γάμο;', a: 'Για γάμους διατίθεται πλήρες ρεπερτόριο: από hits όπως «Бродяга» (Αλήτης, 69M+ views) και «Male Male» μέχρι λυρικά και χορευτικά κομμάτια. Το πρόγραμμα διαμορφώνεται ανάλογα.' },
+    { q: 'Τι ρεπερτόριο είναι διαθέσιμο για γάμο;', a: 'Για γάμους διατίθεται πλήρες ρεπερτόριο: από hits όπως «Бродяга» (Αλήτης, 100M+ views) και «Male Male» μέχρι λυρικά και χορευτικά κομμάτια. Το πρόγραμμα διαμορφώνεται ανάλογα.' },
   ] : [
     { q: 'Can I book Alexandros Tsopozidis for a wedding?', a: 'Yes, Alexandros is available for wedding performances worldwide. He sings in Russian, Greek, and Pontic Greek, creating an unforgettable atmosphere for your celebration. Contact booking manager Liana via WhatsApp: +7 938 316 30 34.' },
     { q: 'Does Alexandros perform at christenings and baptisms?', a: 'Yes, Alexandros regularly performs at christenings and baptisms. His repertoire includes traditional Greek, Pontic Greek, and Russian songs perfect for such celebrations.' },
     { q: 'Can I hire him for a corporate event or birthday party?', a: 'Absolutely. Alexandros performs at corporate events, birthday parties, anniversaries, engagements, and name day celebrations. Formats range from intimate acoustic sets to full concert productions.' },
     { q: 'In which countries is Alexandros available for events?', a: 'Alexandros performs worldwide. Based in Cyprus, he actively tours Russia, Greece, Germany, CIS countries, UAE, and beyond. Contact us for international booking.' },
     { q: 'What languages does Alexandros sing in?', a: 'Alexandros performs in Russian, Greek, Pontic Greek, Armenian, and Spanish. This makes him an ideal choice for multicultural events and diverse audiences.' },
-    { q: 'What repertoire is available for weddings?', a: 'For weddings, the full repertoire is available: from hits like "Brodyaga" (69M+ YouTube views) and "Male Male" to lyrical ballads and dance tracks. The program is customized to your preferences.' },
+    { q: 'What repertoire is available for weddings?', a: 'For weddings, the full repertoire is available: from hits like "Brodyaga" (100M+ YouTube views) and "Male Male" to lyrical ballads and dance tracks. The program is customized to your preferences.' },
   ];
 
   return {

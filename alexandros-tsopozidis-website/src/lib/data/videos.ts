@@ -42,13 +42,13 @@ export const videos: Video[] = [
     titleEl: "Бродяга (Αλήτης)",
     year: 2014,
     featuring: "Elbrus Dzhanmirzoev",
-    views: "69M+",
+    views: "100M+",
     description: {
       en: "The breakthrough hit that launched Alexandros to fame across the Russian-speaking world. A duet with Dagestani singer Elbrus Dzhanmirzoev about a wanderer searching for meaning. Released as official video in April 2014, it became a cultural phenomenon in the Caucasian and Greek diaspora communities. The track was later released on Spotify in 2016 via Lotus Music.",
       ru: "Прорывной хит, прославивший Александроса по всему русскоязычному миру. Дуэт с дагестанским певцом Эльбрусом Джанмирзоевым о бродяге, ищущем смысл жизни. Официальный клип вышел в апреле 2014 года и стал культурным феноменом в кавказской и греческой диаспоре.",
       el: "Το τραγούδι-σταθμός που έκανε τον Αλέξανδρο γνωστό σε ολόκληρο τον ρωσόφωνο κόσμο. Ντουέτο με τον Νταγκεστανό τραγουδιστή Elbrus Dzhanmirzoev.",
     },
-    context: "From the album Бродяга (2016, Lotus Music). The song that defined Alexandros's career — 69M+ YouTube views make it the most-watched Caucasian music video.",
+    context: "From the album Бродяга (2016, Lotus Music). The song that defined Alexandros's career — 100M+ YouTube views make it the most-watched Caucasian music video.",
     label: "Official channel",
   },
   {
